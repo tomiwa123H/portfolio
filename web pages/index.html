@@ -1,0 +1,1397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norwest Digital Telecommunications | Enterprise Telecom Solutions UK</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+<style>
+/* ===================== DESIGN SYSTEM ===================== */
+:root {
+  --navy: #003366;
+  --navy-dark: #002244;
+  --navy-light: #00449a;
+  --orange: #f96e35;
+  --orange-light: #ff8555;
+  --white: #ffffff;
+  --off-white: #f8faff;
+  --light-grey: #f1f4f9;
+  --mid-grey: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-mid: #334155;
+  --text-light: #64748b;
+  --text-muted: #94a3b8;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.14);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.18);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; line-height: 1.6; }
+img, video { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+
+/* ===================== HEADER ===================== */
+header {
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 90px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.logo { height: 65px; width: auto; }
+nav { display: flex; gap: 36px; align-items: center; }
+nav a {
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: color var(--transition);
+  position: relative;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  transition: width var(--transition);
+}
+nav a:hover { color: white; }
+nav a:hover::after { width: 100%; }
+.dropdown { position: relative; }
+.dropdown-btn {
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition);
+}
+.dropdown-btn:hover { color: white; }
+.dropdown-btn::after { content: '▾'; font-size: 11px; }
+.dropdown-content {
+  display: none;
+  position: absolute;
+  /* Remove the 16px gap — replace with invisible padding bridge so mouse
+     can travel from the button into the dropdown without it closing       */
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: var(--radius-md);
+  min-width: 230px;
+  box-shadow: var(--shadow-xl);
+  z-index: 1000;
+  overflow: hidden;
+  border: 1px solid var(--mid-grey);
+  /* Push the visible box down 12px via margin, but keep the hit-area
+     flush with the button via invisible padding top                       */
+  padding-top: 12px;
+  margin-top: 0;
+}
+/* Invisible top padding acts as a bridge — mouse stays inside the element */
+.dropdown-content::before {
+  content: '';
+  display: block;
+  height: 12px;
+  margin: -12px -1px 0;   /* pull it up to cover the gap */
+  background: transparent;
+}
+.dropdown-content a {
+  color: var(--text-dark);
+  font-weight: 600;
+  padding: 13px 20px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  transition: background var(--transition), color var(--transition);
+  border-bottom: 1px solid var(--light-grey);
+}
+.dropdown-content a:last-child { border-bottom: none; }
+.dropdown-content a:hover { background: var(--off-white); color: var(--orange); }
+/* Show on hover of the whole .dropdown wrapper — covers both button & menu */
+.dropdown:hover .dropdown-content { display: block; }
+.header-cta {
+  background: var(--orange);
+  color: white;
+  padding: 11px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  box-shadow: 0 4px 15px rgba(249,110,53,0.4);
+}
+.header-cta:hover {
+  background: var(--orange-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(249,110,53,0.5);
+  color: white;
+}
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; transition: all var(--transition); }
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 90px;
+  left: 0;
+  right: 0;
+  background: var(--navy-dark);
+  padding: 30px 25px;
+  z-index: 999;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.mobile-menu.show { display: flex; }
+.mobile-menu a { color: white; font-size: 17px; font-weight: 600; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.mobile-dropdown-toggle { color: white; font-size: 17px; font-weight: 600; cursor: pointer; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.mobile-dropdown-menu { display: none; flex-direction: column; background: rgba(255,255,255,0.08); border-radius: var(--radius-sm); padding: 10px 0; margin: 8px 0; }
+.mobile-dropdown-menu a { color: rgba(255,255,255,0.85); padding: 10px 16px; font-size: 15px; border-bottom: none; }
+.mobile-dropdown.show .mobile-dropdown-menu { display: flex; }
+
+/* ===================== HERO ===================== */
+.hero {
+  position: relative;
+  /* Fixed height — tall enough for all content, short enough to never overflow */
+  height: calc(100vh - 90px);
+  min-height: 580px;
+  max-height: 860px;          /* cap it so content never runs out of room */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+  margin-bottom: 0;
+  /* Pad top/bottom so content is never flush against nav or next section */
+  padding: 80px 0 100px;
+}
+
+/* ---- Video sits at the very back ---- */
+.video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 0;
+}
+
+/* ---- Overlay: transparent at top → darker at bottom for text legibility ---- */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 15, 40, 0.05)  0%,
+    rgba(0, 20, 55, 0.15)  30%,
+    rgba(0, 25, 65, 0.45)  60%,
+    rgba(0, 20, 55, 0.72)  85%,
+    rgba(0, 15, 45, 0.82) 100%
+  );
+}
+
+/* ---- Content layer ---- */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;           /* slightly narrower so text wraps sooner */
+  padding: 0 30px;
+  /* NO negative margin — that was clipping the top behind the nav */
+  margin-top: 0;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(249,110,53,0.2);
+  border: 1px solid rgba(249,110,53,0.4);
+  color: #ffb08a;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.hero-badge::before { content: '●'; color: var(--orange); font-size: 10px; }
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  /* Reduced max from 82px → 56px so it never towers over the viewport */
+  font-size: clamp(34px, 4.8vw, 56px);
+  font-weight: 800;
+  line-height: 1.12;
+  color: white;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+.hero h1 span { color: var(--orange); }
+.hero p {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: rgba(255,255,255,0.85);
+  max-width: 620px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--orange);
+  color: white;
+  padding: 15px 34px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all var(--transition);
+  box-shadow: 0 6px 20px rgba(249,110,53,0.4);
+  letter-spacing: 0.3px;
+}
+.btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(249,110,53,0.5); color: white; }
+.btn-outline {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  padding: 15px 34px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  transition: all var(--transition);
+  backdrop-filter: blur(8px);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); color: white; }
+
+/* ---- Scroll indicator: contained safely inside hero, above the fade ---- */
+.hero-scroll {
+  position: absolute;
+  /* Keep well clear of the hero bottom edge so it never pokes outside */
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.55);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  /* Bounce only on Y without shifting X */
+  animation: bounce 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-scroll::after {
+  content: '';
+  display: block;
+  width: 1.5px;
+  height: 28px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0));
+  border-radius: 2px;
+  margin-top: 4px;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(7px); }
+}
+
+/* ===================== TRUSTED BY ===================== */
+.trusted-section {
+  background: var(--off-white);
+  padding: 56px 40px;
+  border-top: 1px solid var(--mid-grey);
+  border-bottom: 1px solid var(--mid-grey);
+  position: relative;
+  z-index: 0;
+}
+.trusted-label {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 32px;
+}
+.logo-strip {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+.logo-track {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  animation: scroll-logos 28s linear infinite;
+  width: max-content;
+}
+.logo-track img {
+  height: 40px;
+  width: auto;
+  /* Full colour, full opacity — no filter hiding the branding */
+  opacity: 0.9;
+  filter: none;
+  transition: opacity var(--transition);
+}
+.logo-track img:hover { opacity: 1; }
+@keyframes scroll-logos { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+
+/* ===================== STATS ===================== */
+.stats-section {
+  background: var(--navy);
+  padding: 80px 40px;
+}
+.stats-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+.stat-item { color: white; }
+.stat-number {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 800;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.stat-label { font-size: 15px; color: rgba(255,255,255,0.65); font-weight: 500; }
+
+/* ===================== WHY CHOOSE US ===================== */
+.why-section { padding: 110px 40px; background: white; }
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+  display: block;
+}
+.section-heading {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+.section-subtext {
+  font-size: 17px;
+  color: var(--text-mid);
+  max-width: 620px;
+  line-height: 1.75;
+  margin-bottom: 60px;
+}
+.why-inner { max-width: 1200px; margin: auto; }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+.why-card {
+  background: var(--off-white);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  border: 1px solid var(--mid-grey);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--orange);
+  transform: scaleY(0);
+  transition: transform var(--transition);
+  transform-origin: bottom;
+}
+.why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); background: white; border-color: transparent; }
+.why-card:hover::before { transform: scaleY(1); }
+.why-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--navy);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+.why-card h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.why-card p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+/* ===================== PROCESS ===================== */
+.process-section { padding: 110px 40px; background: var(--navy); }
+.process-inner { max-width: 1200px; margin: auto; }
+.process-section .section-heading { color: white; }
+.process-section .section-label { color: rgba(249,110,53,0.9); }
+.process-section .section-subtext { color: rgba(255,255,255,0.65); }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 20px;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), rgba(249,110,53,0.3));
+  z-index: 0;
+}
+.step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+.step-num {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  box-shadow: 0 8px 24px rgba(249,110,53,0.4);
+}
+.step h3 { font-size: 17px; font-weight: 700; color: white; margin-bottom: 10px; }
+.step p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+/* ===================== SERVICES ===================== */
+.services-section { padding: 110px 40px; background: var(--light-grey); }
+.services-inner { max-width: 1200px; margin: auto; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+.service-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--mid-grey);
+  display: flex;
+  flex-direction: column;
+}
+.service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); border-color: transparent; }
+.service-img {
+  height: 210px;
+  background: var(--navy);
+  overflow: hidden;
+  position: relative;
+}
+.service-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.service-card:hover .service-img img { transform: scale(1.05); }
+.service-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,30,70,0.6), transparent);
+}
+.service-body { padding: 30px; flex: 1; display: flex; flex-direction: column; }
+.service-body h3 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.service-body p { font-size: 14px; color: var(--text-mid); line-height: 1.7; flex: 1; }
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 20px;
+  transition: gap var(--transition);
+}
+.service-link:hover { gap: 10px; color: var(--orange); }
+.service-link::after { content: '→'; }
+
+/* ===================== INDUSTRIES ===================== */
+.industries-section { padding: 110px 40px; background: white; }
+.industries-inner { max-width: 1200px; margin: auto; }
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+.industry-card {
+  background: var(--off-white);
+  border: 1px solid var(--mid-grey);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  text-align: center;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.industry-card:hover { background: var(--navy); border-color: var(--navy); transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.industry-card:hover h3, .industry-card:hover p { color: white !important; }
+.industry-icon { width: 44px; height: 44px; margin-bottom: 18px; display: block; color: var(--navy); transition: color var(--transition); }
+.industry-icon svg { width: 100%; height: 100%; }
+.industry-card:hover .industry-icon { color: white; }
+.industry-card h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; transition: color var(--transition); }
+.industry-card p { font-size: 13px; color: var(--text-light); line-height: 1.65; transition: color var(--transition); }
+.industry-card a { display: block; }
+
+/* ===================== TESTIMONIALS ===================== */
+.testimonials-section { padding: 110px 40px; background: var(--off-white); }
+.testimonials-inner { max-width: 1200px; margin: auto; }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 60px;
+}
+.testimonial-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  border: 1px solid var(--mid-grey);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+  position: relative;
+}
+.testimonial-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--orange);
+  opacity: 0.2;
+  font-family: Georgia, serif;
+}
+.stars { color: var(--orange); font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+.testimonial-card blockquote { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 14px; }
+.author-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.author-info p:first-child { font-size: 14px; font-weight: 700; color: var(--navy); }
+.author-info p:last-child { font-size: 12px; color: var(--text-light); }
+
+/* ===================== CASE STUDIES ===================== */
+.case-studies-section { padding: 110px 40px; background: white; }
+.case-studies-inner { max-width: 1200px; margin: auto; }
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 60px;
+}
+.case-card {
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.case-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(249,110,53,0.15) 0%, transparent 70%);
+}
+.case-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+.case-tag {
+  display: inline-block;
+  background: rgba(249,110,53,0.2);
+  color: #ffb08a;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.case-card h3 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: white; margin-bottom: 14px; }
+.case-card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 28px; }
+.case-metrics { display: flex; gap: 28px; flex-wrap: wrap; }
+.metric { text-align: center; }
+.metric-val { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--orange); }
+.metric-label { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 500; }
+
+/* ===================== FAQ ===================== */
+.faq-section { padding: 110px 40px; background: var(--off-white); }
+.faq-inner { max-width: 800px; margin: auto; }
+.faq-list { margin-top: 60px; }
+.faq-item {
+  background: white;
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  border: 1px solid var(--mid-grey);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+}
+.faq-item:hover { box-shadow: var(--shadow-md); }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 28px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Inter', sans-serif;
+}
+.faq-q .faq-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--navy);
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+.faq-item.open .faq-icon { background: var(--orange); color: white; transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 28px;
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 28px 22px; }
+
+/* ===================== CTA BANNER ===================== */
+.cta-section {
+  padding: 100px 40px;
+  background: linear-gradient(135deg, var(--orange) 0%, #e8560a 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 60%;
+  height: 200%;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+.cta-section::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 40%;
+  height: 160%;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+.cta-content { position: relative; z-index: 1; max-width: 700px; margin: auto; }
+.cta-section h2 { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 46px); font-weight: 800; color: white; margin-bottom: 18px; }
+.cta-section p { font-size: 17px; color: rgba(255,255,255,0.85); margin-bottom: 40px; line-height: 1.7; }
+.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-white {
+  background: white;
+  color: var(--orange);
+  padding: 15px 34px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all var(--transition);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); color: var(--orange); }
+.btn-ghost {
+  background: transparent;
+  color: white;
+  padding: 15px 34px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 2px solid rgba(255,255,255,0.6);
+  transition: all var(--transition);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: white; transform: translateY(-2px); color: white; }
+
+/* ===================== FOOTER ===================== */
+.footer { background: var(--navy-dark); color: white; padding: 80px 40px 40px; }
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+}
+.footer-brand p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-top: 16px; }
+.footer-logo { max-width: 140px; }
+.footer-contact { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.9; }
+.footer-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col a { color: rgba(255,255,255,0.65); font-size: 14px; transition: color var(--transition); }
+.footer-col a:hover { color: var(--orange); }
+.footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 50px 0 30px; }
+.footer-bottom { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.35); flex-wrap: wrap; gap: 12px; }
+
+/* BACK TO TOP */
+#backToTop {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: var(--orange);
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(249,110,53,0.4);
+  z-index: 999;
+  transition: all var(--transition);
+}
+#backToTop:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+/* COOKIE */
+#cookieBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--navy-dark);
+  color: white;
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  z-index: 9999;
+  border-top: 3px solid var(--orange);
+  flex-wrap: wrap;
+}
+#cookieBar p { font-size: 14px; color: rgba(255,255,255,0.8); }
+#cookieBar button { background: var(--orange); color: white; border: none; padding: 9px 22px; border-radius: 50px; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .process-steps::before { display: none; }
+  .industries-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  header { padding: 0 20px; height: 75px; }
+  .logo { height: 50px; }
+  nav, .header-cta { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { top: 75px; }
+  /* Hero: shrink padding and cap height so buttons are always visible */
+  .hero { padding: 50px 0 80px; min-height: 500px; max-height: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .case-studies-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .industries-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .why-section, .process-section, .services-section, .industries-section,
+  .testimonials-section, .case-studies-section, .faq-section, .cta-section { padding: 70px 20px; }
+  .trusted-section { padding: 40px 20px; }
+}
+</style>
+</head>
+<body>
+
+<button id="backToTop" aria-label="Back to top">↑</button>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <a href="/web pages/index.html"><img src="/web pictures/Norwest logo.PNG" alt="Norwest Digital" class="logo"></a>
+  <nav>
+    <a href="/web pages/index.html">Home</a>
+    <a href="/web pages/About us.html">About Us</a>
+    <a href="/web pages/Our services.html">Our Services</a>
+    <div class="dropdown">
+      <span class="dropdown-btn">Solutions</span>
+      <div class="dropdown-content">
+        <a href="/web pages/GP Surgeries.html">GP Surgeries</a>
+        <a href="/web pages/Solicitor Practice.html">Solicitor Practice</a>
+        <a href="/web pages/Schools.html">Schools</a>
+        <a href="/web pages/Other Sectors.html">Other Sectors</a>
+      </div>
+    </div>
+  </nav>
+  <a href="/php forms/Book_a_call.php" class="header-cta">Book a Call</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/web pages/index.html">Home</a>
+  <a href="/web pages/About us.html">About Us</a>
+  <a href="/web pages/Our services.html">Our Services</a>
+  <div class="mobile-dropdown">
+    <div class="mobile-dropdown-toggle">Solutions ▾</div>
+    <div class="mobile-dropdown-menu">
+      <a href="/web pages/GP Surgeries.html">GP Surgeries</a>
+      <a href="/web pages/Solicitor Practice.html">Solicitor Practice</a>
+      <a href="/web pages/Schools.html">Schools</a>
+      <a href="/web pages/Other Sectors.html">Other Sectors</a>
+    </div>
+  </div>
+  <a href="/php forms/Book_a_call.php">Book a Call</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="/web pictures/Video template.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+   <div class="hero-badge">UK Telecom Specialists Since 1991</div>
+    <h1>Reliable Telecom<br><span>Solutions</span> for Modern Business</h1>
+    <p>We deliver secure hosted systems, ultrafast broadband and managed communications for schools, GP surgeries and professional firms across the UK.</p>
+    <div class="hero-btns">
+      <a href="/web pages/Our services.html" class="btn-primary">See What We Do</a>
+      <a href="/web pages/Book_a_call.html" class="btn-outline">Book a Free Call</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-number" data-target="30">0</div>
+      <div class="stat-label">Years in Business</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="200">0</div>
+      <div class="stat-label">Organisations Supported</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="99" data-suffix="%">0</div>
+      <div class="stat-label">Uptime SLA</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="500">0</div>
+      <div class="stat-label">Networks Deployed</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="why-section">
+  <div class="why-inner">
+    <span class="section-label">Why Norwest</span>
+    <h2 class="section-heading">The Kind of Telecom Partner<br>You've Been Looking For</h2>
+    <p class="section-subtext">We've been doing this since 1991. That's over three decades of getting it right for organisations that can't afford for their communications to go wrong.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="11" stroke="white" stroke-width="1.8"/><path d="M8 13.5l3.5 3.5 6.5-7" stroke="#f96e35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>30+ Years of Experience</h3>
+        <p>We've been installing and supporting telecom systems since 1991 — through every major shift in the industry. That kind of experience is hard to fake, and impossible to rush.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="10" r="4" stroke="white" stroke-width="1.8"/><path d="M5 22c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="white" stroke-width="1.8" stroke-linecap="round"/><circle cx="20" cy="10" r="3" stroke="#f96e35" stroke-width="1.6"/><path d="M22 19c0-2.8-1.3-5.2-3.2-6.6" stroke="#f96e35" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>A Named Person, Not a Ticket Number</h3>
+        <p>Every client has a dedicated account manager — someone who already knows your system when you call. No holding music, no starting from scratch every time.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M5 8h16M5 13h10M5 18h12" stroke="white" stroke-width="1.8" stroke-linecap="round"/><rect x="3" y="4" width="20" height="18" rx="3" stroke="white" stroke-width="1.6"/><path d="M17 17l4 4" stroke="#f96e35" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="16" r="3" stroke="#f96e35" stroke-width="1.6"/></svg>
+        </div>
+        <h3>UK Support — Actual Humans</h3>
+        <p>Our engineers are UK-based and answer the phone. If something goes wrong, you're talking to someone who knows what they're doing — not reading from a script overseas.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3L4 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7L13 3z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 13l3 3 5-6" stroke="#f96e35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>We Know Your Sector</h3>
+        <p>Healthcare, education, legal — each has its own rules, pressures and compliance requirements. We've worked in all of them long enough to know exactly what each one needs.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="4" y="11" width="18" height="12" rx="2" stroke="white" stroke-width="1.8"/><path d="M9 11V8a4 4 0 018 0v3" stroke="white" stroke-width="1.8" stroke-linecap="round"/><circle cx="13" cy="17" r="2" fill="#f96e35"/><line x1="13" y1="19" x2="13" y2="21" stroke="#f96e35" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Security Built In From Day One</h3>
+        <p>Encryption, firewall management, real-time threat monitoring — these aren't optional extras on our solutions. They're included as standard, because they should be.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="14" width="6" height="9" rx="1" stroke="white" stroke-width="1.8"/><rect x="10" y="9" width="6" height="14" rx="1" stroke="#f96e35" stroke-width="1.8"/><rect x="17" y="4" width="6" height="19" rx="1" stroke="white" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Grows With You</h3>
+        <p>We design infrastructure for where you're going, not just where you are. Whether you're adding a new site or doubling in size, it shouldn't mean starting over.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="process-section">
+  <div class="process-inner">
+    <span class="section-label">How We Work</span>
+    <h2 class="section-heading">No Surprises.<br>Just Results.</h2>
+    <p class="section-subtext">We follow the same four steps with every client — because a clear process is what separates a smooth deployment from a difficult one.</p>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Discovery</h3>
+        <p>We start by listening. We want to understand your current setup, what's not working and what you need it to do — before we suggest anything.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Planning</h3>
+        <p>Our engineers put together a solution that's built around your organisation — with clear costings, realistic timelines and nothing hidden in the small print.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Installation</h3>
+        <p>We handle everything from cabling to configuration. Our engineers work around your hours to keep disruption to an absolute minimum.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Ongoing Support</h3>
+        <p>Once you're live, we stay involved. Proactive monitoring, regular check-ins and a support team that actually picks up the phone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUSTED BY ===== -->
+<section class="trusted-section">
+  <p class="trusted-label">Trusted by organisations across the UK</p>
+  <div class="logo-strip">
+    <div class="logo-track">
+      <img src="/web pictures/lycee-francais.png" alt="Lycee Francais">
+      <img src="/web pictures/holy-family.png" alt="Holy Family">
+      <img src="/web pictures/cransley.png" alt="Cransley">
+      <img src="/web pictures/dodds.png" alt="Dodds">
+      <img src="/web pictures/backhouse-jones.PNG" alt="Backhouse Jones">
+      <img src="/web pictures/waunfawr.png" alt="Waunfawr">
+      <!-- Duplicate for seamless loop -->
+      <img src="/web pictures/lycee-francais.png" alt="Lycee Francais">
+      <img src="/web pictures/holy-family.png" alt="Holy Family">
+      <img src="/web pictures/cransley.png" alt="Cransley">
+      <img src="/web pictures/dodds.png" alt="Dodds">
+      <img src="/web pictures/backhouse-jones.PNG" alt="Backhouse Jones">
+      <img src="/web pictures/waunfawr.png" alt="Waunfawr">
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services-section">
+  <div class="services-inner">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-heading">Everything You Need,<br>Under One Roof</h2>
+    <p class="section-subtext">We handle broadband, hosted phone systems, mobile infrastructure and security — so you're not managing five different suppliers and hoping they talk to each other.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-img">
+          <img src="/web pictures/Broadband.png" alt="Broadband">
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <h3>Broadband</h3>
+          <p>Business-grade connectivity that doesn't let you down when you need it most — designed, installed and monitored by our own engineers from day one.</p>
+          <a href="/web pages/Broadband.html" class="service-link">Learn More</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="/web pictures/Hosted Systems.jpg" alt="Hosted Systems">
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <h3>Hosted Phone Systems</h3>
+          <p>Replace ageing ISDN lines with a cloud phone system that works from any device, anywhere — with call recording, auto-attendant and disaster recovery built in.</p>
+          <a href="/web pages/Hosted Systems.html" class="service-link">Learn More</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="/web pictures/Mobile network.JPG" alt="Mobile Network">
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <h3>Mobile Network</h3>
+          <p>4G and 5G infrastructure planning, cell site build-out and radio network optimisation — for operators and enterprises who need coverage done properly.</p>
+          <a href="/web pages/Mobile Network.html" class="service-link">Learn More</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-img">
+          <img src="/web pictures/CCTV Security.JPG" alt="CCTV Security">
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <h3>CCTV & Security</h3>
+          <p>HD cameras, smart detection and secure cloud storage — professionally installed and set up so your footage is actually there when you need it.</p>
+          <a href="/web pages/CCTV  Security.html" class="service-link">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INDUSTRIES ===== -->
+<section class="industries-section">
+  <div class="industries-inner">
+    <span class="section-label">Who We Work With</span>
+    <h2 class="section-heading">Built for Your Industry</h2>
+    <p class="section-subtext">Every sector has its own pressures, its own regulations and its own way of working. We've spent years learning exactly what each one needs from its telecoms.</p>
+    <div class="industries-grid">
+      <a href="/web pages/GP Surgeries.html" class="industry-card">
+        <span class="industry-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="8" y="6" width="24" height="30" rx="2" stroke="currentColor" stroke-width="1.8"/><line x1="20" y1="14" x2="20" y2="24" stroke="#f96e35" stroke-width="2" stroke-linecap="round"/><line x1="15" y1="19" x2="25" y2="19" stroke="#f96e35" stroke-width="2" stroke-linecap="round"/><line x1="13" y1="30" x2="18" y2="30" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="22" y1="30" x2="27" y2="30" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h3>GP Surgeries</h3>
+        <p>CQC-compliant phone systems and broadband for busy practices — built around patient confidentiality and NHS data standards.</p>
+      </a>
+      <a href="/web pages/Solicitor Practice.html" class="industry-card">
+        <span class="industry-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 6L8 12v4c0 8.8 5.4 17 12 19 6.6-2 12-10.2 12-19v-4L20 6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 20.5l3.5 3.5 6.5-7" stroke="#f96e35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Solicitor Practices</h3>
+        <p>Secure, GDPR-compliant infrastructure that keeps privileged client conversations exactly where they should be — private.</p>
+      </a>
+      <a href="/web pages/Schools.html" class="industry-card">
+        <span class="industry-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 7L6 14l14 7 14-7-14-7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 18v8c0 2.2 3.6 4 8 4s8-1.8 8-4v-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="34" y1="14" x2="34" y2="24" stroke="#f96e35" stroke-width="2" stroke-linecap="round"/><circle cx="34" cy="26" r="2" fill="#f96e35"/></svg>
+        </span>
+        <h3>Schools</h3>
+        <p>Fast, reliable connectivity with safeguarding tools built in — installed around term times so there's no disruption to teaching.</p>
+      </a>
+      <a href="/web pages/Other Sectors.html" class="industry-card">
+        <span class="industry-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="18" width="28" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M14 18v-4a6 6 0 0112 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="20" cy="26" r="3" stroke="#f96e35" stroke-width="1.8"/></svg>
+        </span>
+        <h3>Other Sectors</h3>
+        <p>Retail, hospitality, logistics, property — if your organisation communicates, we can help it do so more reliably and securely.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <span class="section-label">In Their Own Words</span>
+    <h2 class="section-heading">What Our Clients Say</h2>
+    <p class="section-subtext">We'd rather let the people we work with do the talking.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>Norwest replaced our old phone system and the difference has been night and day. Calls are clearer, queuing actually works now and our patients have noticed the improvement. The team were great throughout — no fuss, no mess.</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div class="author-info">
+            <p>Dr. Sarah Mitchell</p>
+            <p>Practice Manager, Cheshire GP Surgery</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>We'd been putting up with slow, unreliable broadband for years. Norwest came in, assessed everything properly and had us on a leased line within two weeks. Our whole team works faster because of it — genuinely transformative.</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">J</div>
+          <div class="author-info">
+            <p>James Thornton</p>
+            <p>Head of IT, Thornton &amp; Associates Solicitors</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>They installed everything during the summer holidays so we didn't lose a single day of teaching. The new network is fast, the content filtering works properly and the support when we've needed it has always been quick. Really pleased we chose them.</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">H</div>
+          <div class="author-info">
+            <p>Helen Roberts</p>
+            <p>Headteacher, St. Bridget's Primary School</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASE STUDIES ===== -->
+<section class="case-studies-section">
+  <div class="case-studies-inner">
+    <span class="section-label">Case Studies</span>
+    <h2 class="section-heading">Problems Solved,<br>Results Delivered</h2>
+    <p class="section-subtext">Here's what it looks like when things actually go right.</p>
+    <div class="case-studies-grid">
+      <div class="case-card">
+        <span class="case-tag">GP Surgery</span>
+        <h3>Four-Site Practice: From ISDN to Cloud</h3>
+        <p>A Cheshire medical practice with four sites was still running on ageing ISDN lines. Calls were being dropped, queues weren't working and staff were frustrated. We migrated the whole practice to a hosted PBX — four sites, connected and live — in under a fortnight.</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-val">63%</div>
+            <div class="metric-label">Fewer missed calls</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">4</div>
+            <div class="metric-label">Sites connected</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">99.9%</div>
+            <div class="metric-label">Uptime since go-live</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <span class="case-tag">Education</span>
+        <h3>1,400-Pupil School: Full Network Overhaul</h3>
+        <p>A secondary school's ageing network was struggling to cope with 1,400 pupils, digital learning platforms and a new CCTV requirement. We redesigned the whole infrastructure — managed WiFi, content filtering and CCTV — installed over the summer, ready for September.</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-val">10x</div>
+            <div class="metric-label">Speed increase</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">1,400</div>
+            <div class="metric-label">Pupils connected</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">Zero</div>
+            <div class="metric-label">Days of disruption</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <span class="section-label">FAQs</span>
+    <h2 class="section-heading" style="max-width:unset;text-align:center;">Questions We Get Asked<br>Most Often</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">How long does installation typically take? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Most installations are up and running within 5–10 working days of signing. For more complex multi-site projects it takes a little longer, but we'll always give you a clear timeline before we start — no vague estimates.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What happens after you've installed everything? <span class="faq-icon">+</span></button>
+        <div class="faq-a">We stay involved. Every client gets ongoing support as part of their agreement — proactive monitoring, regular system checks and a support team you can actually reach. Most issues are resolved within four hours.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Are your solutions compliant with NHS and GDPR requirements? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. We design with compliance in mind from the start — not as an afterthought. Our healthcare deployments meet CQC standards, and all our solutions handle data in line with GDPR, with end-to-end encryption as standard.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can you work around our existing equipment? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Usually, yes. We assess everything on site before recommending anything, and we'll integrate with existing equipment wherever it makes sense. If something needs replacing, we'll tell you why — clearly, without the jargon.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Where in the UK do you cover? <span class="faq-icon">+</span></button>
+        <div class="faq-a">We're based in the North West but work nationally. We've deployed solutions in London, the Midlands, Wales and Scotland — wherever the work takes us. Distance isn't a barrier.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Let's Talk About What You Need</h2>
+    <p>Book a free call with one of our team. No sales pitch — just a conversation about your setup and whether we can help.</p>
+    <div class="cta-btns">
+      <a href="/php forms/Book_a_call.php" class="btn-white">Book a Call</a>
+      <a href="/web pages/Our services.html" class="btn-ghost">See Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/web pictures/Norwest logo.PNG" class="footer-logo" alt="Norwest">
+      <p>Reliable telecom solutions for schools, GP surgeries and professional firms across the UK. Built on 30+ years of expertise.</p>
+      <div class="footer-contact">
+        <div>(0151) 355-6089</div>
+        <div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2940474f466947465b5e4c5a5d4d404e405d4845074a46075c42">[email&#160;protected]</a></div>
+        <div>19 Bridgewater House, Dock Road,<br>Ellesmere Port, CH65 1AF</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/web pages/Broadband.html">Broadband</a></li>
+        <li><a href="/web pages/Hosted Systems.html">Hosted Systems</a></li>
+        <li><a href="/web pages/Mobile Network.html">Mobile Network</a></li>
+        <li><a href="/web pages/CCTV Security.html">CCTV & Security</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <ul>
+        <li><a href="/web pages/GP Surgeries.html">GP Surgeries</a></li>
+        <li><a href="/web pages/Solicitor Practice.html">Solicitor Practice</a></li>
+        <li><a href="/web pages/Schools.html">Schools</a></li>
+        <li><a href="/web pages/Other Sectors.html">Other Sectors</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/web pages/About us.html">About Us</a></li>
+        <li><a href="/web pages/Our services.html">Our Services</a></li>
+        <li><a href="/php forms/Book_a_call.php">Book a Call</a></li>
+        <li><a href="/web pages/safety.html">Safety</a></li>
+        <li><a href="/web pages/Privacy policy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <span>© 2025 Norwest Digital Telecommunications Ltd. All rights reserved.</span>
+  </div>
+</footer>
+
+<!-- COOKIE BAR -->
+<div id="cookieBar" style="display:none;">
+  <p>We use cookies to improve your experience on our website. By continuing to browse, you agree to our <a href="/web pages/Privacy policy.html" style="color:var(--orange);text-decoration:underline;">Privacy Policy</a>.</p>
+  <button id="acceptCookies">Accept & Close</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* MOBILE MENU */
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobile-menu");
+hamburger.addEventListener("click", (e) => { e.stopPropagation(); mobileMenu.classList.toggle("show"); });
+document.addEventListener("click", (e) => {
+  if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) mobileMenu.classList.remove("show");
+});
+document.querySelector(".mobile-dropdown-toggle").addEventListener("click", function(e) {
+  e.stopPropagation();
+  this.parentElement.classList.toggle("show");
+});
+
+/* BACK TO TOP */
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => { backToTop.style.display = window.scrollY > 400 ? "flex" : "none"; });
+backToTop.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+
+/* COOKIE */
+if (!localStorage.getItem("cookiesAccepted")) document.getElementById("cookieBar").style.display = "flex";
+document.getElementById("acceptCookies").onclick = () => {
+  localStorage.setItem("cookiesAccepted","true");
+  document.getElementById("cookieBar").style.display = "none";
+};
+
+/* STAT COUNTERS */
+const counters = document.querySelectorAll(".stat-number");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = +el.dataset.target;
+    // Use data-suffix if set, otherwise default to "+"
+    const suffix = el.dataset.suffix !== undefined ? el.dataset.suffix : "+";
+    let count = 0;
+    const step = target / 80;
+    const timer = setInterval(() => {
+      count += step;
+      if (count >= target) { el.textContent = target + suffix; clearInterval(timer); }
+      else el.textContent = Math.ceil(count) + suffix;
+    }, 20);
+    observer.unobserve(el);
+  });
+}, {threshold: 0.5});
+counters.forEach(c => observer.observe(c));
+
+/* FAQ */
+document.querySelectorAll(".faq-q").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains("open");
+    document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
+    if (!wasOpen) item.classList.add("open");
+  });
+});
+</script>
+</body>
+</html>
