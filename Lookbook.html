@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lookbook SS26 — AURELIA</title>
+<meta name="description" content="AURELIA SS26 Lookbook. Considered Form. Shot in Lisbon, March 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-left"><button class="nav-hamburger" onclick="openMenu()"><i></i><i></i></button></div>
+  <a href="landing page.html" class="nav-logo">AURELIA</a>
+  <div class="nav-right">
+    <button class="nav-action" onclick="openSearch()">Search</button>
+    <button class="nav-action" onclick="openCart()">Bag&thinsp;(<span id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel">
+  <div class="menu-ghost">A</div>
+  <div class="menu-inner">
+    <div class="menu-top"><span class="menu-season">SS 2026</span><button class="menu-close" onclick="closeMenu()">Close ×</button></div>
+    <nav class="menu-links">
+      <a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a>
+      <a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a>
+      <a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a>
+      <a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a>
+      <a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a>
+      <a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a>
+    </nav>
+    <div class="menu-footer"><div class="menu-footer-links"><a href="faq.html">FAQ</a><a href="#">Returns</a><a href="#">Size Guide</a></div></div>
+  </div>
+</aside>
+<div class="search-panel" id="searchPanel">
+  <button class="search-close" onclick="closeSearch()">Close ×</button>
+  <div class="search-body"><span class="search-kicker">Search the Collection</span><input type="search" class="search-field" placeholder="Trousers, knitwear…" id="searchInput"></div>
+</div>
+<div class="cart-backdrop" id="cartBd" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head"><span class="cart-head-title">Your Bag</span><button class="cart-head-close" onclick="closeCart()">Close ×</button></div>
+  <div class="cart-body" id="cartBody"><div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span><a href="shop.html" class="btn btn-outline" onclick="closeCart()"><span>View Collection</span></a></div></div>
+  <div class="cart-foot" id="cartFoot" style="display:none"><div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-amt" id="cartTotal">£0</span></div><a href="cart.html" class="btn btn-dark btn-full"><span>Review Bag</span></a></div>
+</aside>
+
+<!-- ══════════════════════════════════════════════════════════
+     LOOKBOOK OPENER — Full-bleed image with editorial credits
+═══════════════════════════════════════════════════════════ -->
+<section style="position:relative; height:100svh; overflow:hidden; display:flex; align-items:flex-end;">
+  <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&q=88"
+    alt="AURELIA SS26 — Considered Form"
+    style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 12s ease;"
+    id="heroImg">
+  <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,8,6,.9) 0%, rgba(10,8,6,.2) 45%, transparent 70%);"></div>
+
+  <!-- Bottom-left: huge issue title -->
+  <div style="position:relative; z-index:2; padding:0 4vw 5vh; width:100%;">
+    <!-- Dateline -->
+    <div style="display:flex; align-items:center; gap:1.2rem; margin-bottom:2rem; font-size:.52rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(255,255,255,.35);">
+      <span>Lookbook</span>
+      <span style="display:block; width:18px; height:1px; background:rgba(255,255,255,.2); flex-shrink:0;"></span>
+      <span>No.&thinsp;07</span>
+      <span style="display:block; width:18px; height:1px; background:rgba(255,255,255,.2); flex-shrink:0;"></span>
+      <span>Spring / Summer 2026</span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr auto; align-items:flex-end; gap:3rem;">
+      <h1 style="font-family:var(--ff-serif); font-size:clamp(5rem, 12vw, 13rem); font-weight:300; line-height:.88; color:var(--ivory); letter-spacing:-.025em;">Considered<br><em style="font-style:italic;">Form.</em></h1>
+      <div style="padding-bottom:.5rem; text-align:right;">
+        <p style="font-family:var(--ff-serif); font-size:.9rem; font-style:italic; color:rgba(255,255,255,.4); line-height:1.7; margin-bottom:1rem;">Photography by<br>Ana Sousa</p>
+        <p style="font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.25);">Lisbon, March 2026</p>
+        <p style="font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.25); margin-top:.3rem;">9 Looks · 12 Pieces</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div style="position:absolute; bottom:2.5rem; right:4vw; display:flex; flex-direction:column; align-items:center; gap:.6rem; z-index:3;">
+    <div style="width:1px; height:56px; background:rgba(255,255,255,.1); position:relative; overflow:hidden;">
+      <div style="position:absolute; top:-100%; left:0; width:100%; height:100%; background:rgba(255,255,255,.55); animation:scrollDrop 2.2s 1.5s ease infinite;"></div>
+    </div>
+    <span style="font-size:.52rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.3); writing-mode:vertical-lr; transform:rotate(180deg);">Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CANVAS ROW 1 — Asymmetric 60/40 split
+═══════════════════════════════════════════════════════════ -->
+<div class="lb-canvas-v3">
+
+  <div class="lb-row-v3 lb-row-a rv">
+    <div class="lb-cell-v3 lb-full" onclick="window.location='product.html'">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=85" alt="Look 01 — Foundation" loading="lazy">
+      <div class="lb-margin-cap">
+        <span class="lb-cap-look">Look 01</span>
+        <span class="lb-cap-name">The Foundation Trouser</span>
+        <span class="lb-cap-price">£120 — Italian Wool-Blend</span>
+      </div>
+    </div>
+    <div class="lb-cell-v3 lb-full" onclick="window.location='product.html'">
+      <img src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?w=900&q=85" alt="Look 02 — Jacket" loading="lazy">
+      <div class="lb-margin-cap">
+        <span class="lb-cap-look">Look 02</span>
+        <span class="lb-cap-name">Structured Wool Jacket</span>
+        <span class="lb-cap-price">£140 — Half-Canvas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CANVAS ROW 2 — Three equal panels, different heights -->
+  <div class="lb-row-v3 lb-row-b rv">
+    <div class="lb-cell-v3 lb-portrait" onclick="window.location='product.html'">
+      <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=700&q=85" alt="Look 03 — Knit" loading="lazy">
+      <div class="lb-margin-cap">
+        <span class="lb-cap-look">Look 03</span>
+        <span class="lb-cap-name">Minimal Knit Jumper</span>
+        <span class="lb-cap-price">£80</span>
+      </div>
+    </div>
+    <div class="lb-cell-v3 lb-tall" onclick="window.location='product.html'">
+      <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=85" alt="Look 04 — Dress" loading="lazy">
+      <div class="lb-margin-cap">
+        <span class="lb-cap-look">Look 04</span>
+        <span class="lb-cap-name">Column Dress</span>
+        <span class="lb-cap-price">£135 — Cupro Lining</span>
+      </div>
+    </div>
+    <div class="lb-cell-v3 lb-portrait" onclick="window.location='product.html'">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=85" alt="Look 05 — Shirt" loading="lazy">
+      <div class="lb-margin-cap">
+        <span class="lb-cap-look">Look 05</span>
+        <span class="lb-cap-name">Relaxed Cotton Shirt</span>
+        <span class="lb-cap-price">£60</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end canvas -->
+
+<!-- ══════════════════════════════════════════════════════════
+     INTERLUDE — Dark. A single sentence and the photographer's note.
+═══════════════════════════════════════════════════════════ -->
+<div class="lb-interlude-v3 rv">
+  <blockquote class="lb-interlude-quote">
+    "Every piece in this collection was designed around a single constraint: would I wear it in ten years?"
+  </blockquote>
+  <div class="lb-interlude-credit">
+    <strong>Director's note</strong>
+    Shot over two days in an unrestored Pombaline building in Alfama, Lisbon. No artificial lighting. No retouching beyond dust removal. The clothes were the point — we wanted nothing competing with them.
+    <br><br>
+    Each look was assembled the morning of the shoot. No stylist. The pieces had to work without intervention. They did.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     CANVAS CONTINUED — Reversed 40/60 + single full-width
+═══════════════════════════════════════════════════════════ -->
+<div class="lb-canvas-v3">
+
+  <div class="lb-row-v3 lb-row-d rv">
+    <div class="lb-cell-v3 lb-tall" onclick="window.location='product.html'">
+      <img src="https://images.unsplash.com/photo-1495121605193-b116b5b09a6e?w=800&q=85" alt="Look 06 — Wide Pants" loading="lazy">
+      <div class="lb-margin-cap">
+        <span class="lb-cap-look">Look 06</span>
+        <span class="lb-cap-name">Wide-Leg Pants</span>
+        <span class="lb-cap-price">£110 — Linen Blend</span>
+      </div>
+    </div>
+    <div class="lb-cell-v3 lb-full" onclick="window.location='product.html'">
+      <img src="https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?w=1200&q=85" alt="Look 07 — Blazer" loading="lazy">
+      <div class="lb-margin-cap">
+        <span class="lb-cap-look">Look 07</span>
+        <span class="lb-cap-name">Oversized Blazer</span>
+        <span class="lb-cap-price">£150 — SS Exclusive</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Single full-width closing image -->
+  <div class="lb-row-v3 lb-row-c rv">
+    <div class="lb-cell-v3" style="height:75vh; min-height:450px;" onclick="window.location='shop.html'">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1800&q=88" alt="Closing" loading="lazy">
+      <!-- No caption — this one stands alone -->
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA to shop -->
+<section style="padding:7rem 4vw; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; background:var(--ivory-warm); border-top:1px solid var(--parchment);" class="rv">
+  <div>
+    <span style="font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:2rem;">Shop the Collection</span>
+    <h2 style="font-family:var(--ff-serif); font-size:clamp(2.5rem, 5vw, 5rem); font-weight:300; line-height:.95; letter-spacing:-.015em;">Every piece<br>is <em style="font-style:italic; color:var(--ash);">available now.</em></h2>
+  </div>
+  <div>
+    <p style="font-size:.9rem; color:var(--mid); line-height:1.82; margin-bottom:2.5rem; max-width:38ch;">All 12 pieces from this lookbook are in the current collection. Fewer than 400 units of each exist. No restock when they're gone.</p>
+    <a href="shop.html" class="btn btn-dark"><span>Shop All Products</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-v3">
+  <div class="fv3-masthead">
+    <a href="landing page.html" class="fv3-logo">AURELIA</a>
+    <p class="fv3-strap">"Designed with intention. Worn without effort. Made to endure."</p>
+  </div>
+  <div class="fv3-grid">
+    <div class="fv3-col"><span class="fv3-col-label">The House</span><p>London atelier. Fewer than 400 pieces per season. Made in Porto, finished in London.</p><div class="fv3-social"><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">TikTok</a></div></div>
+    <div class="fv3-col"><span class="fv3-col-label">Shop</span><a href="shop.html">New Arrivals</a><a href="collections.html">Collections</a><a href="shop.html?cat=outerwear">Outerwear</a><a href="shop.html?cat=knitwear">Knitwear</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Company</span><a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="contact.html">Contact</a><a href="#">Press</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Support</span><a href="faq.html">FAQ</a><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Size Guide</a><a href="#">Repair</a></div>
+  </div>
+  <div class="fv3-colophon"><span>© 2026 AURELIA Ltd. Registered in England &amp; Wales.</span><div class="fv3-colophon-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div></div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{ hi.style.transform=`scale(1.04) translateY(${window.scrollY*0.12}px)`; },{passive:true});
+
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>55),{passive:true});
+function openMenu(){document.getElementById('menuPanel').classList.add('open');document.getElementById('menuBd').classList.add('open');document.body.classList.add('no-scroll');}
+function closeMenu(){document.getElementById('menuPanel').classList.remove('open');document.getElementById('menuBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openSearch(){document.getElementById('searchPanel').classList.add('open');document.body.classList.add('no-scroll');setTimeout(()=>document.getElementById('searchInput').focus(),350);}
+function closeSearch(){document.getElementById('searchPanel').classList.remove('open');document.body.classList.remove('no-scroll');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();closeMenu();closeCart();}});
+let cart=JSON.parse(sessionStorage.getItem('aurelia_v3_cart')||'[]');
+function renderCart(){const n=cart.length;document.getElementById('cartCount').textContent=n;const body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot');if(!n){body.innerHTML='<div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span><a href="shop.html" class="btn btn-outline" onclick="closeCart()"><span>View Collection</span></a></div>';foot.style.display='none';return;}const total=cart.reduce((s,i)=>s+i.p,0);body.innerHTML=cart.map((item,i)=>`<div class="cart-row"><div class="cart-row-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200" alt="${item.n}"></div><div><p class="cart-row-name">${item.n}</p><p class="cart-row-price">£${item.p}</p><button class="cart-row-del" onclick="removeFromCart(${i})">Remove</button></div></div>`).join('');document.getElementById('cartTotal').textContent=`£${total}`;foot.style.display='block';sessionStorage.setItem('aurelia_v3_cart',JSON.stringify(cart));}
+function openCart(){document.getElementById('cartPanel').classList.add('open');document.getElementById('cartBd').classList.add('open');document.body.classList.add('no-scroll');}
+function closeCart(){document.getElementById('cartPanel').classList.remove('open');document.getElementById('cartBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+function addToCart(n,p){cart.push({n,p,size:'M',colour:'Stone',img:'',qty:1});renderCart();if(!document.getElementById('cartPanel').classList.contains('open'))openCart();}
+function removeFromCart(i){cart.splice(i,1);renderCart();}
+renderCart();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.06});
+document.querySelectorAll('.rv,.rv-fade,.rv-st').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

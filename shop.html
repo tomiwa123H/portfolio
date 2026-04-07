@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop All — AURELIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav scrolled" id="nav">
+  <div class="nav-left"><button class="nav-hamburger" onclick="openMenu()"><i></i><i></i></button></div>
+  <a href="landing page.html" class="nav-logo" style="color:var(--black)">AURELIA</a>
+  <div class="nav-right"><button class="nav-action" style="color:var(--mid)" onclick="openSearch()">Search</button><button class="nav-action" style="color:var(--mid)" onclick="openCart()">Bag&thinsp;(<span id="cartCount">0</span>)</button></div>
+</nav>
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel"><div class="menu-ghost">A</div><div class="menu-inner"><div class="menu-top"><span class="menu-season">SS 2026</span><button class="menu-close" onclick="closeMenu()">Close ×</button></div><nav class="menu-links"><a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a><a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a><a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a><a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a><a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a><a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a></nav><div class="menu-footer"><div class="menu-footer-links"><a href="faq.html">FAQ</a><a href="#">Returns</a></div></div></div></aside>
+<div class="search-panel" id="searchPanel"><button class="search-close" onclick="closeSearch()">Close ×</button><div class="search-body"><span class="search-kicker">Search</span><input type="search" class="search-field" placeholder="Trousers, knitwear…" id="searchInput"></div></div>
+<div class="cart-backdrop" id="cartBd" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel"><div class="cart-head"><span class="cart-head-title">Your Bag</span><button class="cart-head-close" onclick="closeCart()">Close ×</button></div><div class="cart-body" id="cartBody"><div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span></div></div><div class="cart-foot" id="cartFoot" style="display:none"><div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-amt" id="cartTotal">£0</span></div><a href="cart.html" class="btn btn-dark btn-full"><span>Review Bag</span></a></div></aside>
+
+<!-- SHOP INTRO -->
+<div class="shop-v3-intro rv">
+  <div class="shop-v3-title-row">
+    <h1 class="shop-v3-hed">All<br><em>Products</em></h1>
+    <p class="shop-v3-sub">12 pieces. Every one designed to outlive the season that made it. None manufactured in excess of 400 units. When a piece goes, it goes.</p>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="shop-filters">
+  <button class="filter-btn on" onclick="doFilter('all',this)">Everything</button>
+  <div class="filter-div"></div>
+  <button class="filter-btn" onclick="doFilter('new',this)">New</button>
+  <button class="filter-btn" onclick="doFilter('outerwear',this)">Outerwear</button>
+  <button class="filter-btn" onclick="doFilter('knitwear',this)">Knitwear</button>
+  <button class="filter-btn" onclick="doFilter('trousers',this)">Trousers</button>
+  <button class="filter-btn" onclick="doFilter('shirts',this)">Shirts</button>
+  <div class="filter-div"></div>
+  <button class="filter-btn" onclick="doFilter('under100',this)">Under £100</button>
+</div>
+
+<!-- GRID -->
+<div class="shop-grid-v3" id="shopGrid">
+  <div class="shop-item" data-cat="new trousers" onclick="window.location='product.html'">
+    <div class="shop-item-img-wrap">
+      <img class="shop-item-img-main" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=85" alt="">
+      <img class="shop-item-img-alt" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=85" alt="" loading="lazy">
+      <div class="shop-item-overlay"><button class="shop-item-qadd" onclick="event.stopPropagation();addToCart('Aurelia Tailored Trousers',120)">Add to Bag</button></div>
+      <div class="shop-item-badge">New</div>
+    </div>
+    <div class="shop-item-info"><p class="shop-item-name">Aurelia Tailored Trousers</p><p class="shop-item-price">£120</p></div>
+  </div>
+
+  <div class="shop-item" data-cat="new outerwear" onclick="window.location='product.html'">
+    <div class="shop-item-img-wrap">
+      <img class="shop-item-img-main" src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?w=700&q=85" alt="">
+      <img class="shop-item-img-alt" src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=700&q=85" alt="" loading="lazy">
+      <div class="shop-item-overlay"><button class="shop-item-qadd" onclick="event.stopPropagation();addToCart('Structured Wool Jacket',140)">Add to Bag</button></div>
+      <div class="shop-item-badge">New</div>
+    </div>
+    <div class="shop-item-info"><p class="shop-item-name">Structured Wool Jacket</p><p class="shop-item-price">£140</p></div>
+  </div>
+
+  <div class="shop-item" data-cat="knitwear under100" onclick="window.location='product.html'">
+    <div class="shop-item-img-wrap">
+      <img class="shop-item-img-main" src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=700&q=85" alt="">
+      <img class="shop-item-img-alt" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=700&q=85" alt="" loading="lazy">
+      <div class="shop-item-overlay"><button class="shop-item-qadd" onclick="event.stopPropagation();addToCart('Minimal Knit Jumper',80)">Add to Bag</button></div>
+    </div>
+    <div class="shop-item-info"><p class="shop-item-name">Minimal Knit Jumper</p><p class="shop-item-price">£80</p></div>
+  </div>
+
+  <!-- EDITORIAL BREAK -->
+  <div class="shop-editorial-break">
+    <div class="seb-text">
+      <h2>Less than 400 pieces <em>exist.</em></h2>
+      <p>We don't restock what's gone. Every run is exactly what it is — when the last one ships, that's the end of that piece. Not a strategy. A constraint we built in on purpose, because the opposite of care is volume.</p>
+    </div>
+    <div class="seb-img">
+      <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=85" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <div class="shop-item" data-cat="shirts under100" onclick="window.location='product.html'">
+    <div class="shop-item-img-wrap">
+      <img class="shop-item-img-main" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=85" alt="">
+      <img class="shop-item-img-alt" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=700&q=85" alt="" loading="lazy">
+      <div class="shop-item-overlay"><button class="shop-item-qadd" onclick="event.stopPropagation();addToCart('Relaxed Cotton Shirt',60)">Add to Bag</button></div>
+    </div>
+    <div class="shop-item-info"><p class="shop-item-name">Relaxed Cotton Shirt</p><p class="shop-item-price">£60</p></div>
+  </div>
+
+  <div class="shop-item" data-cat="new outerwear" onclick="window.location='product.html'">
+    <div class="shop-item-img-wrap">
+      <img class="shop-item-img-main" src="https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?w=700&q=85" alt="">
+      <img class="shop-item-img-alt" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=85" alt="" loading="lazy">
+      <div class="shop-item-overlay"><button class="shop-item-qadd" onclick="event.stopPropagation();addToCart('Oversized Blazer',150)">Add to Bag</button></div>
+      <div class="shop-item-badge">New</div>
+    </div>
+    <div class="shop-item-info"><p class="shop-item-name">Oversized Blazer</p><p class="shop-item-price">£150</p></div>
+  </div>
+
+  <div class="shop-item" data-cat="trousers" onclick="window.location='product.html'">
+    <div class="shop-item-img-wrap">
+      <img class="shop-item-img-main" src="https://images.unsplash.com/photo-1495121605193-b116b5b09a6e?w=700&q=85" alt="">
+      <img class="shop-item-img-alt" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=85" alt="" loading="lazy">
+      <div class="shop-item-overlay"><button class="shop-item-qadd" onclick="event.stopPropagation();addToCart('Wide-Leg Pants',110)">Add to Bag</button></div>
+    </div>
+    <div class="shop-item-info"><p class="shop-item-name">Wide-Leg Pants</p><p class="shop-item-price">£110</p></div>
+  </div>
+</div>
+
+<footer class="footer-v3">
+  <div class="fv3-masthead"><a href="landing page.html" class="fv3-logo">AURELIA</a><p class="fv3-strap">"Fewer pieces. Made better."</p></div>
+  <div class="fv3-grid">
+    <div class="fv3-col"><span class="fv3-col-label">The House</span><p>London atelier. Fewer than 400 pieces per season.</p><div class="fv3-social"><a href="#">Instagram</a><a href="#">Pinterest</a></div></div>
+    <div class="fv3-col"><span class="fv3-col-label">Shop</span><a href="shop.html">All Products</a><a href="collections.html">Collections</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Company</span><a href="about.html">About</a><a href="lookbook.html">Lookbook</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Support</span><a href="faq.html">FAQ</a><a href="#">Returns</a></div>
+  </div>
+  <div class="fv3-colophon"><span>© 2026 AURELIA Ltd.</span><div class="fv3-colophon-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>55),{passive:true});
+function openMenu(){document.getElementById('menuPanel').classList.add('open');document.getElementById('menuBd').classList.add('open');document.body.classList.add('no-scroll');}function closeMenu(){document.getElementById('menuPanel').classList.remove('open');document.getElementById('menuBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openSearch(){document.getElementById('searchPanel').classList.add('open');document.body.classList.add('no-scroll');setTimeout(()=>document.getElementById('searchInput').focus(),350);}function closeSearch(){document.getElementById('searchPanel').classList.remove('open');document.body.classList.remove('no-scroll');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();closeMenu();closeCart();}});
+let cart=JSON.parse(sessionStorage.getItem('aurelia_v3_cart')||'[]');function renderCart(){const n=cart.length;document.getElementById('cartCount').textContent=n;const body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot');if(!n){body.innerHTML='<div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span></div>';foot.style.display='none';return;}const total=cart.reduce((s,i)=>s+i.p,0);body.innerHTML=cart.map((item,i)=>`<div class="cart-row"><div><p class="cart-row-name">${item.n}</p><p class="cart-row-price">£${item.p}</p><button class="cart-row-del" onclick="removeFromCart(${i})">Remove</button></div></div>`).join('');document.getElementById('cartTotal').textContent=`£${total}`;foot.style.display='block';sessionStorage.setItem('aurelia_v3_cart',JSON.stringify(cart));}
+function openCart(){document.getElementById('cartPanel').classList.add('open');document.getElementById('cartBd').classList.add('open');document.body.classList.add('no-scroll');}function closeCart(){document.getElementById('cartPanel').classList.remove('open');document.getElementById('cartBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+function addToCart(name,price){cart.push({n:name,p:price,size:'M',colour:'Stone',img:'',qty:1});renderCart();if(!document.getElementById('cartPanel').classList.contains('open'))openCart();}function removeFromCart(i){cart.splice(i,1);renderCart();}renderCart();
+function doFilter(cat,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.querySelectorAll('#shopGrid .shop-item').forEach(card=>{const cats=card.dataset.cat||'';const p=parseInt(card.querySelector('.shop-item-price')?.textContent?.replace('£','')||'999');const show=cat==='all'||(cat==='under100'&&p<100)||cats.includes(cat);card.style.opacity=show?'1':'0.12';card.style.pointerEvents=show?'auto':'none';card.style.transition='opacity .4s ease';});}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.07});document.querySelectorAll('.rv,.rv-fade,.rv-st').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurelia Tailored Trousers — AURELIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-left"><button class="nav-hamburger" onclick="openMenu()"><i></i><i></i></button></div>
+  <a href="landing page.html" class="nav-logo" style="color:var(--black)">AURELIA</a>
+  <div class="nav-right">
+    <button class="nav-action" style="color:var(--mid)" onclick="openSearch()">Search</button>
+    <button class="nav-action" style="color:var(--mid)" onclick="openCart()">Bag&thinsp;(<span id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel">
+  <div class="menu-ghost">A</div>
+  <div class="menu-inner">
+    <div class="menu-top"><span class="menu-season">SS 2026</span><button class="menu-close" onclick="closeMenu()">Close ×</button></div>
+    <nav class="menu-links">
+      <a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a>
+      <a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a>
+      <a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a>
+      <a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a>
+      <a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a>
+      <a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a>
+    </nav>
+    <div class="menu-footer"><div class="menu-footer-links"><a href="faq.html">FAQ</a><a href="#">Returns</a><a href="#">Size Guide</a></div></div>
+  </div>
+</aside>
+<div class="search-panel" id="searchPanel">
+  <button class="search-close" onclick="closeSearch()">Close ×</button>
+  <div class="search-body"><span class="search-kicker">Search</span><input type="search" class="search-field" placeholder="Trousers, knitwear…" id="searchInput"></div>
+</div>
+<div class="cart-backdrop" id="cartBd" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head"><span class="cart-head-title">Your Bag</span><button class="cart-head-close" onclick="closeCart()">Close ×</button></div>
+  <div class="cart-body" id="cartBody"><div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span></div></div>
+  <div class="cart-foot" id="cartFoot" style="display:none"><div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-amt" id="cartTotal">£0</span></div><a href="cart.html" class="btn btn-dark btn-full"><span>Review Bag</span></a></div>
+</aside>
+
+<!-- PDP -->
+<main class="pdp-v3">
+
+  <!-- GALLERY -->
+  <div class="pdp-gallery-v3">
+    <div class="pdp-thumbs-v3" id="thumbs">
+      <div class="pdp-thumb-v3 on" onclick="setImg(0,this)"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&q=70" alt=""></div>
+      <div class="pdp-thumb-v3" onclick="setImg(1,this)"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=200&q=70" alt=""></div>
+      <div class="pdp-thumb-v3" onclick="setImg(2,this)"><img src="https://images.unsplash.com/photo-1495121605193-b116b5b09a6e?w=200&q=70" alt=""></div>
+      <div class="pdp-thumb-v3" onclick="setImg(3,this)"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=200&q=70" alt=""></div>
+    </div>
+    <div class="pdp-main-v3">
+      <img class="pdp-main-img-v3" id="mainImg"
+        src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=90"
+        alt="Aurelia Tailored Trousers"
+        onclick="toggleZoom(this, event)">
+      <span class="pdp-zoom-hint">Click to zoom</span>
+    </div>
+  </div>
+
+  <!-- INFO -->
+  <div class="pdp-info-v3">
+    <p class="pdp-breadcrumb-v3">
+      <a href="landing page.html">Home</a>&ensp;/&ensp;<a href="shop.html">Shop</a>&ensp;/&ensp;Trousers
+    </p>
+    <h1 class="pdp-name-v3">Aurelia Tailored Trousers</h1>
+    <p class="pdp-tagline-v3">The trouser that holds everything else.</p>
+    <div class="pdp-price-v3">
+      £120 <span class="pdp-price-note-v3">Free shipping over £150</span>
+    </div>
+
+    <!-- Story prose — voice, not bullet points -->
+    <div class="pdp-story-v3">
+      <p>We spent eleven months on this trouser. Not because it's technically complicated — but because we wanted it to be right in a specific way that's hard to describe until you're wearing it: the way it makes you feel like you didn't try.</p>
+      <p>Italian wool-blend. Wide-leg, mid-rise. Structured waistband with a hidden hook that doesn't dig. TENCEL™ lining, cool and imperceptible. The seams are flat-felled at every point that matters. When you put it on, the first thought is: yes.</p>
+    </div>
+
+    <!-- COLOUR -->
+    <p class="opt-head">Colour — <strong id="colLabel">Stone</strong></p>
+    <div class="swatches">
+      <div class="swatch on" style="background:#C5B59A" data-c="Stone" onclick="selCol(this)"></div>
+      <div class="swatch" style="background:#181614" data-c="Onyx" onclick="selCol(this)"></div>
+      <div class="swatch" style="background:#647064" data-c="Forest" onclick="selCol(this)"></div>
+      <div class="swatch" style="background:#8B6868" data-c="Rose Clay" onclick="selCol(this)"></div>
+    </div>
+
+    <!-- SIZE -->
+    <p class="opt-head">Size <a href="#" style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); border-bottom:1px solid rgba(174,142,90,.4)">Guide</a></p>
+    <div class="sizes">
+      <button class="size-btn" onclick="selSize(this)"><span>XS</span></button>
+      <button class="size-btn" onclick="selSize(this)"><span>S</span></button>
+      <button class="size-btn on" onclick="selSize(this)"><span>M</span></button>
+      <button class="size-btn" onclick="selSize(this)"><span>L</span></button>
+      <button class="size-btn na" disabled><span>XL</span></button>
+    </div>
+
+    <button class="pdp-add-v3" id="addBtn" onclick="handleAdd()">
+      <span class="pdp-add-inner" id="addBtnText">Add to Bag — £120</span>
+    </button>
+    <button class="pdp-wish-v3">Save to Wishlist</button>
+
+    <!-- Trust -->
+    <div class="pdp-trust-v3">
+      <div class="trust-v3"><span class="trust-v3-lbl">Delivery</span><span class="trust-v3-val">3–5 days, free over £150</span></div>
+      <div class="trust-v3"><span class="trust-v3-lbl">Returns</span><span class="trust-v3-val">Free within 30 days</span></div>
+      <div class="trust-v3"><span class="trust-v3-lbl">Made in</span><span class="trust-v3-val">Porto, Portugal</span></div>
+    </div>
+
+    <!-- Accordion -->
+    <div class="acc-v3">
+      <div class="acc-row-v3">
+        <div class="acc-trig-v3" onclick="togAcc(this)">
+          <span class="acc-lbl-v3">Details &amp; Materials</span>
+          <span class="acc-ico-v3">+</span>
+        </div>
+        <div class="acc-body-v3">
+          Shell: 72% Merino Wool, 20% Recycled Polyester, 8% Elastane. Lining: 100% TENCEL™ Lyocell.
+          <ul style="margin-top:1rem">
+            <li>Wide-leg, mid-rise silhouette</li>
+            <li>Structured waistband, hidden hook fastening</li>
+            <li>Side pockets, rear welt pocket</li>
+            <li>GOTS-certified wool sourced from Italy</li>
+            <li>Half-canvas waistband construction</li>
+            <li>Made in Portugal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="acc-row-v3">
+        <div class="acc-trig-v3" onclick="togAcc(this)">
+          <span class="acc-lbl-v3">Size &amp; Fit</span>
+          <span class="acc-ico-v3">+</span>
+        </div>
+        <div class="acc-body-v3">
+          Our model is 5'9" wearing size S. True to size, with ease built in. If between sizes, go down for structure, up for drape. XL is currently sold out — join waitlist via contact page.
+        </div>
+      </div>
+      <div class="acc-row-v3">
+        <div class="acc-trig-v3" onclick="togAcc(this)">
+          <span class="acc-lbl-v3">Care</span>
+          <span class="acc-ico-v3">+</span>
+        </div>
+        <div class="acc-body-v3">
+          Hand wash cold or dry clean. Do not tumble dry. Press with a cool iron through cloth. Store folded to preserve waistband structure. Well-maintained wool improves with wear.
+        </div>
+      </div>
+      <div class="acc-row-v3">
+        <div class="acc-trig-v3" onclick="togAcc(this)">
+          <span class="acc-lbl-v3">Shipping &amp; Returns</span>
+          <span class="acc-ico-v3">+</span>
+        </div>
+        <div class="acc-body-v3">
+          <ul>
+            <li>Standard UK: 3–5 days — £4.95 (free over £150)</li>
+            <li>Express: 1–2 days — £9.95</li>
+            <li>Free returns within 30 days, unworn with tags</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Making story section below the PDP -->
+<section style="display:grid; grid-template-columns:1fr 1fr; min-height:60vh; border-top:2px solid var(--parchment)">
+  <div style="padding:7rem 6vw; display:flex; flex-direction:column; justify-content:space-between; background:var(--ivory-warm)">
+    <div>
+      <span style="font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:3rem">The Making</span>
+      <h2 style="font-family:var(--ff-serif); font-size:clamp(2.2rem,4vw,4rem); font-weight:300; line-height:.95; letter-spacing:-.015em; margin-bottom:2.5rem">Eleven months.<br><em style="font-style:italic; color:var(--ash)">One trouser.</em></h2>
+      <p style="font-size:.88rem; line-height:1.9; color:var(--mid); max-width:42ch; margin-bottom:1.2rem">Four fabric samples. Three waistband constructions. Two lining weights. The first version was good. The second was better. The third was the one every person who wore it kept reaching for.</p>
+      <p style="font-size:.88rem; line-height:1.9; color:var(--mid); max-width:42ch">It left Porto in January. Each piece in this batch was checked by hand before it shipped. 312 units made. Not 313.</p>
+    </div>
+    <!-- Scarcity signal -->
+    <p style="font-family:var(--ff-serif); font-size:1.1rem; font-style:italic; color:var(--gold); border-top:1px solid var(--parchment); padding-top:2rem; margin-top:3rem">47 units remain in this colourway.</p>
+  </div>
+  <div style="overflow:hidden; background:var(--parchment); position:relative">
+    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1000&q=85" alt="Making process" style="width:100%; height:100%; object-fit:cover; transition:transform 9s ease" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+    <div style="position:absolute; bottom:2rem; right:2rem; font-size:.52rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5)">Porto, January 2026</div>
+  </div>
+</section>
+
+<!-- RELATED PRODUCTS -->
+<section style="padding:6rem 4vw; background:var(--ivory)">
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3rem">
+    <div>
+      <span style="font-size:.55rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:.5rem">Complete the Look</span>
+      <h2 style="font-family:var(--ff-serif); font-size:clamp(2rem,3vw,3rem); font-weight:300">Styled With</h2>
+    </div>
+    <a href="shop.html" class="btn-arrow">See all</a>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem">
+    <div onclick="window.location='product.html'">
+      <div style="aspect-ratio:3/4; overflow:hidden; background:var(--ivory-warm); margin-bottom:1rem; position:relative">
+        <img src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?w=700&q=85" alt="Structured Wool Jacket" style="width:100%; height:100%; object-fit:cover; transition:transform 8s ease" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <p style="font-family:var(--ff-serif); font-size:1.05rem; font-weight:300; margin-bottom:.2rem">Structured Wool Jacket</p>
+      <p style="font-size:.72rem; color:var(--ash)">£140</p>
+    </div>
+    <div onclick="window.location='product.html'">
+      <div style="aspect-ratio:3/4; overflow:hidden; background:var(--ivory-warm); margin-bottom:1rem">
+        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=700&q=85" alt="Minimal Knit Jumper" style="width:100%; height:100%; object-fit:cover; transition:transform 8s ease" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <p style="font-family:var(--ff-serif); font-size:1.05rem; font-weight:300; margin-bottom:.2rem">Minimal Knit Jumper</p>
+      <p style="font-size:.72rem; color:var(--ash)">£80</p>
+    </div>
+    <div onclick="window.location='product.html'">
+      <div style="aspect-ratio:3/4; overflow:hidden; background:var(--ivory-warm); margin-bottom:1rem">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=85" alt="Relaxed Cotton Shirt" style="width:100%; height:100%; object-fit:cover; transition:transform 8s ease" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <p style="font-family:var(--ff-serif); font-size:1.05rem; font-weight:300; margin-bottom:.2rem">Relaxed Cotton Shirt</p>
+      <p style="font-size:.72rem; color:var(--ash)">£60</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-v3">
+  <div class="fv3-masthead"><a href="landing page.html" class="fv3-logo">AURELIA</a><p class="fv3-strap">"Designed with intention. Worn without effort. Made to endure."</p></div>
+  <div class="fv3-grid">
+    <div class="fv3-col"><span class="fv3-col-label">The House</span><p>London atelier. Fewer than 400 pieces per season.</p><div class="fv3-social"><a href="#">Instagram</a><a href="#">Pinterest</a></div></div>
+    <div class="fv3-col"><span class="fv3-col-label">Shop</span><a href="shop.html">All Products</a><a href="collections.html">Collections</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Company</span><a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="contact.html">Contact</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Support</span><a href="faq.html">FAQ</a><a href="#">Returns</a><a href="#">Repair Programme</a></div>
+  </div>
+  <div class="fv3-colophon"><span>© 2026 AURELIA Ltd.</span><div class="fv3-colophon-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>55),{passive:true});
+function openMenu(){document.getElementById('menuPanel').classList.add('open');document.getElementById('menuBd').classList.add('open');document.body.classList.add('no-scroll');}function closeMenu(){document.getElementById('menuPanel').classList.remove('open');document.getElementById('menuBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openSearch(){document.getElementById('searchPanel').classList.add('open');document.body.classList.add('no-scroll');setTimeout(()=>document.getElementById('searchInput').focus(),350);}function closeSearch(){document.getElementById('searchPanel').classList.remove('open');document.body.classList.remove('no-scroll');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();closeMenu();closeCart();}});
+let cart=JSON.parse(sessionStorage.getItem('aurelia_v3_cart')||'[]');function renderCart(){const n=cart.length;document.getElementById('cartCount').textContent=n;const body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot');if(!n){body.innerHTML='<div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span></div>';foot.style.display='none';return;}const total=cart.reduce((s,i)=>s+i.p,0);body.innerHTML=cart.map((item,i)=>`<div class="cart-row"><div class="cart-row-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200" alt="${item.n}"></div><div><p class="cart-row-name">${item.n}</p><p class="cart-row-price">£${item.p}</p><button class="cart-row-del" onclick="removeFromCart(${i})">Remove</button></div></div>`).join('');document.getElementById('cartTotal').textContent=`£${total}`;foot.style.display='block';sessionStorage.setItem('aurelia_v3_cart',JSON.stringify(cart));}
+function openCart(){document.getElementById('cartPanel').classList.add('open');document.getElementById('cartBd').classList.add('open');document.body.classList.add('no-scroll');}function closeCart(){document.getElementById('cartPanel').classList.remove('open');document.getElementById('cartBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+function addToCart(name,price,size,colour,img){cart.push({n:name,p:price,size:size||'M',colour:colour||'Stone',img:img||'',qty:1});renderCart();if(!document.getElementById('cartPanel').classList.contains('open'))openCart();}function removeFromCart(i){cart.splice(i,1);renderCart();}renderCart();
+const imgs=['https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=90','https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=90','https://images.unsplash.com/photo-1495121605193-b116b5b09a6e?w=1200&q=90','https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=90'];
+function setImg(i,el){document.getElementById('mainImg').src=imgs[i];document.querySelectorAll('.pdp-thumb-v3').forEach((t,j)=>t.classList.toggle('on',j===i));}
+function toggleZoom(img,e){img.classList.toggle('zoomed');if(img.classList.contains('zoomed')){const r=img.getBoundingClientRect();img.style.setProperty('--zx',((e.clientX-r.left)/r.width-0.5)*-20+'%');img.style.setProperty('--zy',((e.clientY-r.top)/r.height-0.5)*-20+'%');}}
+function selCol(el){document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('on'));el.classList.add('on');document.getElementById('colLabel').textContent=el.dataset.c;}
+function selSize(el){document.querySelectorAll('.size-btn').forEach(s=>s.classList.remove('on'));el.classList.add('on');}
+function togAcc(trig){const row=trig.parentElement;const was=row.classList.contains('open');document.querySelectorAll('.acc-row-v3').forEach(r=>r.classList.remove('open'));if(!was)row.classList.add('open');}
+function handleAdd(){
+  const size=document.querySelector('.size-btn.on span')?.textContent||'M';
+  const colour=document.getElementById('colLabel')?.textContent||'Stone';
+  const img='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&q=70';
+  addToCart('Aurelia Tailored Trousers',120,size,colour,img);
+  document.getElementById('addBtnText').textContent='Added ✓';
+  setTimeout(()=>document.getElementById('addBtnText').textContent='Add to Bag — £120',2500);
+}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.07});document.querySelectorAll('.rv,.rv-fade,.rv-st').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

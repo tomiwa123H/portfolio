@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery — AURELIA</title>
+<meta name="description" content="Enter your delivery details for your AURELIA order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-left"><button class="nav-hamburger" onclick="openMenu()"><i></i><i></i></button></div>
+  <a href="landing page.html" class="nav-logo" style="color:var(--black)">AURELIA</a>
+  <div class="nav-right">
+    <button class="nav-action" style="color:var(--mid)" onclick="openSearch()">Search</button>
+    <button class="nav-action" style="color:var(--mid)" onclick="window.location='cart.html'">Bag&thinsp;(<span id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel">
+  <div class="menu-ghost">A</div>
+  <div class="menu-inner">
+    <div class="menu-top"><span class="menu-season">SS 2026</span><button class="menu-close" onclick="closeMenu()">Close ×</button></div>
+    <nav class="menu-links">
+      <a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a>
+      <a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a>
+      <a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a>
+      <a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a>
+      <a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a>
+      <a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a>
+    </nav>
+    <div class="menu-footer"><div class="menu-footer-links"><a href="faq.html">FAQ</a><a href="#">Returns</a></div></div>
+  </div>
+</aside>
+<div class="search-panel" id="searchPanel"><button class="search-close" onclick="closeSearch()">Close ×</button><div class="search-body"><span class="search-kicker">Search</span><input type="search" class="search-field" placeholder="Trousers, knitwear…" id="searchInput"></div></div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="co-page">
+
+  <div class="co-header">
+    <div class="co-breadcrumb">
+      <a href="cart.html" class="co-step done">Bag</a>
+      <span class="co-step-arrow">→</span>
+      <span class="co-step active current">Delivery</span>
+      <span class="co-step-arrow">→</span>
+      <span class="co-step">Payment</span>
+    </div>
+    <h1 class="co-page-title">Delivery<br><em>Details.</em></h1>
+  </div>
+
+  <div class="co-body">
+
+    <!-- LEFT: Form -->
+    <div class="co-main">
+
+      <!-- Contact -->
+      <div style="margin-bottom:2.5rem;">
+        <span class="co-section-lbl">Contact</span>
+        <div class="co-form">
+          <div class="co-row">
+            <div class="co-group">
+              <label class="co-label" for="dFirstName">First name</label>
+              <input type="text" class="co-input" id="dFirstName" placeholder="Mara" autocomplete="given-name">
+            </div>
+            <div class="co-group">
+              <label class="co-label" for="dLastName">Last name</label>
+              <input type="text" class="co-input" id="dLastName" placeholder="Ellison" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="co-row single">
+            <div class="co-group">
+              <label class="co-label" for="dEmail">Email address</label>
+              <input type="email" class="co-input" id="dEmail" placeholder="mara@example.com" autocomplete="email">
+            </div>
+          </div>
+          <div class="co-row single">
+            <div class="co-group">
+              <label class="co-label" for="dPhone">
+                Phone
+                <span class="co-label-note">(optional — for delivery updates)</span>
+              </label>
+              <input type="tel" class="co-input" id="dPhone" placeholder="+44 7700 000000" autocomplete="tel">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping address -->
+      <div style="margin-bottom:2.5rem;">
+        <span class="co-section-lbl">Shipping Address</span>
+        <div class="co-form">
+          <div class="co-row single">
+            <div class="co-group">
+              <label class="co-label" for="dAddr1">Address line 1</label>
+              <input type="text" class="co-input" id="dAddr1" placeholder="14 Redchurch Street" autocomplete="address-line1">
+            </div>
+          </div>
+          <div class="co-row single">
+            <div class="co-group">
+              <label class="co-label" for="dAddr2">
+                Address line 2
+                <span class="co-label-note">(optional)</span>
+              </label>
+              <input type="text" class="co-input" id="dAddr2" placeholder="Flat 3" autocomplete="address-line2">
+            </div>
+          </div>
+          <div class="co-row">
+            <div class="co-group">
+              <label class="co-label" for="dCity">City</label>
+              <input type="text" class="co-input" id="dCity" placeholder="London" autocomplete="address-level2">
+            </div>
+            <div class="co-group">
+              <label class="co-label" for="dPostcode">Postcode</label>
+              <input type="text" class="co-input" id="dPostcode" placeholder="E2 7DJ" autocomplete="postal-code">
+            </div>
+          </div>
+          <div class="co-row single">
+            <div class="co-group">
+              <label class="co-label" for="dCountry">Country</label>
+              <select class="co-input" id="dCountry" autocomplete="country">
+                <option value="GB" selected>United Kingdom</option>
+                <option value="IE">Ireland</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+                <option value="NL">Netherlands</option>
+                <option value="BE">Belgium</option>
+                <option value="SE">Sweden</option>
+                <option value="DK">Denmark</option>
+                <option value="NO">Norway</option>
+                <option value="CH">Switzerland</option>
+                <option value="IT">Italy</option>
+                <option value="ES">Spain</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="JP">Japan</option>
+                <option value="OTHER">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery method -->
+      <div style="margin-bottom:3rem;">
+        <span class="co-section-lbl">Delivery Method</span>
+        <div class="co-delivery-opts" id="deliveryOpts">
+          <label class="co-delivery-opt selected" id="optStandard">
+            <input type="radio" name="delivery" value="standard" checked onchange="selectDelivery('standard')">
+            <div class="co-delivery-opt-left">
+              <span class="co-delivery-name">Standard Delivery</span>
+              <span class="co-delivery-desc">3–5 business days · Royal Mail Tracked</span>
+            </div>
+            <span class="co-delivery-price" id="standardPrice">£4.95</span>
+          </label>
+          <label class="co-delivery-opt" id="optExpress">
+            <input type="radio" name="delivery" value="express" onchange="selectDelivery('express')">
+            <div class="co-delivery-opt-left">
+              <span class="co-delivery-name">Express Delivery</span>
+              <span class="co-delivery-desc">1–2 business days · DHL Express</span>
+            </div>
+            <span class="co-delivery-price">£9.95</span>
+          </label>
+        </div>
+        <p style="font-size:.68rem; color:var(--stone); margin-top:.5rem;">Free standard delivery on orders over £150.</p>
+      </div>
+
+      <!-- Error message -->
+      <div id="coError" style="display:none; margin-bottom:1.5rem; padding:.9rem 1.2rem; border:1px solid #C0392B; font-size:.82rem; color:#C0392B;">
+        Please fill in all required fields before continuing.
+      </div>
+
+      <button class="btn btn-dark" onclick="proceedToPayment()" style="width:100%; justify-content:center;">
+        <span>Continue to Payment</span>
+      </button>
+
+      <div class="co-secure" style="margin-top:1.2rem;">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+        SSL encrypted · Your data is never stored
+      </div>
+    </div>
+
+    <!-- RIGHT: Summary -->
+    <div class="co-aside">
+      <div class="co-summary">
+        <p class="co-summary-title">Order Summary</p>
+        <div class="co-summary-items" id="summaryItems"></div>
+        <div class="co-summary-totals">
+          <div class="co-summary-line"><span>Subtotal</span><span id="summarySubtotal">£0</span></div>
+          <div class="co-summary-line"><span>Shipping</span><span id="summaryShipping">£4.95</span></div>
+          <div class="co-summary-line total"><span>Total</span><span id="summaryTotal">£0</span></div>
+        </div>
+        <div class="co-summary-note">Free returns within 30 days · Made in Porto, London</div>
+      </div>
+      <div style="margin-top:1rem; text-align:center;">
+        <a href="cart.html" class="btn-arrow" style="font-size:.6rem; color:var(--ash);">← Edit your bag</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 55), { passive: true });
+function openMenu() { document.getElementById('menuPanel').classList.add('open'); document.getElementById('menuBd').classList.add('open'); document.body.classList.add('no-scroll'); }
+function closeMenu() { document.getElementById('menuPanel').classList.remove('open'); document.getElementById('menuBd').classList.remove('open'); document.body.classList.remove('no-scroll'); }
+function openSearch() { document.getElementById('searchPanel').classList.add('open'); document.body.classList.add('no-scroll'); setTimeout(() => document.getElementById('searchInput').focus(), 350); }
+function closeSearch() { document.getElementById('searchPanel').classList.remove('open'); document.body.classList.remove('no-scroll'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeSearch(); closeMenu(); } });
+
+/* CART */
+const cart = JSON.parse(sessionStorage.getItem('aurelia_v3_cart') || '[]');
+document.getElementById('cartCount').textContent = cart.length;
+if (!cart.length) window.location = 'cart.html';
+
+/* DELIVERY */
+let deliveryMethod = 'standard';
+const subtotal = cart.reduce((s, i) => s + (i.p * (i.qty || 1)), 0);
+
+function getShipping() {
+  if (subtotal >= 150) return 0;
+  return deliveryMethod === 'express' ? 9.95 : 4.95;
+}
+
+function selectDelivery(method) {
+  deliveryMethod = method;
+  document.getElementById('optStandard').classList.toggle('selected', method === 'standard');
+  document.getElementById('optExpress').classList.toggle('selected', method === 'express');
+  updateSummary();
+}
+
+function updateSummary() {
+  const shipping = getShipping();
+  const total = subtotal + shipping;
+  document.getElementById('summarySubtotal').textContent = '£' + subtotal.toFixed(2);
+  document.getElementById('summaryShipping').textContent = shipping === 0 ? 'Free' : '£' + shipping.toFixed(2);
+  document.getElementById('summaryTotal').textContent = '£' + total.toFixed(2);
+  // Also update standard price label
+  document.getElementById('standardPrice').textContent = subtotal >= 150 ? 'Free' : '£4.95';
+  document.getElementById('standardPrice').className = 'co-delivery-price' + (subtotal >= 150 ? ' free' : '');
+}
+
+/* Render summary items */
+const imgs = [
+  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&q=70',
+  'https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?w=200&q=70',
+  'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200&q=70',
+  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=200&q=70'
+];
+document.getElementById('summaryItems').innerHTML = cart.map((item, idx) =>
+  '<div class="co-summary-item">' +
+    '<div class="co-summary-img"><img src="' + (item.img || imgs[idx % imgs.length]) + '" alt="' + item.n + '"></div>' +
+    '<div><p class="co-summary-name">' + item.n + '</p><p class="co-summary-meta">Qty ' + (item.qty || 1) + '</p></div>' +
+    '<span class="co-summary-price">&pound;' + (item.p * (item.qty || 1)) + '</span>' +
+  '</div>'
+).join('');
+updateSummary();
+
+/* VALIDATION & PROCEED */
+function proceedToPayment() {
+  const required = ['dFirstName', 'dLastName', 'dEmail', 'dAddr1', 'dCity', 'dPostcode'];
+  let valid = true;
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('error'); valid = false; }
+    else el.classList.remove('error');
+  });
+  const emailEl = document.getElementById('dEmail');
+  if (emailEl.value && !emailEl.value.includes('@')) { emailEl.classList.add('error'); valid = false; }
+
+  if (!valid) {
+    document.getElementById('coError').style.display = 'block';
+    document.querySelector('.co-input.error').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  document.getElementById('coError').style.display = 'none';
+
+  /* Save delivery info for payment page */
+  sessionStorage.setItem('aurelia_delivery', JSON.stringify({
+    name: document.getElementById('dFirstName').value.trim() + ' ' + document.getElementById('dLastName').value.trim(),
+    email: document.getElementById('dEmail').value.trim(),
+    addr1: document.getElementById('dAddr1').value.trim(),
+    addr2: document.getElementById('dAddr2').value.trim(),
+    city: document.getElementById('dCity').value.trim(),
+    postcode: document.getElementById('dPostcode').value.trim(),
+    country: document.getElementById('dCountry').value,
+    method: deliveryMethod,
+    shipping: getShipping(),
+    subtotal: subtotal,
+    total: subtotal + getShipping()
+  }));
+
+  window.location = 'payment.html';
+}
+
+/* Remove error highlight on input */
+document.querySelectorAll('.co-input').forEach(el => {
+  el.addEventListener('input', () => el.classList.remove('error'));
+});
+</script>
+</body>
+</html>

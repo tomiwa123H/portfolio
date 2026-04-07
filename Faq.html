@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — AURELIA</title>
+<meta name="description" content="Answers to the most common questions about AURELIA — orders, returns, sizing, materials, and repair.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-left"><button class="nav-hamburger" onclick="openMenu()"><i></i><i></i></button></div>
+  <a href="landing page.html" class="nav-logo" style="color:var(--black)">AURELIA</a>
+  <div class="nav-right">
+    <button class="nav-action" style="color:var(--mid)" onclick="openSearch()">Search</button>
+    <button class="nav-action" style="color:var(--mid)" onclick="openCart()">Bag&thinsp;(<span id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel">
+  <div class="menu-ghost">A</div>
+  <div class="menu-inner">
+    <div class="menu-top">
+      <span class="menu-season">SS 2026</span>
+      <button class="menu-close" onclick="closeMenu()">Close ×</button>
+    </div>
+    <nav class="menu-links">
+      <a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a>
+      <a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a>
+      <a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a>
+      <a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a>
+      <a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a>
+      <a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a>
+    </nav>
+    <div class="menu-footer">
+      <div class="menu-footer-links">
+        <a href="faq.html">FAQ</a>
+        <a href="#">Returns</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Sustainability</a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<div class="search-panel" id="searchPanel">
+  <button class="search-close" onclick="closeSearch()">Close ×</button>
+  <div class="search-body">
+    <span class="search-kicker">Search the Collection</span>
+    <input type="search" class="search-field" placeholder="Trousers, knitwear, outerwear…" id="searchInput" aria-label="Search">
+    <div class="search-suggests">
+      <button class="search-suggest" onclick="closeSearch()">New Arrivals</button>
+      <button class="search-suggest" onclick="closeSearch()">Knitwear</button>
+      <button class="search-suggest" onclick="closeSearch()">Outerwear</button>
+      <button class="search-suggest" onclick="closeSearch()">Trousers</button>
+    </div>
+  </div>
+</div>
+
+<div class="cart-backdrop" id="cartBd" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <span class="cart-head-title">Your Bag</span>
+    <button class="cart-head-close" onclick="closeCart()">Close ×</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty-state">
+      <span class="cart-empty-italic">Your bag<br>is empty.</span>
+      <a href="shop.html" class="btn btn-outline" onclick="closeCart()"><span>View Collection</span></a>
+    </div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amt" id="cartTotal">£0</span>
+    </div>
+    <a href="shop.html" class="btn btn-dark btn-full"><span>View Collection</span></a>
+  </div>
+</aside>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE HEADER
+═══════════════════════════════════════════════════════════ -->
+<div class="faq-v3">
+<div class="faq-v3-inner">
+
+  <header class="rv" style="padding-bottom:4rem; border-bottom:1px solid var(--parchment);">
+    <span style="font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:3rem;">Help &amp; Information</span>
+    <h1 class="faq-v3-hed">Questions,<br><em>answered.</em></h1>
+    <div class="faq-intro-cols">
+      <p style="font-size:.9rem; color:var(--mid); line-height:1.82;">Most things are covered below. We've tried to answer the way a person would — directly, without hedging. If something isn't here, write to us. We reply within one business day.</p>
+      <div class="faq-divider-col">
+        <p style="font-family:var(--ff-serif); font-size:1.1rem; font-style:italic; color:var(--ash); line-height:1.6; margin-bottom:1.5rem;">We don't have a chat function. On purpose. If you write to us, a person reads it.</p>
+        <a href="contact.html" class="btn-arrow">Contact us directly</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── ORDERS & SHIPPING ──────────────────────────────────── -->
+  <div class="faq-cat-v3 rv">
+    <span class="faq-cat-lbl">Orders &amp; Shipping</span>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">How long will my order take?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        Standard UK delivery takes 3–5 business days (£4.95, free on orders over £150). Express delivery is 1–2 business days (£9.95). International orders ship via DHL — typically 5–10 days for Europe, 7–14 days elsewhere. We ship Monday to Friday. Orders placed before 1pm on a business day usually leave the same day.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">Can I change or cancel my order?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        We can make changes or cancellations within 2 hours of placing your order. Email care@aurelia.co with your order number immediately. After this window, the order will have left us — please return it when it arrives and we'll process a full refund.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">Do you ship internationally?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        Yes — we ship to over 40 countries via DHL Express, fully tracked. Import duties and taxes may apply on arrival and are the responsibility of the recipient. We mark all international shipments at full declared value; we won't mark items as gifts or undervalue shipments.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">What if my order arrives damaged?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        Contact us within 48 hours of delivery with photos of the damage and your order number. We'll arrange a replacement or full refund immediately — no argument, no process. Damaged items don't need to be returned.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RETURNS & REFUNDS ──────────────────────────────────── -->
+  <div class="faq-cat-v3 rv">
+    <span class="faq-cat-lbl">Returns &amp; Refunds</span>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">What's your returns policy?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        Free returns within 30 days of receipt. Items must be unworn and unwashed, with all tags attached and in original packaging. Email care@aurelia.co with your order number — we'll send a prepaid returns label within 24 hours. We don't charge a restocking fee and we don't make returns difficult.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">How long do refunds take?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        We inspect returned items within 2 business days of receiving them and process refunds the same day. The money typically appears in your account within 5–10 business days depending on your bank or card provider. We'll email you when the refund is processed.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">Can I exchange a size?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        We don't do direct exchanges because we can't guarantee stock when your return arrives. The fastest route is: return the item for a refund, then place a new order in the correct size. If the item you need is low in stock, email us — we'll hold a unit for 48 hours while your return is in transit.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SIZING & FIT ───────────────────────────────────────── -->
+  <div class="faq-cat-v3 rv">
+    <span class="faq-cat-lbl">Sizing &amp; Fit</span>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">Does AURELIA run true to size?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        Broadly yes, with variations by silhouette. Tailored pieces run true with ease built in — we don't cut tight. Knitwear is intentionally generous; size down for a closer fit. Each product page includes specific fit notes, and our model's measurements are listed with every item.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">I'm between sizes. What do I do?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        It depends on the piece. For tailored items like trousers and jackets, go down for a cleaner silhouette, up for comfort and drape. For knitwear, go down — the pieces are cut generous. You're always welcome to email us with your measurements and we'll advise directly.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">Do you offer alterations?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        We don't offer alterations on new pieces, but our repair programme (for existing AURELIA customers) can sometimes accommodate minor adjustments. Email care@aurelia.co with details and photos — we'll let you know what's possible.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MATERIALS & CARE ───────────────────────────────────── -->
+  <div class="faq-cat-v3 rv">
+    <span class="faq-cat-lbl">Materials &amp; Care</span>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">What certifications do your materials hold?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        All cotton is GOTS (Global Organic Textile Standard) certified. Our wool is sourced from mills with current RWS (Responsible Wool Standard) certification. TENCEL&trade; lyocell carries the EU Ecolabel. We publish full material specifications on each product page — we don't use vague terms like "natural" or "eco" without a certification to back it.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">How should I care for my pieces?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        Each piece has care instructions on its label and product page. As a general rule: hand wash cold or dry clean for wool and tailored pieces; machine wash cold on a delicate cycle for cotton and jersey. Never tumble dry knits or tailored garments — lay flat to dry. Well-cared wool genuinely improves with wear.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">My piece has a small fault. What do I do?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        Email care@aurelia.co with photos and your order number. Manufacturing faults are repaired free of charge, regardless of when you bought the piece. We stand behind everything we've ever made.
+      </div>
+    </div>
+
+    <div class="faq-item-v3">
+      <div class="faq-q-v3" onclick="togFaq(this)">
+        <span class="faq-q-text">Do you have a repair programme?</span>
+        <span class="faq-ico-v3">+</span>
+      </div>
+      <div class="faq-a-v3">
+        Yes — we repair every piece we've ever made. Manufacturing defects are repaired free. General wear-and-tear repairs (loose seams, replaced buttons, relined pockets) are charged at cost — typically £15–£40 depending on the work. Email us with photos and we'll give you a quote within 48 hours. Ownership shouldn't end when a seam gives.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CLOSING PROMPT ─────────────────────────────────────── -->
+  <div class="faq-contact-row rv" style="padding:4rem 0; border-top:1px solid var(--parchment); margin-top:2rem;">
+    <div>
+      <h2 style="font-family:var(--ff-serif); font-size:clamp(2rem,3.5vw,3rem); font-weight:300; line-height:1.05; margin-bottom:1rem;">
+        Something<br><em style="font-style:italic; color:var(--ash);">not covered?</em>
+      </h2>
+      <p style="font-size:.88rem; color:var(--mid); line-height:1.8;">Write to us. A person reads every message and replies — usually the same day, always within 24 hours.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:1rem; align-items:flex-start;">
+      <a href="contact.html" class="btn btn-dark"><span>Write to Us</span></a>
+      <p style="font-size:.7rem; color:var(--stone); line-height:1.7;">care@aurelia.co<br>Mon–Fri, 9am–6pm GMT</p>
+    </div>
+  </div>
+
+</div><!-- /faq-v3-inner -->
+</div><!-- /faq-v3 -->
+
+<footer class="footer-v3">
+  <div class="fv3-masthead">
+    <a href="landing page.html" class="fv3-logo">AURELIA</a>
+    <p class="fv3-strap">"Designed with intention. Worn without effort. Made to endure."</p>
+  </div>
+  <div class="fv3-grid">
+    <div class="fv3-col">
+      <span class="fv3-col-label">The House</span>
+      <p>London atelier. Fewer than 400 pieces per season, in certified materials, made in Porto and London.</p>
+      <div class="fv3-social">
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="fv3-col">
+      <span class="fv3-col-label">Shop</span>
+      <a href="shop.html">New Arrivals</a>
+      <a href="collections.html">Collections</a>
+      <a href="shop.html?cat=outerwear">Outerwear</a>
+      <a href="shop.html?cat=knitwear">Knitwear</a>
+    </div>
+    <div class="fv3-col">
+      <span class="fv3-col-label">Company</span>
+      <a href="about.html">About</a>
+      <a href="lookbook.html">Lookbook</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Press</a>
+    </div>
+    <div class="fv3-col">
+      <span class="fv3-col-label">Support</span>
+      <a href="faq.html">FAQ</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="#">Size Guide</a>
+      <a href="#">Repair Programme</a>
+    </div>
+  </div>
+  <div class="fv3-colophon">
+    <span>© 2026 AURELIA Ltd. Registered in England &amp; Wales.</span>
+    <div class="fv3-colophon-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* NAV */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 55), { passive: true });
+
+/* MENU */
+function openMenu() {
+  document.getElementById('menuPanel').classList.add('open');
+  document.getElementById('menuBd').classList.add('open');
+  document.body.classList.add('no-scroll');
+}
+function closeMenu() {
+  document.getElementById('menuPanel').classList.remove('open');
+  document.getElementById('menuBd').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+
+/* SEARCH */
+function openSearch() {
+  document.getElementById('searchPanel').classList.add('open');
+  document.body.classList.add('no-scroll');
+  setTimeout(() => document.getElementById('searchInput').focus(), 350);
+}
+function closeSearch() {
+  document.getElementById('searchPanel').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+
+/* ESC key */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeSearch(); closeMenu(); closeCart(); }
+});
+
+/* CART */
+let cart = JSON.parse(sessionStorage.getItem('aurelia_v3_cart') || '[]');
+
+function renderCart() {
+  const n = cart.length;
+  document.getElementById('cartCount').textContent = n;
+  const body = document.getElementById('cartBody');
+  const foot = document.getElementById('cartFoot');
+  if (!n) {
+    body.innerHTML = '<div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span><a href="shop.html" class="btn btn-outline" onclick="closeCart()"><span>View Collection</span></a></div>';
+    foot.style.display = 'none';
+    return;
+  }
+  const total = cart.reduce((s, i) => s + i.p, 0);
+  body.innerHTML = cart.map((item, idx) =>
+    '<div class="cart-row">' +
+      '<div>' +
+        '<p class="cart-row-name">' + item.n + '</p>' +
+        '<p class="cart-row-price">&pound;' + item.p + '</p>' +
+        '<button class="cart-row-del" onclick="removeFromCart(' + idx + ')">Remove</button>' +
+      '</div>' +
+    '</div>'
+  ).join('');
+  document.getElementById('cartTotal').textContent = '£' + total;
+  foot.style.display = 'block';
+  sessionStorage.setItem('aurelia_v3_cart', JSON.stringify(cart));
+}
+
+function openCart() {
+  document.getElementById('cartPanel').classList.add('open');
+  document.getElementById('cartBd').classList.add('open');
+  document.body.classList.add('no-scroll');
+}
+function closeCart() {
+  document.getElementById('cartPanel').classList.remove('open');
+  document.getElementById('cartBd').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+function removeFromCart(i) {
+  cart.splice(i, 1);
+  renderCart();
+}
+renderCart();
+
+/* FAQ ACCORDION */
+function togFaq(trigger) {
+  const item = trigger.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item-v3').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+/* SCROLL REVEALS */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.rv, .rv-fade, .rv-st').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
+

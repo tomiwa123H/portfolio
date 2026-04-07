@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment — AURELIA</title>
+<meta name="description" content="Complete your AURELIA order securely.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-left"><button class="nav-hamburger" onclick="openMenu()"><i></i><i></i></button></div>
+  <a href="landing page.html" class="nav-logo" style="color:var(--black)">AURELIA</a>
+  <div class="nav-right">
+    <button class="nav-action" style="color:var(--mid)" onclick="window.location='cart.html'">Bag&thinsp;(<span id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel">
+  <div class="menu-ghost">A</div>
+  <div class="menu-inner">
+    <div class="menu-top"><span class="menu-season">SS 2026</span><button class="menu-close" onclick="closeMenu()">Close ×</button></div>
+    <nav class="menu-links">
+      <a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a>
+      <a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a>
+      <a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a>
+      <a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a>
+      <a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a>
+      <a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a>
+    </nav>
+    <div class="menu-footer"><div class="menu-footer-links"><a href="faq.html">FAQ</a><a href="#">Returns</a></div></div>
+  </div>
+</aside>
+
+<!-- PROCESSING OVERLAY -->
+<div class="co-processing" id="processingOverlay">
+  <div class="co-processing-ring"></div>
+  <p class="co-processing-text" id="processingText">Authorising payment…</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="co-page" id="paymentPage">
+
+  <div class="co-header">
+    <div class="co-breadcrumb">
+      <a href="cart.html" class="co-step done">Bag</a>
+      <span class="co-step-arrow">→</span>
+      <a href="checkout.html" class="co-step done">Delivery</a>
+      <span class="co-step-arrow">→</span>
+      <span class="co-step active current">Payment</span>
+    </div>
+    <h1 class="co-page-title">Secure<br><em>Payment.</em></h1>
+  </div>
+
+  <div class="co-body">
+
+    <!-- LEFT: Payment form -->
+    <div class="co-main">
+
+      <!-- Accepted cards -->
+      <div style="margin-bottom:2rem;">
+        <span class="co-section-lbl">Accepted cards</span>
+        <div class="co-card-icons">
+          <div class="co-card-icon">VISA</div>
+          <div class="co-card-icon">MC</div>
+          <div class="co-card-icon">AMEX</div>
+          <div class="co-card-icon">DISC</div>
+        </div>
+      </div>
+
+      <!-- Card details -->
+      <div style="margin-bottom:2.5rem;">
+        <span class="co-section-lbl">Card Details</span>
+        <div class="co-form">
+
+          <div class="co-row single">
+            <div class="co-group">
+              <label class="co-label" for="pName">Name on card</label>
+              <input type="text" class="co-input card" id="pName" placeholder="Mara Ellison" autocomplete="cc-name">
+            </div>
+          </div>
+
+          <div class="co-row single">
+            <div class="co-group">
+              <label class="co-label" for="pCard">Card number</label>
+              <input type="text" class="co-input card" id="pCard" placeholder="1234 5678 9012 3456"
+                autocomplete="cc-number" maxlength="19" oninput="formatCard(this)">
+            </div>
+          </div>
+
+          <div class="co-card-row">
+            <div class="co-group">
+              <label class="co-label" for="pExpiry">Expiry date</label>
+              <input type="text" class="co-input card" id="pExpiry" placeholder="MM / YY"
+                autocomplete="cc-exp" maxlength="7" oninput="formatExpiry(this)">
+            </div>
+            <div class="co-group">
+              <label class="co-label" for="pCvc">
+                Security code
+                <span class="co-label-note">CVV / CVC</span>
+              </label>
+              <input type="text" class="co-input card" id="pCvc" placeholder="123"
+                autocomplete="cc-csc" maxlength="4" oninput="this.value=this.value.replace(/\D/g,'')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Billing address toggle -->
+      <div style="margin-bottom:2.5rem;">
+        <span class="co-section-lbl">Billing Address</span>
+        <label class="co-delivery-opt selected" id="billingSameOpt" style="cursor:pointer;" onclick="toggleBilling(true)">
+          <span class="co-delivery-opt-left">
+            <span class="co-delivery-name">Same as delivery address</span>
+            <span class="co-delivery-desc" id="billingAddrPreview">Loading…</span>
+          </span>
+          <span id="billingSameCheck" style="font-size:1.2rem; color:var(--gold);">✓</span>
+        </label>
+        <div id="billingDiffBtn" style="margin-top:.5rem;">
+          <button onclick="toggleBilling(false)" class="btn-arrow" style="font-size:.62rem; color:var(--ash);">Use a different billing address</button>
+        </div>
+
+        <!-- Different billing address fields — hidden by default -->
+        <div id="billingFields" style="display:none; margin-top:1.5rem;">
+          <div class="co-form">
+            <div class="co-row single"><div class="co-group"><label class="co-label" for="bAddr1">Address line 1</label><input type="text" class="co-input" id="bAddr1" placeholder="14 Kingsland Road" autocomplete="billing address-line1"></div></div>
+            <div class="co-row single"><div class="co-group"><label class="co-label" for="bAddr2">Address line 2 <span class="co-label-note">(optional)</span></label><input type="text" class="co-input" id="bAddr2" autocomplete="billing address-line2"></div></div>
+            <div class="co-row"><div class="co-group"><label class="co-label" for="bCity">City</label><input type="text" class="co-input" id="bCity" autocomplete="billing address-level2"></div><div class="co-group"><label class="co-label" for="bPostcode">Postcode</label><input type="text" class="co-input" id="bPostcode" autocomplete="billing postal-code"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error message -->
+      <div id="payError" style="display:none; margin-bottom:1.5rem; padding:.9rem 1.2rem; border:1px solid #C0392B; font-size:.82rem; color:#C0392B;"></div>
+
+      <!-- Submit -->
+      <button class="btn btn-dark" onclick="submitPayment()" style="width:100%; justify-content:center;">
+        <span id="payBtnText">Pay &nbsp;<span id="payAmount">£0.00</span></span>
+      </button>
+
+      <div class="co-secure" style="margin-top:1.2rem;">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+        256-bit SSL encryption · PCI DSS compliant
+      </div>
+
+      <p style="font-size:.65rem; color:var(--stone); line-height:1.7; margin-top:1rem;">
+        By placing your order you agree to our <a href="#" style="color:var(--mid); border-bottom:1px solid var(--parchment);">Terms of Service</a> and <a href="#" style="color:var(--mid); border-bottom:1px solid var(--parchment);">Privacy Policy</a>. You may cancel within 14 days of receipt in accordance with UK Consumer Contracts Regulations.
+      </p>
+    </div>
+
+    <!-- RIGHT: Summary -->
+    <div class="co-aside">
+      <div class="co-summary">
+        <p class="co-summary-title">Order Summary</p>
+        <div class="co-summary-items" id="summaryItems"></div>
+        <div class="co-summary-totals">
+          <div class="co-summary-line"><span>Subtotal</span><span id="summarySubtotal">£0</span></div>
+          <div class="co-summary-line"><span>Shipping</span><span id="summaryShipping">—</span></div>
+          <div class="co-summary-line total"><span>Total</span><span id="summaryTotal">£0</span></div>
+        </div>
+        <div class="co-summary-note" id="deliveryNote">Loading delivery details…</div>
+      </div>
+      <div style="margin-top:1rem; text-align:center;">
+        <a href="checkout.html" class="btn-arrow" style="font-size:.6rem; color:var(--ash);">← Edit delivery</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     CONFIRMATION — shown after successful payment
+═══════════════════════════════════════════════════════════ -->
+<div class="co-confirm" id="confirmScreen" style="display:none;">
+  <div class="co-confirm-icon">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <h1 class="co-confirm-hed">Order<br><em>confirmed.</em></h1>
+  <p class="co-confirm-body">
+    Thank you — your order has been placed. You'll receive a confirmation email with your order number and tracking information once your pieces have been dispatched from Porto.
+    <br><br>
+    We make fewer than 400 pieces per season, and yours is now one of them.
+  </p>
+  <div class="co-confirm-details" id="confirmDetails"></div>
+  <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+    <a href="shop.html" class="btn btn-dark"><span>Continue Shopping</span></a>
+    <a href="landing page.html" class="btn-arrow">Return Home</a>
+  </div>
+</div>
+
+<footer class="footer-v3" id="pageFooter">
+  <div class="fv3-masthead">
+    <a href="landing page.html" class="fv3-logo">AURELIA</a>
+    <p class="fv3-strap">"Designed with intention. Worn without effort. Made to endure."</p>
+  </div>
+  <div class="fv3-grid">
+    <div class="fv3-col"><span class="fv3-col-label">The House</span><p>London atelier. Fewer than 400 pieces per season.</p><div class="fv3-social"><a href="#">Instagram</a><a href="#">Pinterest</a></div></div>
+    <div class="fv3-col"><span class="fv3-col-label">Shop</span><a href="shop.html">All Products</a><a href="collections.html">Collections</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Support</span><a href="faq.html">FAQ</a><a href="#">Returns</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Company</span><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+  </div>
+  <div class="fv3-colophon"><span>© 2026 AURELIA Ltd.</span><div class="fv3-colophon-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+</footer>
+
+<script>
+/* NAV / MENU */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 55), { passive: true });
+function openMenu() { document.getElementById('menuPanel').classList.add('open'); document.getElementById('menuBd').classList.add('open'); document.body.classList.add('no-scroll'); }
+function closeMenu() { document.getElementById('menuPanel').classList.remove('open'); document.getElementById('menuBd').classList.remove('open'); document.body.classList.remove('no-scroll'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+/* LOAD STATE */
+const cart     = JSON.parse(sessionStorage.getItem('aurelia_v3_cart')  || '[]');
+const delivery = JSON.parse(sessionStorage.getItem('aurelia_delivery') || 'null');
+
+/* If no cart or no delivery info, redirect back */
+if (!cart.length) { window.location = 'cart.html'; }
+if (!delivery)    { window.location = 'checkout.html'; }
+
+document.getElementById('cartCount').textContent = cart.length;
+
+/* Populate pay button total */
+if (delivery) {
+  document.getElementById('payAmount').textContent = '£' + delivery.total.toFixed(2);
+}
+
+/* Billing address same/different toggle */
+let billingSame = true;
+function toggleBilling(same) {
+  billingSame = same;
+  document.getElementById('billingSameOpt').classList.toggle('selected', same);
+  document.getElementById('billingFields').style.display = same ? 'none' : 'block';
+  document.getElementById('billingSameCheck').style.opacity = same ? '1' : '0';
+}
+
+/* Pre-fill billing address preview from delivery */
+if (delivery) {
+  document.getElementById('billingAddrPreview').textContent =
+    delivery.addr1 + (delivery.addr2 ? ', ' + delivery.addr2 : '') + ', ' + delivery.city + ', ' + delivery.postcode;
+  document.getElementById('pName').value = delivery.name || '';
+}
+
+/* Summary items */
+const imgs = [
+  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&q=70',
+  'https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?w=200&q=70',
+  'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200&q=70',
+  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=200&q=70'
+];
+document.getElementById('summaryItems').innerHTML = cart.map((item, idx) =>
+  '<div class="co-summary-item">' +
+    '<div class="co-summary-img"><img src="' + (item.img || imgs[idx % imgs.length]) + '" alt="' + item.n + '"></div>' +
+    '<div><p class="co-summary-name">' + item.n + '</p><p class="co-summary-meta">Qty ' + (item.qty || 1) + '</p></div>' +
+    '<span class="co-summary-price">&pound;' + (item.p * (item.qty || 1)) + '</span>' +
+  '</div>'
+).join('');
+
+if (delivery) {
+  document.getElementById('summarySubtotal').textContent = '£' + delivery.subtotal.toFixed(2);
+  document.getElementById('summaryShipping').textContent = delivery.shipping === 0 ? 'Free' : '£' + delivery.shipping.toFixed(2);
+  document.getElementById('summaryTotal').textContent = '£' + delivery.total.toFixed(2);
+  document.getElementById('deliveryNote').textContent =
+    (delivery.method === 'express' ? 'Express (1–2 days)' : 'Standard (3–5 days)') +
+    ' · ' + delivery.addr1 + ', ' + delivery.city;
+}
+
+/* CARD INPUT FORMATTERS */
+function formatCard(el) {
+  let v = el.value.replace(/\D/g, '').substring(0, 16);
+  el.value = v.replace(/(.{4})/g, '$1 ').trim();
+}
+function formatExpiry(el) {
+  let v = el.value.replace(/\D/g, '').substring(0, 4);
+  if (v.length >= 2) v = v.substring(0,2) + ' / ' + v.substring(2);
+  el.value = v;
+}
+
+/* VALIDATE CARD */
+function validateCard() {
+  const name   = document.getElementById('pName').value.trim();
+  const card   = document.getElementById('pCard').value.replace(/\s/g, '');
+  const expiry = document.getElementById('pExpiry').value.replace(/\s/g,'').replace('/','');
+  const cvc    = document.getElementById('pCvc').value.trim();
+
+  const errors = [];
+  if (!name) { document.getElementById('pName').classList.add('error'); errors.push('Name on card is required.'); }
+  else document.getElementById('pName').classList.remove('error');
+
+  if (card.length < 13 || card.length > 19 || !/^\d+$/.test(card)) {
+    document.getElementById('pCard').classList.add('error'); errors.push('Please enter a valid card number.');
+  } else document.getElementById('pCard').classList.remove('error');
+
+  if (expiry.length < 4) {
+    document.getElementById('pExpiry').classList.add('error'); errors.push('Please enter a valid expiry date.');
+  } else {
+    const month = parseInt(expiry.substring(0,2));
+    const year  = parseInt('20' + expiry.substring(2,4));
+    const now   = new Date();
+    if (month < 1 || month > 12 || year < now.getFullYear() || (year === now.getFullYear() && month < now.getMonth() + 1)) {
+      document.getElementById('pExpiry').classList.add('error'); errors.push('Card expiry date is not valid.');
+    } else document.getElementById('pExpiry').classList.remove('error');
+  }
+
+  if (cvc.length < 3) {
+    document.getElementById('pCvc').classList.add('error'); errors.push('Please enter your 3 or 4 digit security code.');
+  } else document.getElementById('pCvc').classList.remove('error');
+
+  return errors;
+}
+
+/* SUBMIT — process and confirm */
+function submitPayment() {
+  const errors = validateCard();
+  const errEl = document.getElementById('payError');
+
+  if (errors.length) {
+    errEl.textContent = errors[0];
+    errEl.style.display = 'block';
+    document.querySelector('.co-input.error').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  errEl.style.display = 'none';
+
+  /* Show processing overlay */
+  const overlay = document.getElementById('processingOverlay');
+  overlay.classList.add('visible');
+  document.body.classList.add('no-scroll');
+
+  /* Simulate payment steps */
+  const steps = [
+    { text: 'Authorising payment…',  delay: 900  },
+    { text: 'Verifying card…',        delay: 800  },
+    { text: 'Confirming order…',      delay: 700  },
+    { text: 'Order confirmed.',        delay: 600  }
+  ];
+
+  let elapsed = 0;
+  steps.forEach((step, idx) => {
+    elapsed += step.delay;
+    setTimeout(() => {
+      document.getElementById('processingText').textContent = step.text;
+    }, elapsed - step.delay);
+  });
+
+  /* After all steps: hide overlay, show confirmation */
+  setTimeout(() => {
+    overlay.classList.remove('visible');
+    document.body.classList.remove('no-scroll');
+    showConfirmation();
+  }, elapsed + 400);
+}
+
+function showConfirmation() {
+  /* Hide payment page, show confirmation */
+  document.getElementById('paymentPage').style.display = 'none';
+  document.getElementById('pageFooter').style.display = 'none';
+
+  const confirm = document.getElementById('confirmScreen');
+  confirm.style.display = 'block';
+  confirm.classList.add('visible');
+
+  /* Generate order number */
+  const orderNum = 'AUR-' + Math.floor(10000 + Math.random() * 90000);
+
+  /* Estimated dispatch: next working day */
+  const dispatch = new Date();
+  dispatch.setDate(dispatch.getDate() + 1);
+  if (dispatch.getDay() === 0) dispatch.setDate(dispatch.getDate() + 1);
+  if (dispatch.getDay() === 6) dispatch.setDate(dispatch.getDate() + 2);
+  const dispatchStr = dispatch.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+
+  /* Build confirmation details */
+  const details = [
+    ['Order number',    orderNum],
+    ['Email',           delivery ? delivery.email : '—'],
+    ['Delivery to',     delivery ? delivery.addr1 + ', ' + delivery.city : '—'],
+    ['Shipping method', delivery ? (delivery.method === 'express' ? 'Express · 1–2 days' : 'Standard · 3–5 days') : '—'],
+    ['Estimated dispatch', dispatchStr],
+    ['Total charged',   delivery ? '£' + delivery.total.toFixed(2) : '—']
+  ];
+
+  document.getElementById('confirmDetails').innerHTML = details.map(([label, val]) =>
+    '<div class="co-confirm-detail-row">' +
+      '<span class="co-confirm-detail-label">' + label + '</span>' +
+      '<span class="co-confirm-detail-val">' + val + '</span>' +
+    '</div>'
+  ).join('');
+
+  /* Clear cart and delivery data */
+  sessionStorage.removeItem('aurelia_v3_cart');
+  sessionStorage.removeItem('aurelia_delivery');
+
+  /* Scroll to top */
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* Remove error highlights on input */
+document.querySelectorAll('.co-input').forEach(el => {
+  el.addEventListener('input', () => el.classList.remove('error'));
+});
+</script>
+</body>
+</html>

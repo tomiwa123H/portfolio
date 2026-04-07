@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Web Development — Tomiwa Balogun</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f3ee; --surface: #ffffff; --ink: #0d0d0d; --ink-light: #5a5a5a;
+      --accent: #1a3cff; --accent-dim: #d6dcff;
+      --radius: 16px; --nav-h: 68px; --tr: 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1000; opacity:0.5; }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; height:var(--nav-h); display:flex; align-items:center; justify-content:space-between; padding:0 clamp(1.5rem,5vw,4rem); background:rgba(245,243,238,0.92); backdrop-filter:blur(16px); border-bottom:1px solid rgba(0,0,0,0.06); z-index:900; }
+    .nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.15rem; color:var(--ink); text-decoration:none; }
+    .nav-logo span { color:var(--accent); }
+    .nav-links { display:flex; gap:1.75rem; list-style:none; align-items:center; }
+    .nav-links a { font-family:'Syne',sans-serif; text-decoration:none; font-size:0.85rem; font-weight:600; color:var(--ink-light); transition:color var(--tr); }
+    .nav-links a:hover, .nav-links a.active { color:var(--accent); }
+    .nav-links .nav-cta { background:var(--ink); color:#fff !important; padding:0.45rem 1.15rem; border-radius:100px; font-size:0.83rem; }
+    .nav-links .nav-cta:hover { background:var(--accent) !important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--ink); border-radius:2px; transition:var(--tr); }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:var(--nav-h); left:0; right:0; background:var(--bg); border-bottom:1px solid rgba(0,0,0,0.08); padding:1.5rem 2rem; z-index:899; flex-direction:column; gap:1.25rem; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { font-family:'Syne',sans-serif; text-decoration:none; font-weight:600; font-size:1rem; color:var(--ink); }
+
+    /* BUTTONS */
+    .btn { display:inline-flex; align-items:center; gap:0.45rem; padding:0.65rem 1.4rem; border-radius:100px; font-family:'Syne',sans-serif; font-size:0.83rem; font-weight:700; cursor:pointer; text-decoration:none; transition:var(--tr); border:2px solid transparent; white-space:nowrap; }
+    .btn-primary { background:var(--ink); color:#fff; }
+    .btn-primary:hover { background:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,60,255,0.28); }
+    .btn-outline { background:transparent; color:var(--ink); border-color:rgba(0,0,0,0.18); }
+    .btn-outline:hover { background:var(--ink); color:#fff; border-color:var(--ink); transform:translateY(-2px); }
+    .btn-sm { padding:0.5rem 1rem; font-size:0.78rem; }
+
+    /* LAYOUT */
+    .page-wrap { max-width:1160px; margin:0 auto; padding:calc(var(--nav-h) + 3.5rem) clamp(1.5rem,5vw,4rem) 6rem; }
+    .section-label { display:inline-flex; align-items:center; gap:0.5rem; font-family:'Syne',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); background:var(--accent-dim); padding:0.3rem 0.85rem; border-radius:100px; margin-bottom:1rem; }
+    .back-link { display:inline-flex; align-items:center; gap:0.4rem; font-family:'Syne',sans-serif; font-size:0.82rem; font-weight:600; color:var(--ink-light); text-decoration:none; margin-bottom:2.5rem; transition:color var(--tr); }
+    .back-link:hover { color:var(--accent); }
+    .back-link svg { transition:transform var(--tr); }
+    .back-link:hover svg { transform:translateX(-3px); }
+
+    /* PAGE HERO */
+    .page-hero { margin-bottom:3rem; }
+    .page-hero h1 { font-size:clamp(2.8rem,6vw,4.8rem); font-weight:800; letter-spacing:-0.04em; line-height:1.02; margin-bottom:1rem; }
+    .page-hero p { font-size:1.05rem; color:var(--ink-light); max-width:520px; line-height:1.75; }
+
+    /* STATS */
+    .stats-row { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:3rem; }
+    .stat-pill { display:flex; align-items:center; gap:0.55rem; background:var(--surface); border:1px solid rgba(0,0,0,0.08); border-radius:100px; padding:0.5rem 1.1rem; font-family:'Syne',sans-serif; font-size:0.8rem; font-weight:600; color:var(--ink); }
+    .stat-pill svg { color:var(--accent); flex-shrink:0; }
+
+    /* FILTER */
+    .filter-row { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+    .filter-btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.45rem 1.05rem; border-radius:100px; border:1.5px solid rgba(0,0,0,0.1); background:transparent; font-family:'Syne',sans-serif; font-size:0.78rem; font-weight:700; cursor:pointer; transition:var(--tr); color:var(--ink-light); }
+    .filter-btn:hover, .filter-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+
+    /* CARDS */
+    .project-card { background:var(--surface); border-radius:var(--radius); border:1px solid rgba(0,0,0,0.08); transition:var(--tr); overflow:hidden; display:flex; flex-direction:column; }
+    .project-card:hover { transform:translateY(-5px); box-shadow:0 22px 52px rgba(0,0,0,0.11); border-color:transparent; }
+
+    /* Card image banner */
+    .card-banner {
+      width:100%; height:240px;
+      position:relative; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    }
+    /* The project screenshot — set src="your-image.jpg" to use */
+    .card-banner img {
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    /* Fallback mockup shown when no image src is set */
+    .card-banner-inner {
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      z-index:1;
+    }
+    /* Hide mockup when a real image is present */
+    .card-banner img[src]:not([src=""]) ~ .card-banner-inner { display:none; }
+
+    /* Browser mockup styles */
+    .browser-chrome { width:88%; max-width:520px; background:#1a1a2e; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,0.4); overflow:hidden; }
+    .browser-bar { background:#2a2a3e; padding:0.55rem 1rem; display:flex; align-items:center; gap:0.5rem; }
+    .browser-dots { display:flex; gap:5px; }
+    .browser-dots span { width:10px; height:10px; border-radius:50%; display:block; }
+    .dot-r { background:#ff5f57; } .dot-y { background:#febc2e; } .dot-g { background:#28c840; }
+    .browser-url { flex:1; background:rgba(255,255,255,0.08); border-radius:4px; padding:0.2rem 0.6rem; font-size:0.72rem; color:rgba(255,255,255,0.45); font-family:monospace; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .browser-content { padding:1rem 1.25rem; min-height:80px; display:flex; align-items:center; justify-content:center; }
+    .site-preview { width:100%; display:flex; flex-direction:column; gap:0.4rem; }
+    .pr-h { height:10px; border-radius:4px; }
+    .pr-l { height:6px; border-radius:3px; background:rgba(255,255,255,0.1); }
+    .pr-l.w80 { width:80%; } .pr-l.w60 { width:60%; } .pr-l.w50 { width:50%; }
+    .pr-btn-bar { display:flex; gap:0.4rem; margin-top:0.5rem; }
+    .pr-btn { height:14px; width:60px; border-radius:6px; }
+
+    /* Card body */
+    .card-body { padding:1.75rem 2rem 2rem; display:flex; flex-direction:column; gap:0.9rem; }
+    .card-meta { display:flex; align-items:center; gap:0.65rem; flex-wrap:wrap; }
+    .card-num { font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; color:var(--ink-light); letter-spacing:0.12em; text-transform:uppercase; }
+    .badge { display:inline-flex; align-items:center; gap:0.3rem; font-family:'Syne',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.22rem 0.6rem; border-radius:4px; }
+    .badge-featured { background:var(--accent); color:#fff; }
+    .badge-live { background:#dcfce7; color:#15803d; }
+    .badge-live::before { content:''; width:6px; height:6px; border-radius:50%; background:#22c55e; display:block; }
+    .badge-template { background:#f3f0ff; color:#6d28d9; }
+    .card-title { font-size:clamp(1.2rem,2.5vw,1.5rem); font-weight:800; letter-spacing:-0.025em; line-height:1.2; color:var(--ink); }
+    .card-desc { font-size:0.95rem; color:var(--ink-light); line-height:1.72; }
+    .card-outcomes { display:flex; flex-direction:column; gap:0.45rem; }
+    .outcome { display:flex; align-items:flex-start; gap:0.5rem; font-size:0.88rem; color:var(--ink-light); line-height:1.5; }
+    .outcome svg { color:var(--accent); flex-shrink:0; margin-top:2px; }
+    .card-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+    .tag { font-family:'Syne',sans-serif; font-size:0.72rem; font-weight:700; padding:0.28rem 0.65rem; background:var(--accent-dim); color:var(--accent); border-radius:6px; }
+    .card-actions { display:flex; gap:0.75rem; flex-wrap:wrap; padding-top:0.25rem; }
+
+    /* Sub-grid */
+    .projects-sub { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.5rem; }
+    .project-card.compact .card-banner { height:180px; }
+    .project-card.compact .card-body { padding:1.5rem 1.75rem 1.75rem; }
+    .project-card.compact .card-title { font-size:1.15rem; }
+
+    /* CTA band */
+    .cta-band { margin-top:3.5rem; background:var(--ink); border-radius:var(--radius); padding:2.5rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+    .cta-band h3 { font-size:1.2rem; font-weight:800; color:#fff; letter-spacing:-0.02em; margin-bottom:0.3rem; }
+    .cta-band p { font-size:0.9rem; color:rgba(255,255,255,0.5); }
+
+    /* Reveal */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* Footer */
+    footer { border-top:1px solid rgba(0,0,0,0.07); padding:2rem clamp(1.5rem,5vw,4rem); display:flex; align-items:center; justify-content:space-between; max-width:1160px; margin:0 auto; gap:1rem; flex-wrap:wrap; }
+    footer p { font-size:0.82rem; color:var(--ink-light); }
+    .footer-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; color:var(--ink); }
+    .footer-logo span { color:var(--accent); }
+    .footer-links { display:flex; gap:1.25rem; }
+    .footer-links a { font-family:'Syne',sans-serif; font-size:0.82rem; font-weight:600; color:var(--ink-light); text-decoration:none; transition:color var(--tr); }
+    .footer-links a:hover { color:var(--accent); }
+
+    @media(max-width:768px) { .nav-links{display:none} .hamburger{display:flex} .card-banner{height:200px} }
+    @media(max-width:560px) { .projects-sub{grid-template-columns:1fr} .card-actions{flex-direction:column} .card-actions .btn{width:100%;justify-content:center} }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">TB<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="web.html" class="active">Web</a></li>
+    <li><a href="design.html">Design</a></li>
+    <li><a href="video.html">Video</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#about" class="mobile-link">About</a>
+  <a href="index.html#work" class="mobile-link">Work</a>
+  <a href="web.html" class="mobile-link">Web Dev</a>
+  <a href="design.html" class="mobile-link">Design</a>
+  <a href="video.html" class="mobile-link">Video</a>
+  <a href="index.html#contact" class="mobile-link">Contact</a>
+</div>
+
+<div class="page-wrap">
+
+  <a href="index.html" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to Home
+  </a>
+
+  <div class="page-hero reveal">
+    <span class="section-label">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Web Development
+    </span>
+    <h1>Websites That<br>Work for You.</h1>
+    <p>Real client projects, all live. Each site is built to help businesses attract customers, build credibility, and grow online.</p>
+  </div>
+
+  <div class="stats-row reveal">
+    <div class="stat-pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      3 Projects Delivered
+    </div>
+    <div class="stat-pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      All Sites Live
+    </div>
+    <div class="stat-pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Fully Responsive
+    </div>
+  </div>
+
+  <div class="filter-row reveal">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="html-css">HTML / CSS</button>
+    <button class="filter-btn" data-filter="javascript">JavaScript</button>
+    <button class="filter-btn" data-filter="wordpress">WordPress</button>
+    <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PROJECT 01 — BALTECH COMPUTER EDUCATION
+       To add your screenshot: set src="images/baltech.jpg"
+       (or any path/URL to your image)
+  ════════════════════════════════════════════════════════════ -->
+  <div class="project-card reveal" data-tags="html-css javascript" style="margin-bottom:1.5rem">
+    <div class="card-banner" style="background:linear-gradient(135deg,#0a1e0a 0%,#1a4d1a 55%,#2d6a2d 100%)">
+
+      <!-- ▼ ADD YOUR BALTECH SCREENSHOT HERE ▼ -->
+      <img src="/baltech.PNG" alt="BALTECH Computer Education website screenshot"/>
+      <!-- ▲ Replace the empty src="" with your image path ▲ -->
+
+      <!-- Fallback mockup (hidden automatically when src is set) -->
+      <div class="card-banner-inner">
+        <div class="browser-chrome">
+          <div class="browser-bar">
+            <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+            <div class="browser-url">baltech-education.com</div>
+          </div>
+          <div class="browser-content" style="background:linear-gradient(135deg,#0d1f0d,#1a3a1a)">
+            <div class="site-preview">
+              <div class="pr-h" style="background:#d4af37;width:52%"></div>
+              <div class="pr-l w80" style="background:rgba(212,175,55,0.22)"></div>
+              <div class="pr-l w60"></div>
+              <div class="pr-btn-bar">
+                <div class="pr-btn" style="background:#d4af37;opacity:0.9"></div>
+                <div class="pr-btn" style="border:1px solid rgba(255,255,255,0.2)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="card-num">Project 01</span>
+        <span class="badge badge-featured">Featured</span>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <h2 class="card-title">BALTECH Computer Education</h2>
+      <p class="card-desc">Full multi-page educational website for a leading IT training institute (est. 2013). Showcases Web Development, Cybersecurity and Networking programmes — strategically crafted to convert visitors into enrolled students.</p>
+      <div class="card-outcomes">
+        <div class="outcome">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          6-page site: Home, About, Courses, Contact &amp; Enrolment
+        </div>
+        <div class="outcome">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Mobile-first responsive design with working contact form &amp; JS modal
+        </div>
+        <div class="outcome">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Forest green &amp; amber palette reflecting African tech identity
+        </div>
+      </div>
+      <div class="card-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Responsive</span>
+        <span class="tag">Multi-Page</span>
+      </div>
+      <div class="card-actions">
+        <a href="https://baltech-worldwide.com" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Visit Live Site
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Sub-grid: Norwest + Aurelia side by side -->
+  <div class="projects-sub">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         PROJECT 02 — NORWEST DIGITAL TELECOM
+         To add your screenshot: set src="images/norwest.jpg"
+    ════════════════════════════════════════════════════════════ -->
+    <div class="project-card compact reveal" data-tags="html-css wordpress">
+      <div class="card-banner" style="background:linear-gradient(135deg,#0d1b3e 0%,#1a3cff 100%)">
+
+        <!-- ▼ ADD YOUR NORWEST SCREENSHOT HERE ▼ -->
+        <img src="/norwest.PNG" alt="Norwest Digital website screenshot"/>
+        <!-- ▲ Replace the empty src="" with your image path ▲ -->
+
+        <div class="card-banner-inner">
+          <div class="browser-chrome" style="width:86%">
+            <div class="browser-bar">
+              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+              <div class="browser-url">norwestdigital.com</div>
+            </div>
+            <div class="browser-content" style="background:linear-gradient(135deg,#0a1628,#0d2050)">
+              <div class="site-preview">
+                <div class="pr-h" style="background:#fff;opacity:0.8;width:48%"></div>
+                <div class="pr-l w80"></div>
+                <div class="pr-l w50"></div>
+                <div class="pr-btn-bar"><div class="pr-btn" style="background:#1a3cff;opacity:0.9"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-num">Project 02</span>
+          <span class="badge badge-live">Live</span>
+        </div>
+        <h2 class="card-title">Norwest Digital Telecom</h2>
+        <p class="card-desc">Professional website for an established digital telecommunications company (est. 1991). Features clean, high-impact service pages, strategically placed calls-to-action, and a credibility-driven layout designed to build trust and consistently generate high-quality enquiries.</p>
+        <div class="card-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">WordPress</span>
+          <span class="tag">SEO</span>
+        </div>
+        <div class="card-actions">
+          <!-- ▼ ADD NORWEST LIVE URL HERE ▼ -->
+          <a href="#" class="btn btn-primary btn-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Visit Live Site
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         PROJECT 03 — AURELIA LUXURY SHOP (Template)
+         To add your screenshot: set src="images/aurelia.jpg"
+    ════════════════════════════════════════════════════════════ -->
+    <div class="project-card compact reveal" data-tags="html-css javascript ecommerce">
+      <div class="card-banner" style="background:linear-gradient(135deg,#1a1008 0%,#3d2b0e 50%,#6b4c1a 100%)">
+
+        <!-- ▼ ADD YOUR AURELIA SCREENSHOT HERE ▼ -->
+        <img src="/aurelia.PNG" alt="AURELIA luxury shop screenshot"/>
+        <!-- ▲ Replace the empty src="" with your image path ▲ -->
+
+        <div class="card-banner-inner">
+          <div class="browser-chrome" style="width:86%">
+            <div class="browser-bar">
+              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+              <div class="browser-url">aurelia-london.com</div>
+            </div>
+            <div class="browser-content" style="background:linear-gradient(135deg,#0d0b07,#1e1508)">
+              <div class="site-preview">
+                <div class="pr-h" style="background:#c9a84c;opacity:0.9;width:44%"></div>
+                <div class="pr-l w80" style="background:rgba(201,168,76,0.2)"></div>
+                <div class="pr-l w60"></div>
+                <div class="pr-btn-bar"><div class="pr-btn" style="background:#c9a84c;opacity:0.85"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-num">Project 03</span>
+          <span class="badge badge-template">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Template Preview
+          </span>
+        </div>
+        <h2 class="card-title">AURELIA — Luxury Online Shop</h2>
+        <p class="card-desc">Editorial luxury fashion e-commerce template for a London slow-fashion brand. Features a product shop, lookbook, and typographic manifesto — built to attract premium clientele.</p>
+        <div class="card-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">E-Commerce</span>
+        </div>
+        <div class="card-actions">
+          <!-- ▼ ADD AURELIA PREVIEW URL HERE ▼ -->
+          <a href="/landing page.html" class="btn btn-primary btn-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Preview Template
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /projects-sub -->
+
+
+  <!-- CTA BAND -->
+  <div class="cta-band reveal">
+    <div>
+      <h3>Need a website like these?</h3>
+      <p>I'm available for new projects — let's talk about what you need.</p>
+    </div>
+    <a href="index.html#contact" class="btn" style="background:#fff;color:var(--ink);flex-shrink:0;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Get in Touch
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-logo">TB<span>.</span></span>
+  <p>© 2025 Tomiwa Balogun</p>
+  <div class="footer-links">
+    <a href="design.html">Design</a>
+    <a href="video.html">Video</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link').forEach(l =>
+    l.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    })
+  );
+
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(reveals).indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), idx * 70);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.project-card[data-tags]').forEach(card => {
+        const show = f === 'all' || (card.dataset.tags || '').includes(f);
+        card.style.opacity = show ? '1' : '0.2';
+        card.style.transform = show ? '' : 'scale(0.97)';
+        card.style.pointerEvents = show ? '' : 'none';
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      });
+    });
+  });
+</script>
+</body>
+</html>

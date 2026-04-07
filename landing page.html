@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURELIA — Atelier, London</title>
+<meta name="description" content="Fewer pieces, made better. AURELIA is a London atelier producing limited editions in certified materials.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-text"><span>Aurelia.</span></div>
+</div>
+
+<!-- CURSOR -->
+
+<!-- ── NAV ────────────────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <button class="nav-hamburger" onclick="openMenu()" aria-label="Menu">
+      <i></i><i></i>
+    </button>
+  </div>
+  <a href="landing page.html" class="nav-logo">AURELIA</a>
+  <div class="nav-right">
+    <button class="nav-action" onclick="openSearch()">Search</button>
+    <button class="nav-action" onclick="openCart()">Bag&thinsp;(<span id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<!-- ── MENU ───────────────────────────────────────────────────── -->
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel">
+  <div class="menu-ghost">A</div>
+  <div class="menu-inner">
+    <div class="menu-top">
+      <span class="menu-season">SS 2026</span>
+      <button class="menu-close" onclick="closeMenu()">Close ×</button>
+    </div>
+    <nav class="menu-links">
+      <a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a>
+      <a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a>
+      <a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a>
+      <a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a>
+      <a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a>
+      <a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a>
+    </nav>
+    <div class="menu-footer">
+      <div class="menu-footer-links">
+        <a href="faq.html">FAQ</a>
+        <a href="#">Returns</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Sustainability</a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ── SEARCH ─────────────────────────────────────────────────── -->
+<div class="search-panel" id="searchPanel">
+  <button class="search-close" onclick="closeSearch()">Close ×</button>
+  <div class="search-body">
+    <span class="search-kicker">Search the Collection</span>
+    <input type="search" class="search-field" placeholder="Trousers, knitwear, outerwear…" id="searchInput" aria-label="Search">
+    <div class="search-suggests">
+      <button class="search-suggest" onclick="closeSearch()">New Arrivals</button>
+      <button class="search-suggest" onclick="closeSearch()">Knitwear</button>
+      <button class="search-suggest" onclick="closeSearch()">Outerwear</button>
+      <button class="search-suggest" onclick="closeSearch()">Trousers</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── CART ───────────────────────────────────────────────────── -->
+<div class="cart-backdrop" id="cartBd" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <span class="cart-head-title">Your Bag</span>
+    <button class="cart-head-close" onclick="closeCart()">Close ×</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty-state">
+      <span class="cart-empty-italic">Your bag<br>is empty.</span>
+      <a href="shop.html" class="btn btn-outline" onclick="closeCart()"><span>View Collection</span></a>
+    </div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amt" id="cartTotal">£0</span>
+    </div>
+    <a href="cart.html" class="btn btn-dark btn-full"><span>Review Bag</span></a>
+  </div>
+</aside>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HERO V3 — Single image. Type that refuses to fit.
+═══════════════════════════════════════════════════════════════ -->
+<section class="hero-v3">
+  <div class="hero-v3-img">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&q=88" alt="AURELIA SS26">
+  </div>
+  <div class="hero-v3-fog"></div>
+  <div class="hero-v3-content">
+    <!-- Cover-date line — editorial, not marketing -->
+    <div class="hero-v3-dateline" aria-hidden="true">
+      <span>SS&thinsp;2026</span>
+      <span class="hero-dateline-rule"></span>
+      <span>No.&thinsp;07</span>
+      <span class="hero-dateline-rule"></span>
+      <span>London</span>
+    </div>
+    <!-- Headline wider than the page — deliberate overflow -->
+    <h1 class="hero-v3-hed">
+      Fewer things,<em><span class="r2">made&nbsp;better.</span></em>
+    </h1>
+    <div class="hero-v3-sub">
+      <span class="hero-v3-season">Spring / Summer 2026</span>
+      <a href="collections.html" class="btn btn-ghost-light"><span>The Collection</span></a>
+    </div>
+  </div>
+  <div class="hero-scroll-cue">
+    <div class="hero-scroll-bar"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Free Returns<span class="m-sep">·</span>Sustainably Made<span class="m-sep">·</span>SS26 Collection<span class="m-sep">·</span>Free Shipping Over £150<span class="m-sep">·</span>Artisan Craft<span class="m-sep">·</span>Limited Editions<span class="m-sep">·</span>Free Returns<span class="m-sep">·</span>Sustainably Made<span class="m-sep">·</span>SS26 Collection<span class="m-sep">·</span>Free Shipping Over £150<span class="m-sep">·</span>Artisan Craft<span class="m-sep">·</span>Limited Editions<span class="m-sep">·</span></span>
+    <span aria-hidden="true">Free Returns<span class="m-sep">·</span>Sustainably Made<span class="m-sep">·</span>SS26 Collection<span class="m-sep">·</span>Free Shipping Over £150<span class="m-sep">·</span>Artisan Craft<span class="m-sep">·</span>Limited Editions<span class="m-sep">·</span>Free Returns<span class="m-sep">·</span>Sustainably Made<span class="m-sep">·</span>SS26 Collection<span class="m-sep">·</span>Free Shipping Over £150<span class="m-sep">·</span>Artisan Craft<span class="m-sep">·</span>Limited Editions<span class="m-sep">·</span></span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     RUPTURE SECTION — Type too large for its container
+═══════════════════════════════════════════════════════════════ -->
+<section class="rupture rv">
+  <span class="rupture-kicker">The House, London</span>
+  <h2 class="rupture-hed">Not fashion.<br><em>A position.</em></h2>
+  <div class="rupture-split">
+    <div class="rupture-text rv">
+      <p>AURELIA was founded in 2020 on a single refusal: to participate in the cycle of excess. No weekly drops. No trend-chasing. No discounting what we made last month.</p>
+      <p>Every collection begins not with a mood board, but with a question — what does a woman actually need to own forever? The answer is always fewer things, made better.</p>
+      <a href="about.html" class="btn-arrow" style="margin-top:2rem">Our story</a>
+    </div>
+    <div class="rupture-img rv-fade">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1000&q=85" alt="AURELIA atelier" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PRODUCTS INSIDE PROSE
+     Chapter I — The Trouser
+═══════════════════════════════════════════════════════════════ -->
+<div class="prose-section">
+
+  <div class="p-chapter p-chapter-grid-a rv">
+    <div class="p-text">
+      <span class="p-num">Chapter I</span>
+      <h2 class="p-hed">The trouser<br>that holds<br><em>everything.</em></h2>
+      <div class="p-prose">
+        <p>We started with trousers because we believed most women already owned too many — and that every single one was slightly wrong. Too stiff. Too formal. Too casual. Cut for a body that wasn't theirs.</p>
+        <p>The <a href="product.html" class="p-product-inline">Aurelia Tailored Trousers — £120</a> took eleven months to get right. Italian wool-blend, structured waistband, wide-leg silhouette. The kind of trouser you put on and feel, immediately, like yourself.</p>
+        <p>We've made them in three colourways this season: Stone, Onyx, Forest. They pair with everything and answer to nothing. This is the piece that started the brand.</p>
+      </div>
+      <a href="product.html" class="btn btn-outline" style="margin-top:3rem"><span>Shop the Trouser</span></a>
+    </div>
+    <div class="p-img-col">
+      <div class="p-product-sticky" onclick="window.location='product.html'">
+        <div class="p-product-frame p-product-frame-a">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=88" alt="Aurelia Tailored Trousers" loading="lazy">
+          <div class="p-product-badge">New</div>
+        </div>
+        <div class="p-product-foot">
+          <p class="p-product-name">Aurelia Tailored Trousers</p>
+          <p class="p-product-price">£120 — Italian Wool-Blend</p>
+          <button class="p-product-btn" onclick="event.stopPropagation(); addToCart('Aurelia Tailored Trousers', 120)"><span class="p-product-btn-inner">Add to Bag</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual interruption — pure image, no copy. A breath. -->
+  <div class="chapter-breath rv-fade">
+    <img src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?w=1800&q=88" alt="" aria-hidden="true" loading="lazy">
+    <div class="chapter-breath-caption">Porto, March 2026 — pre-production</div>
+  </div>
+
+  <!-- Chapter II — dark background, reversed layout -->
+  <div class="p-chapter p-chapter-dark p-chapter-grid-b rv">
+    <div class="p-img-col">
+      <div class="p-product-sticky" onclick="window.location='product.html'">
+        <div class="p-product-frame p-product-frame-b">
+          <img src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?w=800&q=88" alt="Structured Wool Jacket" loading="lazy">
+          <div class="p-product-badge">New</div>
+        </div>
+        <div class="p-product-foot">
+          <p class="p-product-name" style="color:var(--ivory)">Structured Wool Jacket</p>
+          <p class="p-product-price">£140 — Half-Canvas Construction</p>
+          <button class="p-product-btn" onclick="event.stopPropagation(); addToCart('Structured Wool Jacket', 140)"><span class="p-product-btn-inner">Add to Bag</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="p-text">
+      <span class="p-num">Chapter II</span>
+      <h2 class="p-hed">Architecture<br><em>for the body.</em></h2>
+      <div class="p-prose">
+        <p>A jacket has to do two contradictory things simultaneously: hold its shape and allow complete freedom. Most don't manage either. The shoulder collapses by Tuesday. The lining pulls by Thursday. You stop reaching for it.</p>
+        <p>The <a href="product.html" class="p-product-inline">Structured Wool Jacket — £140</a> uses a half-canvas construction borrowed from bespoke tailoring. Not because it's more expensive to make — it is — but because it's the only way the shoulder works correctly in five years, not just five wears.</p>
+        <p>It buttons. It doesn't need to. We made it button anyway, because a jacket should have resolve.</p>
+      </div>
+      <a href="product.html" class="btn btn-ghost-light" style="margin-top:3rem"><span>Shop the Jacket</span></a>
+    </div>
+  </div>
+
+  <!-- Chapter III — knitwear -->
+  <div class="p-chapter p-chapter-grid-a rv">
+    <div class="p-text">
+      <span class="p-num">Chapter III</span>
+      <h2 class="p-hed">The knit<br>that <em>stays.</em></h2>
+      <div class="p-prose">
+        <p>There is a particular failure mode for knitwear: it looks perfect in September and by December it's pilling, stretching, losing the plot. You didn't mistreat it. You just wore it. That should be enough.</p>
+        <p>The <a href="product.html" class="p-product-inline">Minimal Knit Jumper — £80</a> uses a reinforced construction at every stress point. Shoulders, cuffs, hem. GOTS-certified merino, 14-gauge, brushed lightly on the inside. It's the kind of knit that improves with time — that softens into itself.</p>
+        <p>Four colourways. All muted. None of them trend.</p>
+      </div>
+      <!-- Isolated sentence — the scarcity beat -->
+      <p class="p-isolated-line">47 units remain in this run.</p>
+      <a href="product.html" class="btn btn-outline" style="margin-top:3rem"><span>Shop the Knit</span></a>
+    </div>
+    <div class="p-img-col">
+      <div class="p-product-sticky" onclick="window.location='product.html'">
+        <div class="p-product-frame p-product-frame-b">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=88" alt="Minimal Knit Jumper" loading="lazy">
+        </div>
+        <div class="p-product-foot">
+          <p class="p-product-name">Minimal Knit Jumper</p>
+          <p class="p-product-price">£80 — GOTS Certified Merino</p>
+          <button class="p-product-btn" onclick="event.stopPropagation(); addToCart('Minimal Knit Jumper', 80)"><span class="p-product-btn-inner">Add to Bag</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PRICE AS DESIGN ELEMENT
+═══════════════════════════════════════════════════════════════ -->
+<section class="price-statement rv">
+  <div class="ps-left">
+    <div class="ps-price">£60<br>to<br>£150</div>
+    <span class="ps-label">The full range — 12 pieces this season</span>
+    <a href="shop.html" class="btn-arrow" style="margin-top:3rem">Shop everything</a>
+  </div>
+  <div class="ps-right rv-st">
+    <div class="ps-piece" onclick="window.location='product.html'">
+      <div class="ps-piece-img">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&q=85" alt="Relaxed Cotton Shirt" loading="lazy">
+      </div>
+      <div>
+        <p class="ps-piece-name">Relaxed Cotton Shirt</p>
+        <p class="ps-piece-price">£60 — Organic Cotton</p>
+      </div>
+    </div>
+    <div class="ps-piece" onclick="window.location='product.html'">
+      <div class="ps-piece-img">
+        <img src="https://images.unsplash.com/photo-1495121605193-b116b5b09a6e?w=400&q=85" alt="Wide-Leg Pants" loading="lazy">
+      </div>
+      <div>
+        <p class="ps-piece-name">Wide-Leg Pants</p>
+        <p class="ps-piece-price">£110 — Linen Blend</p>
+      </div>
+    </div>
+    <div class="ps-piece" onclick="window.location='product.html'">
+      <div class="ps-piece-img">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&q=85" alt="Column Dress" loading="lazy">
+      </div>
+      <div>
+        <p class="ps-piece-name">Column Dress</p>
+        <p class="ps-piece-price">£135 — Cupro Lining</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     MANIFESTO — Numbers as architecture. Type floats inside them.
+═══════════════════════════════════════════════════════════════ -->
+<section class="manifesto rv">
+  <div class="mf-kicker-row">
+    <span class="mf-kicker">What we stand for</span>
+    <span class="mf-kicker-right">Est. London, 2020</span>
+  </div>
+  <div class="mf-ranked rv-st">
+    <div class="mf-item">
+      <div class="mf-ghost-n" aria-hidden="true">I</div>
+      <div class="mf-item-inner">
+        <h3 class="mf-hed">Certified materials, <em>always.</em></h3>
+        <p class="mf-copy">GOTS organic cotton. Responsible wool. TENCEL™ lyocell. We work only with certified mills. No exceptions for cost, no exceptions for convenience.</p>
+        <span class="mf-tag">Materials</span>
+      </div>
+    </div>
+    <div class="mf-item">
+      <div class="mf-ghost-n" aria-hidden="true">II</div>
+      <div class="mf-item-inner">
+        <h3 class="mf-hed">Designed for <em>ten years.</em></h3>
+        <p class="mf-copy">Every brief begins: will a woman still reach for this in a decade? If the answer isn't a clear yes, we start again. We don't design for seasons. We design for wardrobes.</p>
+        <span class="mf-tag">Longevity</span>
+      </div>
+    </div>
+    <div class="mf-item">
+      <div class="mf-ghost-n" aria-hidden="true">III</div>
+      <div class="mf-item-inner">
+        <h3 class="mf-hed">Small batches, <em>skilled hands.</em></h3>
+        <p class="mf-copy">Production in Porto, finishing in London. Fewer than 400 pieces per season. We don't scale what can't scale well. Each piece is made with the same attention as the sample.</p>
+        <span class="mf-tag">Production</span>
+      </div>
+    </div>
+    <div class="mf-item">
+      <div class="mf-ghost-n" aria-hidden="true">IV</div>
+      <div class="mf-item-inner">
+        <h3 class="mf-hed">Lifetime repair, <em>no questions.</em></h3>
+        <p class="mf-copy">We repair every piece we've ever made — free for manufacturing faults, at cost for wear. Because ownership shouldn't end when a seam gives way.</p>
+        <span class="mf-tag">Aftercare</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FILM STRIP LOOKBOOK
+═══════════════════════════════════════════════════════════════ -->
+<section class="film-strip rv">
+  <div class="film-head">
+    <div class="film-head-left">
+      <div class="film-issue-line">
+        <span>Lookbook</span>
+        <span class="film-issue-rule"></span>
+        <span>SS 2026</span>
+        <span class="film-issue-rule"></span>
+        <span>Lisbon</span>
+      </div>
+      <h2 class="film-hed">Considered<br><em>Form.</em></h2>
+    </div>
+    <div class="film-head-right">
+      <p class="film-head-note">Shot by Ana Sousa.<br>9 looks. 12 pieces.</p>
+      <a href="lookbook.html" class="btn-arrow" style="color:rgba(255,255,255,.5); margin-top:1.5rem; display:inline-flex">Full Lookbook</a>
+    </div>
+  </div>
+  <div class="film-frames">
+    <div class="film-frame" onclick="window.location='lookbook.html'">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=85" alt="Look 01" loading="lazy">
+      <div class="film-frame-cap"><span class="film-frame-look">Look 01</span><span class="film-frame-name">Tailored Trouser + Blazer</span></div>
+    </div>
+    <div class="film-frame" onclick="window.location='lookbook.html'">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=85" alt="Look 02" loading="lazy">
+      <div class="film-frame-cap"><span class="film-frame-look">Look 02</span><span class="film-frame-name">Knit + Wide Pants</span></div>
+    </div>
+    <div class="film-frame" onclick="window.location='lookbook.html'">
+      <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=85" alt="Look 03" loading="lazy">
+      <div class="film-frame-cap"><span class="film-frame-look">Look 03</span><span class="film-frame-name">Column Dress + Jacket</span></div>
+    </div>
+    <div class="film-frame" onclick="window.location='lookbook.html'">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=85" alt="Look 04" loading="lazy">
+      <div class="film-frame-cap"><span class="film-frame-look">Look 04</span><span class="film-frame-name">Relaxed Shirt + Trousers</span></div>
+    </div>
+    <div class="film-frame" onclick="window.location='lookbook.html'">
+      <img src="https://images.unsplash.com/photo-1495121605193-b116b5b09a6e?w=600&q=85" alt="Look 05" loading="lazy">
+      <div class="film-frame-cap"><span class="film-frame-look">Look 05</span><span class="film-frame-name">Minimal Jacket + Dress</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     NEWSLETTER V3
+═══════════════════════════════════════════════════════════════ -->
+<section class="nl rv">
+  <div class="nl-left">
+    <h2 class="nl-hed">Stay in<br>the <em>room.</em></h2>
+    <p class="nl-body">Early access to new collections, private sales, and the occasional editorial. Sent when there's something worth sending — not weekly, not automatically, not ever to people who didn't ask.</p>
+  </div>
+  <div class="nl-right">
+    <div id="nlFormWrap">
+      <div class="nl-form-wrap">
+        <input type="email" class="nl-field" placeholder="your@email.com" id="nlEmail">
+        <button class="nl-submit" onclick="nlSubscribe()">Subscribe →</button>
+      </div>
+      <p class="nl-note">No noise. Unsubscribe any time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER V3 — Magazine back page
+═══════════════════════════════════════════════════════════════ -->
+<footer class="footer-v3">
+  <div class="fv3-masthead">
+    <a href="landing page.html" class="fv3-logo">AURELIA</a>
+    <p class="fv3-strap">"Designed with intention. Worn without effort. Made for a decade, not a season."</p>
+  </div>
+  <div class="fv3-grid">
+    <div class="fv3-col">
+      <span class="fv3-col-label">The House</span>
+      <p>A London atelier producing fewer than 400 pieces per season, in certified materials, made by skilled hands in Porto and London.</p>
+      <div class="fv3-social">
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="fv3-col">
+      <span class="fv3-col-label">Shop</span>
+      <a href="shop.html">New Arrivals</a>
+      <a href="collections.html">Collections</a>
+      <a href="shop.html?cat=outerwear">Outerwear</a>
+      <a href="shop.html?cat=knitwear">Knitwear</a>
+      <a href="shop.html?cat=accessories">Accessories</a>
+    </div>
+    <div class="fv3-col">
+      <span class="fv3-col-label">Company</span>
+      <a href="about.html">About</a>
+      <a href="lookbook.html">Lookbook</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Press</a>
+      <a href="#">Careers</a>
+    </div>
+    <div class="fv3-col">
+      <span class="fv3-col-label">Support</span>
+      <a href="faq.html">FAQ</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="#">Size Guide</a>
+      <a href="#">Repair Programme</a>
+    </div>
+  </div>
+  <div class="fv3-colophon">
+    <span>© 2026 AURELIA Ltd. Registered in England &amp; Wales.</span>
+    <div class="fv3-colophon-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─ LOADER ─────────────────────────────────────────────────── */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('out'), 600);
+});
+
+/* ─ NAV ─────────────────────────────────────────────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 55), {passive:true});
+
+/* ─ MENU ─────────────────────────────────────────────────────── */
+function openMenu() {
+  document.getElementById('menuPanel').classList.add('open');
+  document.getElementById('menuBd').classList.add('open');
+  document.body.classList.add('no-scroll');
+}
+function closeMenu() {
+  document.getElementById('menuPanel').classList.remove('open');
+  document.getElementById('menuBd').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+
+/* ─ SEARCH ──────────────────────────────────────────────────── */
+function openSearch() {
+  document.getElementById('searchPanel').classList.add('open');
+  document.body.classList.add('no-scroll');
+  setTimeout(() => document.getElementById('searchInput').focus(), 350);
+}
+function closeSearch() {
+  document.getElementById('searchPanel').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeSearch(); closeMenu(); closeCart(); }});
+
+/* ─ CART ─────────────────────────────────────────────────────── */
+let cart = JSON.parse(sessionStorage.getItem('aurelia_v3_cart') || '[]');
+
+function renderCart() {
+  const n = cart.length;
+  document.getElementById('cartCount').textContent = n;
+  const body = document.getElementById('cartBody');
+  const foot = document.getElementById('cartFoot');
+  if (!n) {
+    body.innerHTML = `<div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span><a href="shop.html" class="btn btn-outline" onclick="closeCart()"><span>View Collection</span></a></div>`;
+    foot.style.display = 'none'; return;
+  }
+  const total = cart.reduce((s, i) => s + i.p, 0);
+  body.innerHTML = cart.map((item, i) => `
+    <div class="cart-row">
+      <div class="cart-row-img"><img src="${item.img || 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200'}" alt="${item.n}"></div>
+      <div>
+        <p class="cart-row-name">${item.n}</p>
+        <p class="cart-row-meta">Size M · Stone</p>
+        <p class="cart-row-price">£${item.p}</p>
+        <button class="cart-row-del" onclick="removeFromCart(${i})">Remove</button>
+      </div>
+    </div>`).join('');
+  document.getElementById('cartTotal').textContent = `£${total}`;
+  foot.style.display = 'block';
+  sessionStorage.setItem('aurelia_v3_cart', JSON.stringify(cart));
+}
+function openCart() {
+  document.getElementById('cartPanel').classList.add('open');
+  document.getElementById('cartBd').classList.add('open');
+  document.body.classList.add('no-scroll');
+}
+function closeCart() {
+  document.getElementById('cartPanel').classList.remove('open');
+  document.getElementById('cartBd').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+function addToCart(name, price, img) {
+  cart.push({ n: name, p: price, img: img || '', size: 'M', colour: 'Stone', qty: 1 });
+  renderCart();
+  if (!document.getElementById('cartPanel').classList.contains('open')) openCart();
+}
+function removeFromCart(i) { cart.splice(i, 1); renderCart(); }
+renderCart();
+
+/* ─ NEWSLETTER ──────────────────────────────────────────────── */
+function nlSubscribe() {
+  const v = document.getElementById('nlEmail').value;
+  if (!v.includes('@')) return;
+  document.getElementById('nlFormWrap').innerHTML = `<p class="nl-ok">Welcome to the inner room.</p>`;
+}
+
+/* ─ REVEAL ──────────────────────────────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+}, { threshold: 0.07 });
+document.querySelectorAll('.rv, .rv-fade, .rv-st').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

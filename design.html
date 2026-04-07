@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graphic Design — Tomiwa Balogun</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f3ee; --surface: #ffffff; --ink: #0d0d0d; --ink-light: #5a5a5a;
+      --accent: #1a3cff; --accent-dim: #d6dcff; --pink: #ec4899; --pink-dim: #fce7f3;
+      --radius: 14px; --nav-h: 68px; --transition: 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
+    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1000; opacity:0.5; }
+    h1,h2,h3,h4,nav a,.btn { font-family: 'Syne', sans-serif; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; height:var(--nav-h); display:flex; align-items:center; justify-content:space-between; padding:0 clamp(1.5rem,5vw,4rem); background:rgba(245,243,238,0.88); backdrop-filter:blur(14px); border-bottom:1px solid rgba(0,0,0,0.06); z-index:900; }
+    .nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.15rem; color:var(--ink); text-decoration:none; letter-spacing:-0.5px; }
+    .nav-logo span { color:var(--accent); }
+    .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+    .nav-links a { text-decoration:none; font-size:0.88rem; font-weight:600; color:var(--ink-light); letter-spacing:0.02em; transition:color var(--transition); }
+    .nav-links a:hover { color:var(--accent); }
+    .nav-links a.active { color:var(--pink); }
+    .nav-links .nav-cta { background:var(--ink); color:#fff !important; padding:0.45rem 1.1rem; border-radius:100px; }
+    .nav-links .nav-cta:hover { background:var(--accent) !important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--ink); border-radius:2px; transition:var(--transition); }
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)} .hamburger.open span:nth-child(2){opacity:0} .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu { display:none; position:fixed; top:var(--nav-h); left:0; right:0; background:var(--bg); border-bottom:1px solid rgba(0,0,0,0.08); padding:1.5rem 2rem; z-index:899; flex-direction:column; gap:1.25rem; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { text-decoration:none; font-family:'Syne',sans-serif; font-weight:600; font-size:1.05rem; color:var(--ink); }
+
+    /* BUTTONS */
+    .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.6rem; border-radius:100px; font-size:0.9rem; font-weight:700; cursor:pointer; text-decoration:none; transition:var(--transition); border:2px solid transparent; }
+    .btn-pink { background:var(--pink); color:#fff; }
+    .btn-pink:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(236,72,153,0.3); filter:brightness(1.1); }
+    .btn-outline { background:transparent; color:var(--ink); border-color:rgba(0,0,0,0.2); }
+    .btn-outline:hover { border-color:var(--ink); background:var(--ink); color:#fff; transform:translateY(-2px); }
+
+    /* LAYOUT */
+    .page-wrap { max-width:1160px; margin:0 auto; padding:calc(var(--nav-h) + 4rem) clamp(1.5rem,5vw,4rem) 6rem; }
+    .section-label { display:inline-block; font-family:'Syne',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--pink); background:var(--pink-dim); padding:0.3rem 0.8rem; border-radius:100px; margin-bottom:1rem; }
+    .back-link { display:inline-flex; align-items:center; gap:0.4rem; font-family:'Syne',sans-serif; font-size:0.82rem; font-weight:600; color:var(--ink-light); text-decoration:none; margin-bottom:2.5rem; transition:color var(--transition); }
+    .back-link:hover { color:var(--pink); }
+
+    .page-hero { margin-bottom:4rem; }
+    .page-hero h1 { font-family:'Syne',sans-serif; font-size:clamp(2.5rem,6vw,4.5rem); font-weight:800; letter-spacing:-0.04em; line-height:1.05; margin-bottom:1rem; }
+    .page-hero p { font-size:1.05rem; color:var(--ink-light); max-width:540px; line-height:1.7; }
+
+    /* GALLERY */
+    .gallery-grid {
+      columns: 3;
+      column-gap: 1.25rem;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1.25rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: var(--surface);
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .gallery-item.visible { opacity: 1; transform: translateY(0); }
+
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); border-color: transparent; }
+
+    .gallery-thumb {
+      width: 100%;
+      aspect-ratio: var(--ar, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      transition: transform var(--transition);
+    }
+    .gallery-item:hover .gallery-thumb { transform: scale(1.04); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+    .gallery-item:hover .gallery-overlay { background: rgba(0,0,0,0.35); }
+    .overlay-icon { color: #fff; font-size: 1.5rem; opacity: 0; transform: scale(0.7); transition: var(--transition); }
+    .gallery-item:hover .overlay-icon { opacity: 1; transform: scale(1); }
+
+    .gallery-info {
+      padding: 1rem 1.25rem 1.25rem;
+    }
+    .gallery-title { font-family:'Syne',sans-serif; font-size:0.9rem; font-weight:700; margin-bottom:0.25rem; }
+    .gallery-desc { font-size:0.8rem; color:var(--ink-light); line-height:1.5; }
+    .gallery-tag { display:inline-block; font-size:0.68rem; padding:0.2rem 0.5rem; background:var(--pink-dim); color:var(--pink); border-radius:5px; font-weight:700; font-family:'Syne',sans-serif; margin-top:0.5rem; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 2rem;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-inner {
+      background: var(--surface);
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 680px;
+      width: 100%;
+      transform: scale(0.92) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    .lightbox.open .lightbox-inner { transform: scale(1) translateY(0); }
+    .lightbox-preview {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+    .lightbox-body { padding: 1.75rem 2rem 2rem; }
+    .lightbox-body h3 { font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:800; margin-bottom:0.4rem; }
+    .lightbox-body p { font-size:0.9rem; color:var(--ink-light); line-height:1.65; }
+    .lightbox-close {
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: none; cursor: pointer; color: #fff;
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease,transform 0.65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* FOOTER */
+    footer { border-top:1px solid rgba(0,0,0,0.07); padding:2rem clamp(1.5rem,5vw,4rem); display:flex; align-items:center; justify-content:space-between; max-width:1160px; margin:0 auto; gap:1rem; flex-wrap:wrap; }
+    footer p { font-size:0.82rem; color:var(--ink-light); }
+    .footer-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; color:var(--ink); }
+    .footer-logo span { color:var(--accent); }
+
+    @media (max-width: 900px) { .gallery-grid { columns: 2; } }
+    @media (max-width: 768px) { .nav-links{display:none} .hamburger{display:flex} }
+    @media (max-width: 520px) { .gallery-grid { columns: 1; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">TB<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="web.html">Web</a></li>
+    <li><a href="design.html" class="active">Design</a></li>
+    <li><a href="video.html">Video</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#about" class="mobile-link">About</a>
+  <a href="index.html#work" class="mobile-link">Work</a>
+  <a href="web.html" class="mobile-link">Web Dev</a>
+  <a href="design.html" class="mobile-link">Design</a>
+  <a href="video.html" class="mobile-link">Video</a>
+  <a href="index.html#contact" class="mobile-link">Contact</a>
+</div>
+
+<div class="page-wrap">
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+  <div class="page-hero reveal">
+    <span class="section-label">Graphic Design</span>
+    <h1>Visual<br>Identity.</h1>
+    <p>Posters, social media graphics, and brand assets — crafted with a sharp eye for colour, composition, and purpose. Click any piece to preview.</p>
+  </div>
+
+  <div class="gallery-grid" id="gallery">
+
+    <div class="gallery-item" style="--ar:1" data-title="Brand Poster" data-desc="A bold typographic poster designed for a digital marketing campaign. Clean hierarchy, strong colour contrast, and intentional white space." data-color="linear-gradient(135deg,#1a3cff,#6c47ff)" data-emoji="🎯" data-tag="Poster">
+      <div class="gallery-thumb" style="background:linear-gradient(135deg,#1a3cff22,#6c47ff22)">🎯</div>
+      <div class="gallery-overlay"><span class="overlay-icon">🔍</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title">Brand Poster</div>
+        <div class="gallery-desc">Digital marketing campaign poster</div>
+        <span class="gallery-tag">Poster</span>
+      </div>
+    </div>
+
+    <div class="gallery-item" style="--ar:4/5" data-title="Social Media Pack" data-desc="Instagram post and story templates designed for a lifestyle brand. Consistent visual identity across multiple formats with a modern, editorial feel." data-color="linear-gradient(135deg,#ec4899,#f97316)" data-emoji="📱" data-tag="Social Media">
+      <div class="gallery-thumb" style="background:linear-gradient(135deg,#ec489922,#f9731622);aspect-ratio:4/5">📱</div>
+      <div class="gallery-overlay"><span class="overlay-icon">🔍</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title">Social Media Pack</div>
+        <div class="gallery-desc">Instagram templates for lifestyle brand</div>
+        <span class="gallery-tag">Social Media</span>
+      </div>
+    </div>
+
+    <div class="gallery-item" style="--ar:3/4" data-title="Event Flyer" data-desc="A vibrant event flyer created in Canva. Bold typography and layered design elements create energy and excitement while keeping key info readable." data-color="linear-gradient(135deg,#f59e0b,#ef4444)" data-emoji="🎉" data-tag="Flyer">
+      <div class="gallery-thumb" style="background:linear-gradient(135deg,#f59e0b22,#ef444422);aspect-ratio:3/4">🎉</div>
+      <div class="gallery-overlay"><span class="overlay-icon">🔍</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title">Event Flyer</div>
+        <div class="gallery-desc">Promotional flyer with bold typography</div>
+        <span class="gallery-tag">Flyer</span>
+      </div>
+    </div>
+
+    <div class="gallery-item" style="--ar:16/9" data-title="YouTube Thumbnail" data-desc="High-contrast, click-worthy thumbnail designed for maximum engagement. Strategic use of facial expression, bold text, and colour psychology." data-color="linear-gradient(135deg,#0d0d0d,#1a3cff)" data-emoji="▶️" data-tag="Thumbnail">
+      <div class="gallery-thumb" style="background:linear-gradient(135deg,#0d0d0d22,#1a3cff22);aspect-ratio:16/9">▶️</div>
+      <div class="gallery-overlay"><span class="overlay-icon">🔍</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title">YouTube Thumbnail</div>
+        <div class="gallery-desc">High-CTR thumbnail design</div>
+        <span class="gallery-tag">Thumbnail</span>
+      </div>
+    </div>
+
+    <div class="gallery-item" style="--ar:1" data-title="Logo Design" data-desc="A minimal wordmark logo created in Photoshop. Carefully chosen weight, spacing, and a custom colour palette that communicates trust and modernity." data-color="linear-gradient(135deg,#0d0d0d,#5a5a5a)" data-emoji="✏️" data-tag="Branding">
+      <div class="gallery-thumb" style="background:linear-gradient(135deg,#0d0d0d18,#5a5a5a18)">✏️</div>
+      <div class="gallery-overlay"><span class="overlay-icon">🔍</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title">Logo Design</div>
+        <div class="gallery-desc">Minimal wordmark in Photoshop</div>
+        <span class="gallery-tag">Branding</span>
+      </div>
+    </div>
+
+    <div class="gallery-item" style="--ar:4/5" data-title="Motivational Graphic" data-desc="Quote-based social graphic with a clean, modern aesthetic. Designed for maximum shareability across Instagram and Twitter/X." data-color="linear-gradient(135deg,#22c55e,#1a3cff)" data-emoji="💬" data-tag="Social Media">
+      <div class="gallery-thumb" style="background:linear-gradient(135deg,#22c55e22,#1a3cff22);aspect-ratio:4/5">💬</div>
+      <div class="gallery-overlay"><span class="overlay-icon">🔍</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title">Motivational Graphic</div>
+        <div class="gallery-desc">Quote card for social sharing</div>
+        <span class="gallery-tag">Social Media</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-preview" id="lightboxPreview"></div>
+    <div class="lightbox-body">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">TB<span>.</span></span>
+  <p>© 2025 Tomiwa Balogun</p>
+  <div style="display:flex;gap:1rem">
+    <a href="web.html" style="font-family:'Syne',sans-serif;font-size:0.82rem;color:var(--ink-light);text-decoration:none;transition:color 0.3s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-light)'">Web →</a>
+    <a href="video.html" style="font-family:'Syne',sans-serif;font-size:0.82rem;color:var(--ink-light);text-decoration:none;transition:color 0.3s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-light)'">Video →</a>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+
+  // Staggered gallery reveal
+  const items = document.querySelectorAll('.gallery-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(items).indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), idx * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  items.forEach(el => observer.observe(el));
+
+  // Page hero reveal
+  document.querySelectorAll('.reveal').forEach(el => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPreview = document.getElementById('lightboxPreview');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDesc = document.getElementById('lightboxDesc');
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      lightboxPreview.style.background = item.dataset.color || '#f5f3ee';
+      lightboxPreview.innerHTML = `<span style="font-size:5rem">${item.dataset.emoji || '🎨'}</span>`;
+      lightboxTitle.textContent = item.dataset.title || '';
+      lightboxDesc.textContent = item.dataset.desc || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>

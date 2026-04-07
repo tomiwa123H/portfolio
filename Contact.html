@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — AURELIA</title>
+<meta name="description" content="Write to AURELIA. A person reads every message and replies within one business day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-left"><button class="nav-hamburger" onclick="openMenu()"><i></i><i></i></button></div>
+  <a href="landing page.html" class="nav-logo" style="color:var(--black)">AURELIA</a>
+  <div class="nav-right">
+    <button class="nav-action" style="color:var(--mid)" onclick="openSearch()">Search</button>
+    <button class="nav-action" style="color:var(--mid)" onclick="openCart()">Bag&thinsp;(<span id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel">
+  <div class="menu-ghost">A</div>
+  <div class="menu-inner">
+    <div class="menu-top">
+      <span class="menu-season">SS 2026</span>
+      <button class="menu-close" onclick="closeMenu()">Close ×</button>
+    </div>
+    <nav class="menu-links">
+      <a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a>
+      <a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a>
+      <a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a>
+      <a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a>
+      <a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a>
+      <a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a>
+    </nav>
+    <div class="menu-footer">
+      <div class="menu-footer-links">
+        <a href="faq.html">FAQ</a>
+        <a href="#">Returns</a>
+        <a href="#">Size Guide</a>
+        <a href="#">Sustainability</a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<div class="search-panel" id="searchPanel">
+  <button class="search-close" onclick="closeSearch()">Close ×</button>
+  <div class="search-body">
+    <span class="search-kicker">Search the Collection</span>
+    <input type="search" class="search-field" placeholder="Trousers, knitwear, outerwear…" id="searchInput" aria-label="Search">
+    <div class="search-suggests">
+      <button class="search-suggest" onclick="closeSearch()">New Arrivals</button>
+      <button class="search-suggest" onclick="closeSearch()">Knitwear</button>
+      <button class="search-suggest" onclick="closeSearch()">Outerwear</button>
+      <button class="search-suggest" onclick="closeSearch()">Trousers</button>
+    </div>
+  </div>
+</div>
+
+<div class="cart-backdrop" id="cartBd" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <span class="cart-head-title">Your Bag</span>
+    <button class="cart-head-close" onclick="closeCart()">Close ×</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty-state">
+      <span class="cart-empty-italic">Your bag<br>is empty.</span>
+      <a href="shop.html" class="btn btn-outline" onclick="closeCart()"><span>View Collection</span></a>
+    </div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amt" id="cartTotal">£0</span>
+    </div>
+    <a href="shop.html" class="btn btn-dark btn-full"><span>View Collection</span></a>
+  </div>
+</aside>
+
+<!-- ══════════════════════════════════════════════════════════
+     CONTACT — Details as hero. Form as letter.
+═══════════════════════════════════════════════════════════ -->
+<div class="contact-v3">
+<div class="contact-v3-inner">
+
+  <!-- LEFT: Contact information -->
+  <div class="rv">
+    <span style="font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:3rem;">Get in Touch</span>
+    <h1 class="cv3-hed">Write<br>to <em>us.</em></h1>
+
+    <!-- Team voice quote -->
+    <p style="font-family:var(--ff-serif); font-size:1.05rem; font-style:italic; color:var(--ash); line-height:1.7; max-width:34ch; margin-bottom:3rem; padding:1.5rem 0; border-top:1px solid var(--parchment); border-bottom:1px solid var(--parchment);">
+      "We don't have a live chat or a ticketing system. If you write to us, a person reads it — usually within a few hours. We think that's the better way."
+      <span style="font-style:normal; font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--stone); display:block; margin-top:.8rem;">— The Team</span>
+    </p>
+
+    <div class="cv3-detail">
+      <span class="cv3-detail-lbl">Email</span>
+      <span class="cv3-detail-val">
+        <a href="mailto:care@aurelia.co" class="cv3-email-link">care@aurelia.co</a>
+      </span>
+    </div>
+
+    <div class="cv3-detail">
+      <span class="cv3-detail-lbl">Hours</span>
+      <span class="cv3-detail-val" style="font-size:.88rem; line-height:1.6;">Monday to Friday<br>9am – 6pm GMT</span>
+    </div>
+
+    <div class="cv3-detail">
+      <span class="cv3-detail-lbl">Response time</span>
+      <span class="cv3-detail-val" style="font-size:.88rem; line-height:1.6;">Within one business day.<br>Usually same day.</span>
+    </div>
+
+    <div class="cv3-detail" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--parchment);">
+      <span class="cv3-detail-lbl">Press &amp; Editorial</span>
+      <span class="cv3-detail-val">
+        <a href="mailto:press@aurelia.co" class="cv3-email-link">press@aurelia.co</a>
+      </span>
+    </div>
+
+    <div class="cv3-detail">
+      <span class="cv3-detail-lbl">Wholesale &amp; Stockist</span>
+      <span class="cv3-detail-val">
+        <a href="mailto:trade@aurelia.co" class="cv3-email-link">trade@aurelia.co</a>
+      </span>
+    </div>
+
+    <div class="cv3-detail" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--parchment);">
+      <span class="cv3-detail-lbl">Studio Address</span>
+      <span class="cv3-detail-val" style="font-size:.88rem; line-height:1.8;">
+        AURELIA Ltd<br>
+        Unit 4, Redchurch Street<br>
+        Shoreditch, London<br>
+        E2 7DJ
+      </span>
+    </div>
+    <p style="font-size:.68rem; color:var(--stone); margin-top:.5rem; letter-spacing:.03em;">Our studio is not open to the public.</p>
+  </div>
+
+  <!-- RIGHT: The form -->
+  <div class="rv">
+    <p style="font-family:var(--ff-serif); font-size:clamp(2rem,3vw,2.8rem); font-weight:300; line-height:1.05; margin-bottom:3rem; letter-spacing:-.01em;">
+      Tell us what's<br><em style="font-style:italic; color:var(--ash);">on your mind.</em>
+    </p>
+
+    <div class="cv3-form" id="contactForm">
+      <div class="cv3-group">
+        <label class="cv3-label" for="cName">Your name</label>
+        <input type="text" class="cv3-input" id="cName" placeholder="How should we address you?" autocomplete="name">
+      </div>
+      <div class="cv3-group">
+        <label class="cv3-label" for="cEmail">Email address</label>
+        <input type="email" class="cv3-input" id="cEmail" placeholder="Where should we reply?" autocomplete="email">
+      </div>
+      <div class="cv3-group">
+        <label class="cv3-label" for="cOrder">
+          Order number
+          <span style="color:var(--stone); font-size:.55rem; text-transform:none; letter-spacing:0;">(optional)</span>
+        </label>
+        <input type="text" class="cv3-input" id="cOrder" placeholder="If this is about an existing order">
+      </div>
+      <div class="cv3-group">
+        <label class="cv3-label" for="cMessage">Message</label>
+        <textarea class="cv3-input" id="cMessage" rows="6" placeholder="Write freely. The more context you give us, the better we can help."></textarea>
+      </div>
+
+      <p style="font-size:.72rem; color:var(--stone); line-height:1.6;">We read every message. We don't use auto-replies. You'll hear from a person.</p>
+
+      <button class="btn btn-dark" style="align-self:flex-start; margin-top:.5rem;" onclick="submitContact()">
+        <span>Send Message</span>
+      </button>
+
+      <div id="formError" style="display:none; margin-top:1rem; font-size:.82rem; color:var(--gold);">
+        Please fill in your name, email, and message before sending.
+      </div>
+    </div>
+
+    <!-- Success state — shown after submission -->
+    <div id="contactSuccess" style="display:none; padding:4rem 0;">
+      <p style="font-family:var(--ff-serif); font-size:clamp(1.8rem,3vw,2.4rem); font-weight:300; font-style:italic; color:var(--gold); line-height:1.1; margin-bottom:1.5rem;">
+        Thank you —<br>we'll be in touch.
+      </p>
+      <p style="font-size:.9rem; color:var(--mid); line-height:1.8; max-width:38ch;">
+        We've received your message. Expect a reply within one business day — usually sooner. We'll write to the email address you provided.
+      </p>
+      <a href="shop.html" class="btn-arrow" style="margin-top:2rem; display:inline-flex;">Browse the Collection</a>
+    </div>
+  </div>
+
+</div><!-- /contact-v3-inner -->
+</div><!-- /contact-v3 -->
+
+<!-- ══════════════════════════════════════════════════════════
+     FAQ PROMPT — dark pushdown
+═══════════════════════════════════════════════════════════ -->
+<section class="rv" style="padding:5rem 4vw; background:var(--ink); display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center;">
+  <div>
+    <p style="font-family:var(--ff-serif); font-size:clamp(1.8rem,3vw,2.8rem); font-weight:300; color:rgba(255,255,255,.78); line-height:1.05; margin-bottom:1.5rem;">
+      Quick answer<br><em style="font-style:italic;">in the FAQ?</em>
+    </p>
+    <p style="font-size:.85rem; color:rgba(255,255,255,.3); line-height:1.8; max-width:38ch;">
+      Most questions about returns, sizing, shipping, and materials are covered there. Faster than waiting for a reply.
+    </p>
+  </div>
+  <div>
+    <a href="faq.html" class="btn btn-ghost-light"><span>Visit the FAQ</span></a>
+  </div>
+</section>
+
+<footer class="footer-v3">
+  <div class="fv3-masthead">
+    <a href="landing page.html" class="fv3-logo">AURELIA</a>
+    <p class="fv3-strap">"Designed with intention. Worn without effort. Made to endure."</p>
+  </div>
+  <div class="fv3-grid">
+    <div class="fv3-col">
+      <span class="fv3-col-label">The House</span>
+      <p>London atelier. Fewer than 400 pieces per season, in certified materials, made in Porto and London.</p>
+      <div class="fv3-social">
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="fv3-col">
+      <span class="fv3-col-label">Shop</span>
+      <a href="shop.html">New Arrivals</a>
+      <a href="collections.html">Collections</a>
+      <a href="shop.html?cat=outerwear">Outerwear</a>
+      <a href="shop.html?cat=knitwear">Knitwear</a>
+    </div>
+    <div class="fv3-col">
+      <span class="fv3-col-label">Company</span>
+      <a href="about.html">About</a>
+      <a href="lookbook.html">Lookbook</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Press</a>
+    </div>
+    <div class="fv3-col">
+      <span class="fv3-col-label">Support</span>
+      <a href="faq.html">FAQ</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="#">Size Guide</a>
+      <a href="#">Repair Programme</a>
+    </div>
+  </div>
+  <div class="fv3-colophon">
+    <span>© 2026 AURELIA Ltd. Registered in England &amp; Wales.</span>
+    <div class="fv3-colophon-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* NAV */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 55), { passive: true });
+
+/* MENU */
+function openMenu() {
+  document.getElementById('menuPanel').classList.add('open');
+  document.getElementById('menuBd').classList.add('open');
+  document.body.classList.add('no-scroll');
+}
+function closeMenu() {
+  document.getElementById('menuPanel').classList.remove('open');
+  document.getElementById('menuBd').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+
+/* SEARCH */
+function openSearch() {
+  document.getElementById('searchPanel').classList.add('open');
+  document.body.classList.add('no-scroll');
+  setTimeout(() => document.getElementById('searchInput').focus(), 350);
+}
+function closeSearch() {
+  document.getElementById('searchPanel').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+
+/* ESC key */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeSearch(); closeMenu(); closeCart(); }
+});
+
+/* CART */
+let cart = JSON.parse(sessionStorage.getItem('aurelia_v3_cart') || '[]');
+
+function renderCart() {
+  const n = cart.length;
+  document.getElementById('cartCount').textContent = n;
+  const body = document.getElementById('cartBody');
+  const foot = document.getElementById('cartFoot');
+  if (!n) {
+    body.innerHTML = '<div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span><a href="shop.html" class="btn btn-outline" onclick="closeCart()"><span>View Collection</span></a></div>';
+    foot.style.display = 'none';
+    return;
+  }
+  const total = cart.reduce((s, i) => s + i.p, 0);
+  body.innerHTML = cart.map((item, idx) =>
+    '<div class="cart-row">' +
+      '<div>' +
+        '<p class="cart-row-name">' + item.n + '</p>' +
+        '<p class="cart-row-price">&pound;' + item.p + '</p>' +
+        '<button class="cart-row-del" onclick="removeFromCart(' + idx + ')">Remove</button>' +
+      '</div>' +
+    '</div>'
+  ).join('');
+  document.getElementById('cartTotal').textContent = '£' + total;
+  foot.style.display = 'block';
+  sessionStorage.setItem('aurelia_v3_cart', JSON.stringify(cart));
+}
+
+function openCart() {
+  document.getElementById('cartPanel').classList.add('open');
+  document.getElementById('cartBd').classList.add('open');
+  document.body.classList.add('no-scroll');
+}
+function closeCart() {
+  document.getElementById('cartPanel').classList.remove('open');
+  document.getElementById('cartBd').classList.remove('open');
+  document.body.classList.remove('no-scroll');
+}
+function removeFromCart(i) {
+  cart.splice(i, 1);
+  renderCart();
+}
+renderCart();
+
+/* CONTACT FORM */
+function submitContact() {
+  const name    = document.getElementById('cName').value.trim();
+  const email   = document.getElementById('cEmail').value.trim();
+  const message = document.getElementById('cMessage').value.trim();
+  const errEl   = document.getElementById('formError');
+
+  /* Validate */
+  if (!name || !email.includes('@') || !message) {
+    errEl.style.display = 'block';
+    /* Highlight empty required fields */
+    [['cName', name], ['cEmail', email], ['cMessage', message]].forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (!val) {
+        el.style.borderBottomColor = 'var(--gold)';
+        el.addEventListener('input', function clearHighlight() {
+          el.style.borderBottomColor = '';
+          el.removeEventListener('input', clearHighlight);
+          errEl.style.display = 'none';
+        });
+      }
+    });
+    return;
+  }
+
+  /* Hide form, show success */
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
+}
+
+/* SCROLL REVEALS */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.rv, .rv-fade, .rv-st').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

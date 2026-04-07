@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — AURELIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-left"><button class="nav-hamburger" onclick="openMenu()"><i></i><i></i></button></div>
+  <a href="landing page.html" class="nav-logo">AURELIA</a>
+  <div class="nav-right"><button class="nav-action" onclick="openSearch()">Search</button><button class="nav-action" onclick="openCart()">Bag&thinsp;(<span id="cartCount">0</span>)</button></div>
+</nav>
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel"><div class="menu-ghost">A</div><div class="menu-inner"><div class="menu-top"><span class="menu-season">SS 2026</span><button class="menu-close" onclick="closeMenu()">Close ×</button></div><nav class="menu-links"><a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a><a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a><a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a><a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a><a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a><a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a></nav><div class="menu-footer"><div class="menu-footer-links"><a href="faq.html">FAQ</a><a href="#">Returns</a></div></div></div></aside>
+<div class="search-panel" id="searchPanel"><button class="search-close" onclick="closeSearch()">Close ×</button><div class="search-body"><span class="search-kicker">Search</span><input type="search" class="search-field" placeholder="Trousers, knitwear…" id="searchInput"></div></div>
+<div class="cart-backdrop" id="cartBd" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel"><div class="cart-head"><span class="cart-head-title">Your Bag</span><button class="cart-head-close" onclick="closeCart()">Close ×</button></div><div class="cart-body" id="cartBody"><div class="cart-empty-state"><span class="cart-empty-italic">Empty.</span></div></div><div class="cart-foot" id="cartFoot" style="display:none"><div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-amt" id="cartTotal">£0</span></div></div></aside>
+
+<!-- ABOUT HERO -->
+<section class="about-hero-v3">
+  <div class="ahv3-img"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1800&q=88" alt="AURELIA"></div>
+  <div class="ahv3-fog"></div>
+  <div class="ahv3-text">
+    <span class="ahv3-kicker">The House of AURELIA</span>
+    <h1 class="ahv3-hed">A refusal<br>to participate<br><em>in excess.</em></h1>
+    <p class="ahv3-sub">Founded in an East London studio in 2020. Seven pieces. One question: will she still reach for this in five years?</p>
+  </div>
+</section>
+
+<!-- STORY IN PROSE -->
+<div class="prose-section">
+  <div class="p-chapter p-chapter-grid-a rv">
+    <div class="p-text">
+      <span class="p-num">2020</span>
+      <h2 class="p-hed">The wardrobe full of clothes and <em>nothing to wear.</em></h2>
+      <div class="p-prose">
+        <p>Creative Director Mara Ellison stood in front of a full wardrobe and felt nothing. Not emptiness — she owned plenty. But none of it was right. Everything was made to be replaced. Designed for seasons, not for lives. Made in factories that moved as fast as the demand required.</p>
+        <p>AURELIA was her correction. Not a brand in the conventional sense — a commitment. To make fewer things, better. To design with the assumption that the woman buying them will still own them in ten years and will still be glad she did.</p>
+        <p>The first collection was seven pieces. They sold out in four days. The model has never changed.</p>
+      </div>
+    </div>
+    <div class="p-img-col">
+      <div class="p-product-sticky">
+        <div class="p-product-frame p-product-frame-a">
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=88" alt="Mara Ellison" loading="lazy">
+        </div>
+        <div class="p-product-foot">
+          <p class="p-product-name">Mara Ellison</p>
+          <p class="p-product-price">Creative Director, London</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-chapter p-chapter-dark p-chapter-grid-b rv">
+    <div class="p-img-col">
+      <div class="p-product-sticky">
+        <div class="p-product-frame p-product-frame-a">
+          <img src="https://images.unsplash.com/photo-1495121605193-b116b5b09a6e?w=900&q=88" alt="Production" loading="lazy">
+        </div>
+        <div class="p-product-foot">
+          <p class="p-product-name" style="color:var(--ivory)">Porto, Portugal</p>
+          <p class="p-product-price">Where every piece is made</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-text">
+      <span class="p-num">How it's made</span>
+      <h2 class="p-hed">Made slowly.<br><em>On purpose.</em></h2>
+      <div class="p-prose">
+        <p>Each AURELIA collection begins six months before it reaches you. Fabric sourcing alone takes eight weeks — we work only with mills holding current GOTS certification, primarily in Italy, Japan, and Portugal.</p>
+        <p>Production is limited by design. Every sample is worn by the team for a minimum of four weeks. If it doesn't become a first reach, it doesn't ship. No exceptions — not for cost, not for time, not for the number of pieces we could sell if we just moved faster.</p>
+        <p>Fewer than 400 pieces per season. Not as a premium signal. Because it's the only way to make each one well.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-chapter p-chapter-grid-a rv">
+    <div class="p-text">
+      <span class="p-num">Materials</span>
+      <h2 class="p-hed">Certified, or <em>not at all.</em></h2>
+      <div class="p-prose">
+        <p>GOTS organic cotton. Responsible wool. TENCEL™ lyocell. We work only with certified mills. No exceptions for cost, no exceptions for convenience. If a material doesn't meet certification, it doesn't enter a design brief.</p>
+        <p>We publish our full supply chain on request. Every mill, every dye house, every shipping route. Not because we're required to — because it's the only honest way to operate.</p>
+      </div>
+      <a href="shop.html" class="btn btn-outline" style="margin-top:2.5rem"><span>Shop the Collection</span></a>
+    </div>
+    <div class="p-img-col">
+      <div class="p-product-sticky">
+        <div class="p-product-frame p-product-frame-a">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&q=88" alt="Materials" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FULL BLEED QUOTE -->
+<section style="background:var(--ink); padding:9rem 4vw; text-align:center; position:relative; overflow:hidden">
+  <div style="position:absolute; right:-3vw; top:-3rem; font-family:var(--ff-serif); font-size:clamp(12rem,25vw,28rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.022); line-height:1; pointer-events:none">Why.</div>
+  <p style="font-size:.55rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:2rem">The Position</p>
+  <h2 style="font-family:var(--ff-serif); font-size:clamp(2.5rem,5.5vw,5.5rem); font-weight:300; color:rgba(255,255,255,.78); line-height:1.05; max-width:860px; margin:0 auto; letter-spacing:-.01em; font-style:italic; position:relative; z-index:1">"The most radical thing a fashion brand can do in 2026 is make less."</h2>
+  <p style="font-size:.72rem; color:rgba(255,255,255,.25); margin-top:2rem; letter-spacing:.1em">— Mara Ellison, Creative Director</p>
+</section>
+
+<footer class="footer-v3">
+  <div class="fv3-masthead"><a href="landing page.html" class="fv3-logo">AURELIA</a><p class="fv3-strap">"Designed with intention. Worn without effort. Made to endure."</p></div>
+  <div class="fv3-grid">
+    <div class="fv3-col"><span class="fv3-col-label">The House</span><p>London atelier, 2020. Fewer than 400 pieces per season.</p><div class="fv3-social"><a href="#">Instagram</a><a href="#">Pinterest</a></div></div>
+    <div class="fv3-col"><span class="fv3-col-label">Shop</span><a href="shop.html">All Products</a><a href="collections.html">Collections</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Company</span><a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="contact.html">Contact</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Support</span><a href="faq.html">FAQ</a><a href="#">Returns</a><a href="#">Repair</a></div>
+  </div>
+  <div class="fv3-colophon"><span>© 2026 AURELIA Ltd.</span><div class="fv3-colophon-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>55),{passive:true});
+function openMenu(){document.getElementById('menuPanel').classList.add('open');document.getElementById('menuBd').classList.add('open');document.body.classList.add('no-scroll');}function closeMenu(){document.getElementById('menuPanel').classList.remove('open');document.getElementById('menuBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openSearch(){document.getElementById('searchPanel').classList.add('open');document.body.classList.add('no-scroll');setTimeout(()=>document.getElementById('searchInput').focus(),350);}function closeSearch(){document.getElementById('searchPanel').classList.remove('open');document.body.classList.remove('no-scroll');}
+let cart=[];function openCart(){document.getElementById('cartPanel').classList.add('open');document.getElementById('cartBd').classList.add('open');document.body.classList.add('no-scroll');}function closeCart(){document.getElementById('cartPanel').classList.remove('open');document.getElementById('cartBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();closeMenu();closeCart();}});
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.07});document.querySelectorAll('.rv,.rv-fade,.rv-st').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

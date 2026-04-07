@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* FOOTER */
+.footer {
+  background: #fff;
+  border-top: 1px solid #eee;
+  margin-top: 5rem;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  padding: 3rem;
+}
+
+/* BRAND */
+.footer-brand h2 {
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* LINKS */
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2rem;
+}
+
+.footer-links h4 {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.footer-links a {
+  display: block;
+  text-decoration: none;
+  color: #555;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #000;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  border-top: 1px solid #eee;
+  padding: 1rem 3rem;
+  font-size: 0.75rem;
+  color: #777;
+}
+
+/* MOBILE */
+@media(max-width:768px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<footer class="footer">
+
+  <div class="footer-inner">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <h2>AURELIA</h2>
+      <p>Modern essentials designed for everyday wear.</p>
+    </div>
+
+    <!-- LINKS -->
+    <div class="footer-links">
+      <div>
+        <h4>Shop</h4>
+        <a href="#">New Arrivals</a>
+        <a href="#">Collection</a>
+        <a href="#">Trousers</a>
+        <a href="#">Outerwear</a>
+      </div>
+
+      <div>
+        <h4>Info</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+      </div>
+
+      <div>
+        <h4>Follow</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Pinterest</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 AURELIA</p>
+  </div>
+
+</footer>
+
+<script>
+
+</script>
+
+</body>
+</html>

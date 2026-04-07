@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collections — AURELIA</title>
+<meta name="description" content="The AURELIA archive. Every collection since 2020, made in small batches in Porto and London.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-left"><button class="nav-hamburger" onclick="openMenu()"><i></i><i></i></button></div>
+  <a href="landing page.html" class="nav-logo" style="color:var(--black)">AURELIA</a>
+  <div class="nav-right">
+    <button class="nav-action" style="color:var(--mid)" onclick="openSearch()">Search</button>
+    <button class="nav-action" style="color:var(--mid)" onclick="openCart()">Bag&thinsp;(<span id="cartCount">0</span>)</button>
+  </div>
+</nav>
+
+<div class="menu-backdrop" id="menuBd" onclick="closeMenu()"></div>
+<aside class="menu-panel" id="menuPanel">
+  <div class="menu-ghost">A</div>
+  <div class="menu-inner">
+    <div class="menu-top"><span class="menu-season">SS 2026</span><button class="menu-close" onclick="closeMenu()">Close ×</button></div>
+    <nav class="menu-links">
+      <a href="landing page.html" class="menu-link">Home<span class="menu-link-num">01</span></a>
+      <a href="shop.html" class="menu-link">Shop<span class="menu-link-num">02</span></a>
+      <a href="collections.html" class="menu-link">Collections<span class="menu-link-num">03</span></a>
+      <a href="lookbook.html" class="menu-link">Lookbook<span class="menu-link-num">04</span></a>
+      <a href="about.html" class="menu-link">About<span class="menu-link-num">05</span></a>
+      <a href="contact.html" class="menu-link">Contact<span class="menu-link-num">06</span></a>
+    </nav>
+    <div class="menu-footer"><div class="menu-footer-links"><a href="faq.html">FAQ</a><a href="#">Returns</a></div></div>
+  </div>
+</aside>
+<div class="search-panel" id="searchPanel"><button class="search-close" onclick="closeSearch()">Close ×</button><div class="search-body"><span class="search-kicker">Search the Collection</span><input type="search" class="search-field" placeholder="Trousers, knitwear…" id="searchInput"></div></div>
+<div class="cart-backdrop" id="cartBd" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel"><div class="cart-head"><span class="cart-head-title">Your Bag</span><button class="cart-head-close" onclick="closeCart()">Close ×</button></div><div class="cart-body" id="cartBody"><div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span></div></div><div class="cart-foot" id="cartFoot" style="display:none"><div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-amt" id="cartTotal">£0</span></div><a href="shop.html" class="btn btn-dark btn-full"><span>Checkout</span></a></div></aside>
+
+<!-- HEADER -->
+<div class="col-v3-header rv">
+  <div>
+    <span style="font-size:.52rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:2rem;">The Archive</span>
+    <h1 class="col-v3-hed">All<br><em>Collections.</em></h1>
+  </div>
+  <div>
+    <p class="col-v3-intro">Seven seasons. Forty-one pieces. Each one made in small batches in Porto, finished in London. We don't reissue what's gone — but we keep the record.</p>
+    <p class="col-v3-meta">2020 — Present · London &amp; Porto</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SEASON 01 — SS 2026: Current
+     Name as giant type. Image as atmosphere.
+═══════════════════════════════════════════════════════════ -->
+<article class="col-season">
+  <div class="col-season-img">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=85" alt="SS 2026" loading="lazy">
+  </div>
+  <div class="col-season-text">
+    <div class="col-season-ghost">SS</div>
+    <div class="col-season-top">
+      <span class="col-season-label">Spring / Summer 2026 — Current Collection</span>
+      <h2 class="col-season-name">Considered<br><em>Form.</em></h2>
+    </div>
+    <div class="col-season-bottom">
+      <p class="col-season-desc">12 pieces. All in certified materials. Designed around permanence — the kind of clothing that becomes more itself with wear, not less. Shot in Lisbon in March 2026.</p>
+      <a href="shop.html" class="col-season-cta">Shop the Collection</a>
+    </div>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════
+     SEASON 02 — AW 2025: Archive
+═══════════════════════════════════════════════════════════ -->
+<article class="col-season">
+  <div class="col-season-text">
+    <div class="col-season-ghost">AW</div>
+    <div class="col-season-top">
+      <span class="col-season-label">Autumn / Winter 2025 — Archive</span>
+      <h2 class="col-season-name">Quiet<br><em>Weight.</em></h2>
+    </div>
+    <div class="col-season-bottom">
+      <p class="col-season-desc">9 pieces. Heavy felted wool, brushed cashmere. A collection about the specific warmth of something made to last. Mostly sold out. Two pieces remain.</p>
+      <a href="shop.html" class="col-season-cta">View remaining pieces</a>
+    </div>
+  </div>
+  <div class="col-season-img">
+    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=85" alt="AW 2025" loading="lazy">
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════
+     SEASON 03 — SS 2025: Sold Out
+═══════════════════════════════════════════════════════════ -->
+<article class="col-season">
+  <div class="col-season-img">
+    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&q=85" alt="SS 2025" loading="lazy">
+  </div>
+  <div class="col-season-text">
+    <div class="col-season-ghost">SS</div>
+    <div class="col-season-top">
+      <span class="col-season-label">Spring / Summer 2025 — Sold Out</span>
+      <h2 class="col-season-name">Between<br><em>Seasons.</em></h2>
+    </div>
+    <div class="col-season-bottom">
+      <p class="col-season-desc">11 pieces. Our first collaboration with Porto dyers Ateliê Fio. The palette was built from a single afternoon in the Serra da Estrela in November 2024. Completely sold through.</p>
+      <a href="lookbook.html" class="col-season-cta">View the lookbook</a>
+    </div>
+  </div>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════
+     SEASON 04 — AW 2024: Archive
+═══════════════════════════════════════════════════════════ -->
+<article class="col-season">
+  <div class="col-season-text">
+    <div class="col-season-ghost">AW</div>
+    <div class="col-season-top">
+      <span class="col-season-label">Autumn / Winter 2024 — Archive</span>
+      <h2 class="col-season-name">The Long<br><em>Evening.</em></h2>
+    </div>
+    <div class="col-season-bottom">
+      <p class="col-season-desc">8 pieces. Our first attempt at eveningwear — not formal, but considered. Fluid silk-blend pieces designed around the specific quality of being somewhere you want to stay. Mostly sold out.</p>
+      <a href="lookbook.html" class="col-season-cta">View the lookbook</a>
+    </div>
+  </div>
+  <div class="col-season-img">
+    <img src="https://images.unsplash.com/photo-1495121605193-b116b5b09a6e?w=1200&q=85" alt="AW 2024" loading="lazy">
+  </div>
+</article>
+
+<!-- Closing editorial line -->
+<section style="padding:7rem 4vw; background:var(--ink); text-align:center;" class="rv">
+  <p style="font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:2rem;">The next collection</p>
+  <h2 style="font-family:var(--ff-serif); font-size:clamp(2.5rem,5vw,5rem); font-weight:300; color:rgba(255,255,255,.75); line-height:1.05; max-width:700px; margin:0 auto; font-style:italic;">AW 2026 is in production.<br>Available September.</h2>
+  <p style="font-size:.82rem; color:rgba(255,255,255,.28); margin-top:2rem; line-height:1.7;">Join the inner room for early access before public release.</p>
+  <div style="display:flex; justify-content:center; margin-top:3rem;">
+    <a href="landing page.html#newsletter" class="btn btn-ghost-light" style="color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.2);"><span>Get Early Access</span></a>
+  </div>
+</section>
+
+<footer class="footer-v3">
+  <div class="fv3-masthead"><a href="landing page.html" class="fv3-logo">AURELIA</a><p class="fv3-strap">"Designed with intention. Worn without effort. Made to endure."</p></div>
+  <div class="fv3-grid">
+    <div class="fv3-col"><span class="fv3-col-label">The House</span><p>London atelier. Fewer than 400 pieces per season.</p><div class="fv3-social"><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">TikTok</a></div></div>
+    <div class="fv3-col"><span class="fv3-col-label">Shop</span><a href="shop.html">New Arrivals</a><a href="collections.html">Collections</a><a href="shop.html?cat=outerwear">Outerwear</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Company</span><a href="about.html">About</a><a href="lookbook.html">Lookbook</a><a href="contact.html">Contact</a></div>
+    <div class="fv3-col"><span class="fv3-col-label">Support</span><a href="faq.html">FAQ</a><a href="#">Returns</a><a href="#">Size Guide</a><a href="#">Repair</a></div>
+  </div>
+  <div class="fv3-colophon"><span>© 2026 AURELIA Ltd.</span><div class="fv3-colophon-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>55),{passive:true});
+function openMenu(){document.getElementById('menuPanel').classList.add('open');document.getElementById('menuBd').classList.add('open');document.body.classList.add('no-scroll');}
+function closeMenu(){document.getElementById('menuPanel').classList.remove('open');document.getElementById('menuBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openSearch(){document.getElementById('searchPanel').classList.add('open');document.body.classList.add('no-scroll');setTimeout(()=>document.getElementById('searchInput').focus(),350);}
+function closeSearch(){document.getElementById('searchPanel').classList.remove('open');document.body.classList.remove('no-scroll');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();closeMenu();closeCart();}});
+let cart=JSON.parse(sessionStorage.getItem('aurelia_v3_cart')||'[]');
+function renderCart(){const n=cart.length;document.getElementById('cartCount').textContent=n;const body=document.getElementById('cartBody'),foot=document.getElementById('cartFoot');if(!n){body.innerHTML='<div class="cart-empty-state"><span class="cart-empty-italic">Your bag<br>is empty.</span></div>';foot.style.display='none';return;}const total=cart.reduce((s,i)=>s+i.p,0);body.innerHTML=cart.map((item,i)=>`<div class="cart-row"><div><p class="cart-row-name">${item.n}</p><p class="cart-row-price">£${item.p}</p><button class="cart-row-del" onclick="removeFromCart(${i})">Remove</button></div></div>`).join('');document.getElementById('cartTotal').textContent=`£${total}`;foot.style.display='block';sessionStorage.setItem('aurelia_v3_cart',JSON.stringify(cart));}
+function openCart(){document.getElementById('cartPanel').classList.add('open');document.getElementById('cartBd').classList.add('open');document.body.classList.add('no-scroll');}
+function closeCart(){document.getElementById('cartPanel').classList.remove('open');document.getElementById('cartBd').classList.remove('open');document.body.classList.remove('no-scroll');}
+function removeFromCart(i){cart.splice(i,1);renderCart();}
+renderCart();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.06});
+document.querySelectorAll('.rv,.rv-fade,.rv-st').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
