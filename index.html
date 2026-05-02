@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tomiwa Balogun — Web Designer for Service Businesses</title>
-  <meta name="description" content="I build websites that help UK service businesses get more enquiries and look credible online. Web design, SEO-ready, mobile-first."/>
+  <meta name="description" content="I build websites that help service businesses get more enquiries and look credible online. Web design, SEO-ready, mobile-first."/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -50,7 +50,7 @@
     .section-title { font-family:'Syne',sans-serif; font-size:clamp(2rem,4vw,2.75rem); font-weight:800; line-height:1.12; letter-spacing:-0.03em; margin-bottom:1.1rem; }
     .section-subtitle { font-size:1.05rem; color:var(--ink-light); max-width:560px; margin-bottom:3rem; line-height:1.7; }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero { position:relative; min-height:100vh; display:flex; align-items:center; padding-top:var(--nav-h); overflow:hidden; background:#f5f3ee; }
     .hero-inner { max-width:1160px; margin:0 auto; padding:4rem clamp(1.5rem,5vw,4rem); width:100%; position:relative; z-index:2; }
     .hero-bg-layer { position:absolute; inset:0; pointer-events:none; z-index:0; }
@@ -63,38 +63,17 @@
     @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 
     .hero-tag { display:inline-flex; align-items:center; gap:0.5rem; font-family:'DM Sans',sans-serif; font-size:0.85rem; font-weight:600; color:var(--ink-light); margin-bottom:1.5rem; animation:fadeUp 0.6s ease both 0.05s; background:var(--surface); border:1px solid rgba(0,0,0,0.08); padding:0.4rem 0.9rem; border-radius:100px; }
-
-    .hero-name {
-      font-family:'Syne',sans-serif;
-      font-size:clamp(2.6rem,7.5vw,7rem);
-      font-weight:800;
-      line-height:0.96;
-      letter-spacing:-0.04em;
-      color:var(--ink);
-      margin-bottom:1.25rem;
-      animation:fadeUp 0.6s ease both 0.18s;
-    }
+    .hero-name { font-family:'Syne',sans-serif; font-size:clamp(2.6rem,7.5vw,7rem); font-weight:800; line-height:0.96; letter-spacing:-0.04em; color:var(--ink); margin-bottom:1.25rem; animation:fadeUp 0.6s ease both 0.18s; }
     .hero-name .accent { color:var(--accent); }
     .hero-name .line-two { display:block; }
-
-    .hero-sub {
-      font-family:'DM Sans',sans-serif;
-      font-size:clamp(1rem,2vw,1.2rem);
-      color:var(--ink-light);
-      max-width:560px;
-      line-height:1.7;
-      margin-bottom:2.25rem;
-      animation:fadeUp 0.6s ease both 0.32s;
-    }
+    .hero-sub { font-family:'DM Sans',sans-serif; font-size:clamp(1rem,2vw,1.2rem); color:var(--ink-light); max-width:560px; line-height:1.7; margin-bottom:2.25rem; animation:fadeUp 0.6s ease both 0.32s; }
     .hero-sub strong { color:var(--ink); font-weight:600; }
-
     .hero-stats { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:2.25rem; animation:fadeUp 0.6s ease both 0.46s; }
     .hero-stat { display:flex; flex-direction:column; }
     .hero-stat-num { font-family:'Syne',sans-serif; font-size:1.55rem; font-weight:800; color:var(--ink); letter-spacing:-0.03em; line-height:1; }
     .hero-stat-num span { color:var(--accent); }
     .hero-stat-label { font-size:0.73rem; color:var(--ink-light); font-weight:500; margin-top:0.2rem; white-space:nowrap; }
     .hero-stat-divider { width:1px; background:rgba(0,0,0,0.1); align-self:stretch; }
-
     .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; animation:fadeUp 0.6s ease both 0.6s; }
 
     /* TRUST BAR */
@@ -104,7 +83,7 @@
     .trust-items { display:flex; gap:2rem; flex-wrap:wrap; align-items:center; }
     .trust-item { font-family:'Syne',sans-serif; font-size:0.82rem; font-weight:700; color:var(--ink); opacity:0.5; white-space:nowrap; }
 
-    /* PROBLEM SECTION */
+    /* PROBLEM */
     #problem { border-top:1px solid rgba(0,0,0,0.07); }
     .problem-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
     .problem-list { display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem; }
@@ -113,7 +92,6 @@
     .problem-icon svg { color:#ef4444; }
     .problem-text { font-size:0.92rem; color:var(--ink-light); line-height:1.5; }
     .problem-text strong { color:var(--ink); font-weight:600; display:block; margin-bottom:0.15rem; }
-
     .solution-box { background:var(--ink); border-radius:var(--radius); padding:2.5rem; color:#fff; }
     .solution-box h3 { font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; margin-bottom:1rem; letter-spacing:-0.02em; }
     .solution-box p { font-size:0.95rem; color:rgba(255,255,255,0.65); line-height:1.7; margin-bottom:1.5rem; }
@@ -121,39 +99,62 @@
     .solution-point { display:flex; align-items:center; gap:0.65rem; font-size:0.88rem; color:rgba(255,255,255,0.85); }
     .solution-point svg { color:var(--accent); flex-shrink:0; }
 
-    /* CASE STUDY */
+    /* CASE STUDIES — now a two-column equal grid */
     #casestudy { border-top:1px solid rgba(0,0,0,0.07); }
-    .case-header { display:grid; grid-template-columns:1fr auto; gap:2rem; align-items:start; margin-bottom:3rem; }
-    .case-badge { display:inline-flex; align-items:center; gap:0.4rem; background:#dcfce7; color:#15803d; font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 0.75rem; border-radius:4px; margin-bottom:0.75rem; }
-    .case-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:#22c55e; display:block; }
-    .case-client-card { background:var(--surface); border:1px solid rgba(0,0,0,0.08); border-radius:var(--radius); padding:1.5rem 2rem; min-width:240px; }
-    .case-client-label { font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-light); margin-bottom:0.5rem; }
-    .case-client-name { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; color:var(--ink); margin-bottom:0.25rem; }
-    .case-client-detail { font-size:0.82rem; color:var(--ink-light); }
+    .cases-intro { margin-bottom:3rem; }
+    .cases-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:0; }
 
-    .case-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.25rem; margin-bottom:2.5rem; }
-    .case-block { background:var(--surface); border-radius:var(--radius); padding:1.75rem; border:1px solid rgba(0,0,0,0.07); }
-    .case-block-label { font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:0.75rem; }
-    .case-block p { font-size:0.9rem; color:var(--ink-light); line-height:1.65; }
+    .case-card { background:var(--surface); border-radius:var(--radius); border:1px solid rgba(0,0,0,0.08); overflow:hidden; display:flex; flex-direction:column; transition:var(--tr); }
+    .case-card:hover { transform:translateY(-4px); box-shadow:0 20px 50px rgba(0,0,0,0.1); border-color:transparent; }
 
-    .case-results { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:2.5rem; }
-    .result-box { background:var(--ink); border-radius:var(--radius); padding:1.5rem; text-align:center; }
-    .result-num { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:#fff; letter-spacing:-0.03em; }
-    .result-num span { color:#60a5fa; }
-    .result-label { font-size:0.75rem; color:rgba(255,255,255,0.5); margin-top:0.3rem; font-weight:500; }
+    .case-card-banner {
+      width:100%; height:180px;
+      position:relative; overflow:hidden;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .case-card-banner img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+    .case-card-banner-inner { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:1; }
+    .case-card-banner img[src]:not([src=""]) ~ .case-card-banner-inner { display:none; }
 
-    .case-quote { background:var(--accent-dim); border-left:3px solid var(--accent); border-radius:0 12px 12px 0; padding:1.5rem 1.75rem; font-size:1rem; color:var(--ink); line-height:1.7; font-style:italic; }
-    .case-quote cite { display:block; margin-top:0.75rem; font-style:normal; font-family:'Syne',sans-serif; font-size:0.78rem; font-weight:700; color:var(--ink-light); }
+    .case-card-body { padding:1.75rem 2rem 2rem; display:flex; flex-direction:column; gap:0.85rem; flex:1; }
+    .case-card-meta { display:flex; align-items:center; gap:0.65rem; flex-wrap:wrap; }
+    .case-num { font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; color:var(--ink-light); letter-spacing:0.12em; text-transform:uppercase; }
+    .badge { display:inline-flex; align-items:center; gap:0.3rem; font-family:'Syne',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.22rem 0.6rem; border-radius:4px; }
+    .badge-live { background:#dcfce7; color:#15803d; }
+    .badge-live::before { content:''; width:6px; height:6px; border-radius:50%; background:#22c55e; display:block; }
+    .badge-template { background:#f3f0ff; color:#6d28d9; }
+    .badge-featured { background:var(--accent); color:#fff; }
+
+    .case-card-title { font-family:'Syne',sans-serif; font-size:1.25rem; font-weight:800; letter-spacing:-0.025em; line-height:1.2; color:var(--ink); }
+    .case-card-sub { font-family:'Syne',sans-serif; font-size:0.72rem; font-weight:700; color:var(--ink-light); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem; }
+    .case-card-desc { font-size:0.92rem; color:var(--ink-light); line-height:1.7; flex:1; }
+
+    .case-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin:0.5rem 0; }
+    .case-fact { background:var(--bg); border-radius:10px; padding:0.85rem 0.75rem; text-align:center; }
+    .case-fact-num { font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:800; color:var(--accent); letter-spacing:-0.02em; line-height:1; }
+    .case-fact-label { font-size:0.68rem; color:var(--ink-light); margin-top:0.2rem; font-weight:500; }
+
+    .case-scope-list { display:flex; flex-direction:column; gap:0.4rem; }
+    .case-scope-item { display:flex; align-items:flex-start; gap:0.5rem; font-size:0.85rem; color:var(--ink-light); line-height:1.4; }
+    .case-scope-item svg { color:var(--accent); flex-shrink:0; margin-top:2px; }
+
+    .case-card-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+    .tag { font-family:'Syne',sans-serif; font-size:0.72rem; font-weight:700; padding:0.28rem 0.65rem; background:var(--accent-dim); color:var(--accent); border-radius:6px; }
+
+    .case-card-actions { display:flex; gap:0.75rem; flex-wrap:wrap; padding-top:0.25rem; }
+
+    /* Factual closing note */
+    .case-note { background:var(--accent-dim); border-left:3px solid var(--accent); border-radius:0 12px 12px 0; padding:1.25rem 1.5rem; font-size:0.92rem; color:var(--ink); line-height:1.7; margin-top:1.5rem; }
+    .case-note cite { display:block; margin-top:0.5rem; font-style:normal; font-family:'Syne',sans-serif; font-size:0.75rem; font-weight:700; color:var(--ink-light); }
 
     /* SERVICES */
     #services { border-top:1px solid rgba(0,0,0,0.07); }
+    .guarantee-pill { display:inline-flex; align-items:center; gap:0.6rem; background:var(--surface); border:1px solid rgba(0,0,0,0.08); border-radius:100px; padding:0.5rem 1.1rem; margin-bottom:2.5rem; font-size:0.83rem; font-family:'Syne',sans-serif; font-weight:600; color:var(--ink); }
     .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
     .service-card { background:var(--surface); border-radius:var(--radius); border:1px solid rgba(0,0,0,0.08); padding:2.25rem; display:flex; flex-direction:column; transition:var(--tr); position:relative; overflow:hidden; }
     .service-card:hover { transform:translateY(-4px); box-shadow:0 18px 48px rgba(0,0,0,0.1); border-color:transparent; }
     .service-card.featured { background:var(--ink); border-color:transparent; }
-    .service-card.featured .service-price,
-    .service-card.featured h3,
-    .service-card.featured .service-desc { color:#fff; }
+    .service-card.featured .service-price,.service-card.featured h3,.service-card.featured .service-desc { color:#fff; }
     .service-card.featured .service-desc { color:rgba(255,255,255,0.6); }
     .service-card.featured .service-tag { background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); }
     .service-card.featured .service-includes li { color:rgba(255,255,255,0.75); }
@@ -180,48 +181,6 @@
     .stat-box { background:var(--bg); border-radius:12px; padding:1.25rem; text-align:center; }
     .stat-num { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:var(--accent); }
     .stat-label { font-size:0.78rem; color:var(--ink-light); margin-top:0.2rem; }
-
-    /* PROJECTS */
-    #projects { border-top:1px solid rgba(0,0,0,0.07); }
-    .project-card { background:var(--surface); border-radius:var(--radius); border:1px solid rgba(0,0,0,0.08); transition:var(--tr); overflow:hidden; display:flex; flex-direction:column; }
-    .project-card:hover { transform:translateY(-5px); box-shadow:0 22px 52px rgba(0,0,0,0.11); border-color:transparent; }
-    .card-banner { width:100%; height:240px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .card-banner img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-    .card-banner-inner { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:1; }
-    .card-banner img[src]:not([src=""]) ~ .card-banner-inner { display:none; }
-    .browser-chrome { width:88%; max-width:520px; background:#1a1a2e; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,0.4); overflow:hidden; }
-    .browser-bar { background:#2a2a3e; padding:0.55rem 1rem; display:flex; align-items:center; gap:0.5rem; }
-    .browser-dots { display:flex; gap:5px; }
-    .browser-dots span { width:10px; height:10px; border-radius:50%; display:block; }
-    .dot-r{background:#ff5f57} .dot-y{background:#febc2e} .dot-g{background:#28c840}
-    .browser-url { flex:1; background:rgba(255,255,255,0.08); border-radius:4px; padding:0.2rem 0.6rem; font-size:0.72rem; color:rgba(255,255,255,0.45); font-family:monospace; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .browser-content { padding:1rem 1.25rem; min-height:80px; display:flex; align-items:center; justify-content:center; }
-    .site-preview { width:100%; display:flex; flex-direction:column; gap:0.4rem; }
-    .pr-h { height:10px; border-radius:4px; }
-    .pr-l { height:6px; border-radius:3px; background:rgba(255,255,255,0.1); }
-    .pr-l.w80{width:80%} .pr-l.w60{width:60%} .pr-l.w50{width:50%}
-    .pr-btn-bar { display:flex; gap:0.4rem; margin-top:0.5rem; }
-    .pr-btn { height:14px; width:60px; border-radius:6px; }
-    .card-body { padding:1.75rem 2rem 2rem; display:flex; flex-direction:column; gap:0.9rem; }
-    .card-meta { display:flex; align-items:center; gap:0.65rem; flex-wrap:wrap; }
-    .card-num { font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; color:var(--ink-light); letter-spacing:0.12em; text-transform:uppercase; }
-    .badge { display:inline-flex; align-items:center; gap:0.3rem; font-family:'Syne',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.22rem 0.6rem; border-radius:4px; }
-    .badge-featured { background:var(--accent); color:#fff; }
-    .badge-live { background:#dcfce7; color:#15803d; }
-    .badge-live::before { content:''; width:6px; height:6px; border-radius:50%; background:#22c55e; display:block; }
-    .badge-template { background:#f3f0ff; color:#6d28d9; }
-    .card-title { font-family:'Syne',sans-serif; font-size:clamp(1.2rem,2.5vw,1.45rem); font-weight:800; letter-spacing:-0.025em; line-height:1.2; color:var(--ink); }
-    .card-desc { font-size:0.92rem; color:var(--ink-light); line-height:1.7; }
-    .card-outcomes { display:flex; flex-direction:column; gap:0.45rem; }
-    .outcome { display:flex; align-items:flex-start; gap:0.5rem; font-size:0.88rem; color:var(--ink-light); line-height:1.5; }
-    .outcome svg { color:var(--accent); flex-shrink:0; margin-top:2px; }
-    .card-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
-    .tag { font-family:'Syne',sans-serif; font-size:0.72rem; font-weight:700; padding:0.28rem 0.65rem; background:var(--accent-dim); color:var(--accent); border-radius:6px; }
-    .card-actions { display:flex; gap:0.75rem; flex-wrap:wrap; padding-top:0.25rem; }
-    .projects-sub { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.5rem; }
-    .project-card.compact .card-banner { height:190px; }
-    .project-card.compact .card-body { padding:1.5rem 1.75rem 1.75rem; }
-    .project-card.compact .card-title { font-size:1.1rem; }
 
     /* FAQ */
     #faq { border-top:1px solid rgba(0,0,0,0.07); }
@@ -262,15 +221,12 @@
     /* RESPONSIVE */
     @media(max-width:900px) {
       .services-grid { grid-template-columns:1fr; }
-      .case-results { grid-template-columns:repeat(2,1fr); }
-      .case-grid { grid-template-columns:1fr; }
+      .cases-grid { grid-template-columns:1fr; }
     }
     @media(max-width:768px) {
       .nav-links{display:none} .hamburger{display:flex}
       .problem-grid,.about-grid,.contact-wrap { grid-template-columns:1fr; gap:2.5rem; }
-      .case-header { grid-template-columns:1fr; }
       .faq-grid { grid-template-columns:1fr; }
-      .card-banner{height:200px}
     }
     @media(max-width:480px) {
       .hero-inner { padding:3rem 1.5rem; }
@@ -280,12 +236,11 @@
       .hero-cta { flex-direction:column; }
       .hero-cta .btn { width:100%; justify-content:center; }
       .hero-ring { display:none; }
-      .case-results { grid-template-columns:repeat(2,1fr); }
+      .case-facts { grid-template-columns:repeat(2,1fr); }
     }
     @media(max-width:560px) {
-      .projects-sub{grid-template-columns:1fr}
-      .card-actions{flex-direction:column}
-      .card-actions .btn{width:100%;justify-content:center}
+      .card-actions,.case-card-actions { flex-direction:column; }
+      .card-actions .btn,.case-card-actions .btn { width:100%; justify-content:center; }
     }
   </style>
 </head>
@@ -296,7 +251,7 @@
   <ul class="nav-links">
     <li><a href="#problem">Why It Matters</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Work</a></li>
+    <li><a href="#casestudy">Work</a></li>
     <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
   </ul>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
@@ -305,12 +260,12 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#problem" class="mobile-link">Why It Matters</a>
   <a href="#services" class="mobile-link">Services</a>
-  <a href="#projects" class="mobile-link">Work</a>
+  <a href="#casestudy" class="mobile-link">Work</a>
   <a href="#contact" class="mobile-link">Get a Quote</a>
 </div>
 
 
-<!-- ═══════ HERO ═══════ -->
+<!-- HERO -->
 <div id="hero">
   <div class="hero-bg-layer">
     <div class="hero-blob-left"></div>
@@ -328,9 +283,7 @@
     </h1>
     <p class="hero-sub">
       I build <strong>professional, conversion-focused websites</strong> for service businesses — so you stop losing customers to competitors who just look better online.
-      Based in Lagos. Working with UK &amp; international clients.
     </p>
-
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num">3<span>+</span></div>
@@ -352,13 +305,12 @@
         <div class="hero-stat-label">Avg Delivery</div>
       </div>
     </div>
-
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Get a Free Quote
       </a>
-      <a href="#projects" class="btn btn-outline">See My Work</a>
+      <a href="#casestudy" class="btn btn-outline">See My Work</a>
     </div>
   </div>
 </div>
@@ -380,7 +332,7 @@
 </div>
 
 
-<!-- ═══════ PROBLEM ═══════ -->
+<!-- PROBLEM -->
 <section id="problem">
   <div class="problem-grid">
     <div>
@@ -421,102 +373,194 @@
       <h3>What I build instead</h3>
       <p>A website that works like your best salesperson — available 24/7, presenting your business professionally, and turning visitors into enquiries.</p>
       <div class="solution-points">
-        <div class="solution-point">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Mobile-first design that looks sharp on every screen
-        </div>
-        <div class="solution-point">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Clear CTAs that guide visitors to contact you
-        </div>
-        <div class="solution-point">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          SEO-ready structure so Google can find you
-        </div>
-        <div class="solution-point">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Fast load times (under 3 seconds)
-        </div>
-        <div class="solution-point">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Working contact forms that actually deliver leads
-        </div>
-        <div class="solution-point">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Delivered in 14 days, not 3 months
-        </div>
+        <div class="solution-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first design that looks sharp on every screen</div>
+        <div class="solution-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Clear CTAs that guide visitors to contact you</div>
+        <div class="solution-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEO-ready structure so Google can find you</div>
+        <div class="solution-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fast load times (under 3 seconds)</div>
+        <div class="solution-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Working contact forms that actually deliver leads</div>
+        <div class="solution-point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Delivered in 14 days, not 3 months</div>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ═══════ CASE STUDY ═══════ -->
+<!-- CASE STUDIES — EQUAL SIDE BY SIDE -->
 <section id="casestudy">
-  <span class="section-label">Case Study</span>
-  <div class="case-header reveal">
-    <div>
-      <div class="case-badge">Real Client · Real Results</div>
-      <h2 class="section-title">How Norwest Telecommunications got a website that finally matched their reputation.</h2>
-      <p style="font-size:1rem;color:var(--ink-light);max-width:580px;line-height:1.7;">A 30-year-old telecom company was still running on an outdated site that made them look like a startup. Here's what changed.</p>
-    </div>
-    <div class="case-client-card">
-      <div class="case-client-label">Client</div>
-      <div class="case-client-name">Norwest Telecommunications</div>
-      <div class="case-client-detail">Est. 1991 · Telecom &amp; Digital Services</div>
-    </div>
+  <div class="cases-intro">
+    <span class="section-label">Client Work</span>
+    <h2 class="section-title">Real sites. Real businesses.</h2>
+    <p class="section-subtitle">Two live projects — one for a 30-year-old telecom company, one for a Lagos IT training institute. Both built to attract customers, not just look professional.</p>
   </div>
 
-  <div class="case-grid reveal">
-    <div class="case-block">
-      <div class="case-block-label">The Problem</div>
-      <p>Norwest had over 30 years of experience in digital telecommunications — but their website didn't reflect it. The site was outdated, hard to navigate on mobile, and gave no clear path for new customers to make an enquiry. A strong business was being undersold every single day.</p>
+  <div class="cases-grid">
+
+    <!-- NORWEST -->
+    <div class="case-card reveal">
+      <div class="case-card-banner" style="background:linear-gradient(135deg,#0d1b3e 0%,#1a3cff 100%)">
+        <img src="norwest.PNG" alt="Norwest Telecommunications website"/>
+        <div class="case-card-banner-inner">
+          <div style="width:85%;background:#1a1a2e;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.4);overflow:hidden;">
+            <div style="background:#2a2a3e;padding:0.5rem 1rem;display:flex;align-items:center;gap:0.5rem;">
+              <div style="display:flex;gap:5px;"><span style="width:10px;height:10px;border-radius:50%;display:block;background:#ff5f57"></span><span style="width:10px;height:10px;border-radius:50%;display:block;background:#febc2e"></span><span style="width:10px;height:10px;border-radius:50%;display:block;background:#28c840"></span></div>
+              <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.72rem;color:rgba(255,255,255,0.45);font-family:monospace;">norwest.page.gd</div>
+            </div>
+            <div style="padding:1rem 1.25rem;background:linear-gradient(135deg,#0a1628,#0d2050);">
+              <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                <div style="height:10px;border-radius:4px;background:#fff;opacity:0.8;width:48%"></div>
+                <div style="height:6px;border-radius:3px;background:rgba(255,255,255,0.1);width:80%"></div>
+                <div style="height:6px;border-radius:3px;background:rgba(255,255,255,0.1);width:55%"></div>
+                <div style="display:flex;gap:0.4rem;margin-top:0.4rem;"><div style="height:14px;width:60px;border-radius:6px;background:#1a3cff;opacity:0.9"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-num">Project 01</span>
+          <span class="badge badge-live">Live</span>
+        </div>
+        <div class="case-card-sub">Est. 1991 · Telecom &amp; Digital Services</div>
+        <h2 class="case-card-title">Norwest Telecommunications</h2>
+        <p class="case-card-desc">A 30-year-old telecom company with a strong reputation — but a website that made them look like a startup. I rebuilt their entire online presence from the ground up.</p>
+
+        <div class="case-facts">
+          <div class="case-fact">
+            <div class="case-fact-num">14</div>
+            <div class="case-fact-label">Pages built</div>
+          </div>
+          <div class="case-fact">
+            <div class="case-fact-num">&lt;3s</div>
+            <div class="case-fact-label">Load time</div>
+          </div>
+          <div class="case-fact">
+            <div class="case-fact-num">100%</div>
+            <div class="case-fact-label">Mobile ready</div>
+          </div>
+        </div>
+
+        <div class="case-scope-list">
+          <div class="case-scope-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Password-protected admin dashboard for enquiry management
+          </div>
+          <div class="case-scope-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Booking system + PHPMailer email confirmation
+          </div>
+          <div class="case-scope-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            SEO-ready structure across all service pages
+          </div>
+        </div>
+
+        <div class="case-card-tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">PHPMailer</span><span class="tag">SEO</span>
+        </div>
+        <div class="case-card-actions">
+          <a href="https://norwest.page.gd/" target="_blank" rel="noopener" class="btn btn-dark btn-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Visit Live Site
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="case-block">
-      <div class="case-block-label">The Solution</div>
-      <p>I built a full multi-page website with a structured service presentation, clear pricing pages, and a booking/contact system that made it easy to enquire. Each page was optimised for mobile, built with SEO-ready HTML, and designed to make Norwest look as credible as they actually are.</p>
+
+    <!-- BALTECH -->
+    <div class="case-card reveal">
+      <div class="case-card-banner" style="background:linear-gradient(135deg,#0a1e0a 0%,#1a4d1a 55%,#2d6a2d 100%)">
+        <img src="baltech.PNG" alt="BALTECH Computer Education website"/>
+        <div class="case-card-banner-inner">
+          <div style="width:85%;background:#1a1a2e;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.4);overflow:hidden;">
+            <div style="background:#2a2a3e;padding:0.5rem 1rem;display:flex;align-items:center;gap:0.5rem;">
+              <div style="display:flex;gap:5px;"><span style="width:10px;height:10px;border-radius:50%;display:block;background:#ff5f57"></span><span style="width:10px;height:10px;border-radius:50%;display:block;background:#febc2e"></span><span style="width:10px;height:10px;border-radius:50%;display:block;background:#28c840"></span></div>
+              <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:4px;padding:0.2rem 0.6rem;font-size:0.72rem;color:rgba(255,255,255,0.45);font-family:monospace;">baltech-worldwide.com</div>
+            </div>
+            <div style="padding:1rem 1.25rem;background:linear-gradient(135deg,#0d1f0d,#1a3a1a);">
+              <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                <div style="height:10px;border-radius:4px;background:#d4af37;width:52%"></div>
+                <div style="height:6px;border-radius:3px;background:rgba(212,175,55,0.22);width:80%"></div>
+                <div style="height:6px;border-radius:3px;background:rgba(255,255,255,0.1);width:60%"></div>
+                <div style="display:flex;gap:0.4rem;margin-top:0.4rem;"><div style="height:14px;width:60px;border-radius:6px;background:#d4af37;opacity:0.9"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card-body">
+        <div class="case-card-meta">
+          <span class="case-num">Project 02</span>
+          <span class="badge badge-live">Live</span>
+        </div>
+        <div class="case-card-sub">Est. 2013 · IT Training Institute, Lagos</div>
+        <h2 class="case-card-title">BALTECH Computer Education</h2>
+        <p class="case-card-desc">A Lagos IT institute offering Web Development, Cybersecurity, and Networking courses needed a site that could convert curious visitors into enrolled students.</p>
+
+        <div class="case-facts">
+          <div class="case-fact">
+            <div class="case-fact-num">6</div>
+            <div class="case-fact-label">Pages built</div>
+          </div>
+          <div class="case-fact">
+            <div class="case-fact-num">100%</div>
+            <div class="case-fact-label">Mobile ready</div>
+          </div>
+          <div class="case-fact">
+            <div class="case-fact-num">✓</div>
+            <div class="case-fact-label">Forms live</div>
+          </div>
+        </div>
+
+        <div class="case-scope-list">
+          <div class="case-scope-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Course pages with clear enrolment CTAs per programme
+          </div>
+          <div class="case-scope-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Working contact form + JavaScript modal interaction
+          </div>
+          <div class="case-scope-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            African-inspired design system — forest green &amp; amber palette
+          </div>
+        </div>
+
+        <div class="case-card-tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Multi-Page</span><span class="tag">Mobile-First</span>
+        </div>
+        <div class="case-card-actions">
+          <a href="https://baltech-worldwide.com" target="_blank" rel="noopener" class="btn btn-dark btn-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Visit Live Site
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="case-block">
-      <div class="case-block-label">The Scope</div>
-      <p>14-page website including Home, Services, About, Broadband, Book a Call, and a full Admin Dashboard with password-protected login, contact submission management, and email confirmation system via PHPMailer.</p>
-    </div>
+
   </div>
 
-  <div class="case-results reveal">
-    <div class="result-box">
-      <div class="result-num">14<span>pg</span></div>
-      <div class="result-label">Pages Built</div>
-    </div>
-    <div class="result-box">
-      <div class="result-num">100<span>%</span></div>
-      <div class="result-label">Mobile Responsive</div>
-    </div>
-    <div class="result-box">
-      <div class="result-num">&lt;3<span>s</span></div>
-      <div class="result-label">Page Load Time</div>
-    </div>
-    <div class="result-box">
-      <div class="result-num">✓</div>
-      <div class="result-label">Admin Dashboard + Email System</div>
-    </div>
-  </div>
-
-  <div class="case-quote reveal">
-    "The new site finally presents us the way we've always operated — professionally and with clarity. Enquiries through the contact system have been consistent since launch."
-    <cite>— Norwest Telecommunications, Client</cite>
+  <!-- Factual closing note — no fake quote -->
+  <div class="case-note reveal">
+    Both sites are live, fully mobile-responsive, and built around one goal: getting the business more enquiries. Norwest's admin system handles contact submissions without any third-party software. BALTECH's enrolment flow guides prospective students from landing page to contact form in three clicks.
+    <cite>— Two completed projects · Both verifiable at the links above</cite>
   </div>
 </section>
 
 
-<!-- ═══════ SERVICES ═══════ -->
+<!-- SERVICES -->
 <section id="services">
   <span class="section-label">Services &amp; Pricing</span>
   <h2 class="section-title">Clear packages.<br>No hidden costs.</h2>
   <p class="section-subtitle">Every package is designed around one goal: getting your business more enquiries. Pick what fits — or contact me for a custom quote.</p>
 
-  <div class="services-grid reveal">
+  <div class="guarantee-pill">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Delivery guarantee: miss the agreed date and you don't pay the final 50%
+  </div>
 
-    <!-- STARTER -->
+  <div class="services-grid reveal">
     <div class="service-card">
       <div class="service-tag">Starter</div>
       <h3>Business Landing Page</h3>
@@ -533,7 +577,6 @@
       <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
     </div>
 
-    <!-- CORE — FEATURED -->
     <div class="service-card featured">
       <span class="service-recommend">Most Popular</span>
       <div class="service-tag">Core</div>
@@ -553,7 +596,6 @@
       <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;background:var(--accent);">Get Started</a>
     </div>
 
-    <!-- PREMIUM -->
     <div class="service-card">
       <div class="service-tag">Premium</div>
       <h3>Website + Admin System</h3>
@@ -571,22 +613,20 @@
       </ul>
       <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
     </div>
-
   </div>
 
   <p style="text-align:center;margin-top:1.75rem;font-size:0.88rem;color:var(--ink-light);">Need something custom? <a href="#contact" style="color:var(--accent);font-weight:600;text-decoration:none;">Send me a message →</a></p>
 </section>
 
 
-<!-- ═══════ ABOUT ═══════ -->
+<!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
     <div class="about-text reveal">
       <span class="section-label">About Me</span>
       <h2 class="section-title">I don't just build websites.<br>I build online presence.</h2>
-      <p>I'm Tomiwa — a web designer and developer focused on one thing: helping service businesses look credible and get more customers online. I've built websites for telecom companies and IT training institutes, and I've managed social media for a business with a 30-year track record.</p>
-      <p>I understand what makes a business client say yes — and I build websites that speak that language. Fast turnaround, clear communication, and no jargon. You'll always know what's happening and why.</p>
-      <p style="font-size:0.92rem;color:var(--ink-light);">Based in Lagos · Working with UK &amp; international clients remotely.</p>
+      <p>I'm Tomiwa — a web designer and developer focused on one thing: helping service businesses look credible and get more customers online. I've built websites for a 30-year-old telecom company and a multi-programme IT training institute, and I've managed social media for an established business with a track record that spans decades.</p>
+      <p>Fast turnaround, clear communication, no jargon. You'll always know what's happening and why. Working with clients in the UK, Nigeria, and internationally — fully remote.</p>
       <div class="about-chips">
         <span class="chip">HTML / CSS</span>
         <span class="chip">JavaScript</span>
@@ -610,154 +650,11 @@
 </section>
 
 
-<!-- ═══════ PROJECTS ═══════ -->
-<section id="projects">
-  <span class="section-label">Live Work</span>
-  <h2 class="section-title">Real sites. Real businesses.</h2>
-  <p class="section-subtitle">Every project below is built to attract customers — not just to look nice.</p>
-
-  <div class="project-card reveal" style="margin-bottom:1.5rem" data-tags="html-css javascript">
-    <div class="card-banner" style="background:linear-gradient(135deg,#0a1e0a 0%,#1a4d1a 55%,#2d6a2d 100%)">
-      <img src="baltech.PNG" alt="BALTECH Computer Education website screenshot"/>
-      <div class="card-banner-inner">
-        <div class="browser-chrome">
-          <div class="browser-bar">
-            <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <div class="browser-url">baltech-worldwide.com</div>
-          </div>
-          <div class="browser-content" style="background:linear-gradient(135deg,#0d1f0d,#1a3a1a)">
-            <div class="site-preview">
-              <div class="pr-h" style="background:#d4af37;width:52%"></div>
-              <div class="pr-l w80" style="background:rgba(212,175,55,0.22)"></div>
-              <div class="pr-l w60"></div>
-              <div class="pr-btn-bar">
-                <div class="pr-btn" style="background:#d4af37;opacity:0.9"></div>
-                <div class="pr-btn" style="border:1px solid rgba(255,255,255,0.2)"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="card-meta">
-        <span class="card-num">Project 01</span>
-        <span class="badge badge-featured">Featured</span>
-        <span class="badge badge-live">Live</span>
-      </div>
-      <h2 class="card-title">BALTECH Computer Education</h2>
-      <p class="card-desc">Full multi-page site for a Lagos IT training institute. Designed to convert visitors into enrolled students — with clear course pages, CTAs, and a working contact system.</p>
-      <div class="card-outcomes">
-        <div class="outcome">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          6-page site: Home, About, Courses, Contact &amp; Enrolment
-        </div>
-        <div class="outcome">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Mobile-first responsive with working contact form &amp; JS modal
-        </div>
-      </div>
-      <div class="card-tags">
-        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Multi-Page</span>
-      </div>
-      <div class="card-actions">
-        <a href="https://baltech-worldwide.com" target="_blank" rel="noopener" class="btn btn-dark">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Visit Live Site
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="projects-sub">
-    <div class="project-card compact reveal" data-tags="html-css wordpress">
-      <div class="card-banner" style="background:linear-gradient(135deg,#0d1b3e 0%,#1a3cff 100%)">
-        <img src="norwest.PNG" alt="Norwest Digital website screenshot"/>
-        <div class="card-banner-inner">
-          <div class="browser-chrome" style="width:86%">
-            <div class="browser-bar">
-              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-              <div class="browser-url">norwest.page.gd</div>
-            </div>
-            <div class="browser-content" style="background:linear-gradient(135deg,#0a1628,#0d2050)">
-              <div class="site-preview">
-                <div class="pr-h" style="background:#fff;opacity:0.8;width:48%"></div>
-                <div class="pr-l w80"></div><div class="pr-l w50"></div>
-                <div class="pr-btn-bar"><div class="pr-btn" style="background:#1a3cff;opacity:0.9"></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-meta">
-          <span class="card-num">Project 02</span>
-          <span class="badge badge-live">Live</span>
-        </div>
-        <h2 class="card-title">Norwest Telecommunications</h2>
-        <p class="card-desc">14-page site for a 30-year-old telecom company. Includes admin dashboard, booking system, PHPMailer integration, and SEO-ready structure.</p>
-        <div class="card-tags">
-          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">SEO</span>
-        </div>
-        <div class="card-actions">
-          <a href="https://norwest.page.gd/" target="_blank" rel="noopener" class="btn btn-dark btn-sm">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Visit Live Site
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card compact reveal" data-tags="html-css javascript ecommerce">
-      <div class="card-banner" style="background:linear-gradient(135deg,#1a1008 0%,#3d2b0e 50%,#6b4c1a 100%)">
-        <img src="aurelia.PNG" alt="AURELIA luxury shop screenshot"/>
-        <div class="card-banner-inner">
-          <div class="browser-chrome" style="width:86%">
-            <div class="browser-bar">
-              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-              <div class="browser-url">aurelia-london.com</div>
-            </div>
-            <div class="browser-content" style="background:linear-gradient(135deg,#0d0b07,#1e1508)">
-              <div class="site-preview">
-                <div class="pr-h" style="background:#c9a84c;opacity:0.9;width:44%"></div>
-                <div class="pr-l w80" style="background:rgba(201,168,76,0.2)"></div><div class="pr-l w60"></div>
-                <div class="pr-btn-bar"><div class="pr-btn" style="background:#c9a84c;opacity:0.85"></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-meta">
-          <span class="card-num">Project 03</span>
-          <span class="badge badge-template">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            Template
-          </span>
-        </div>
-        <h2 class="card-title">AURELIA — Luxury E-Commerce</h2>
-        <p class="card-desc">Editorial luxury fashion template with full checkout flow, cart persistence, product pages, and lookbook — built in pure HTML/CSS/JS.</p>
-        <div class="card-tags">
-          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">E-Commerce</span>
-        </div>
-        <div class="card-actions">
-          <a href="landing%20page.html" target="_blank" rel="noopener" class="btn btn-dark btn-sm">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            Preview Template
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════ FAQ ═══════ -->
+<!-- FAQ -->
 <section id="faq">
   <span class="section-label">FAQ</span>
   <h2 class="section-title">Common questions.</h2>
   <p class="section-subtitle" style="margin-bottom:2.5rem">Straight answers — no fluff.</p>
-
   <div class="faq-grid reveal">
     <div class="faq-item">
       <div class="faq-q">How long does it take to build my site?</div>
@@ -787,29 +684,17 @@
 </section>
 
 
-<!-- ═══════ CONTACT ═══════ -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact-wrap reveal">
     <div class="contact-left">
       <h2>Ready to get more customers from your website?</h2>
       <p>Tell me about your business and what you need. I'll send a clear quote within 24 hours — no obligation, no pushy sales calls.</p>
       <div class="contact-points">
-        <div class="contact-point">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Free quote within 24 hours
-        </div>
-        <div class="contact-point">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          No commitment required
-        </div>
-        <div class="contact-point">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          50% upfront · 50% on delivery
-        </div>
-        <div class="contact-point">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Works with UK &amp; international clients
-        </div>
+        <div class="contact-point"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free quote within 24 hours</div>
+        <div class="contact-point"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No commitment required</div>
+        <div class="contact-point"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>50% upfront · 50% on delivery</div>
+        <div class="contact-point"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Works with UK &amp; international clients</div>
       </div>
     </div>
     <div class="contact-form">
@@ -836,9 +721,7 @@
         <textarea id="message" placeholder="What does your business do? What do you need? Any deadlines?"></textarea>
       </div>
       <div class="form-success" id="formSuccess">✅ Sent! I'll get back to you within 24 hours.</div>
-      <button class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;">
-        Send My Enquiry →
-      </button>
+      <button class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;">Send My Enquiry →</button>
     </div>
   </div>
 </section>
@@ -848,7 +731,7 @@
   <p>© 2025 Tomiwa Balogun. Web Designer for Service Businesses.</p>
   <div class="footer-links">
     <a href="#services">Services</a>
-    <a href="#projects">Work</a>
+    <a href="#casestudy">Work</a>
     <a href="#contact">Contact</a>
   </div>
 </footer>
